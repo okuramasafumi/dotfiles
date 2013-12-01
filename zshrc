@@ -29,3 +29,6 @@ antigen bundle rails4
 antigen theme simple
 
 antigen apply
+
+# Zaw
+source $ZSH_DIR/zaw/zaw.zsh
