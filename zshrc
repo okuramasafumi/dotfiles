@@ -1,5 +1,8 @@
 # zshrc
 
+# Config directory
+ZSH_DIR="$HOME/.zsh"
+
 # Remove dups from paths
 typeset -U path cdpath fpath manpath
 
@@ -14,3 +17,15 @@ compinit
 # Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
+
+# Antigen
+source $ZSH_DIR/antigen/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle git-flow
+antigen bundle rails4
+antigen theme simple
+
+antigen apply
