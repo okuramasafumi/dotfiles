@@ -1,0 +1,34 @@
+[user]
+	name = Okura Masafumi
+	email = masafumi.o1988@gmail.com
+[github]
+	user = okuramasafumi
+	token = 4b742a31766a33ac39f3204ff2a93f2d
+[hub]
+	protocol = https
+[core]
+	editor = /usr/bin/vim
+	excludesfile = /opt/boxen/config/git/gitignore
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	ss = status
+	br = branch
+	ci = commit
+	mt = mergetool
+	df = diff
+[merge]
+	tool = fugitive
+[mergetool "gvimdiff"]
+	cmd = mvimdiff
+[mergetool "gvimdiff3"]
+	cmd = mvimdiff -f \"$MERGED\" \"$LOCAL\" \"$REMOTE\"
+[mergetool "gvimdiff2"]
+	path = /usr/local/bin/mvimdiff
+[mergetool "fugitive"]
+  cmd = mvim -f -c \"Gvdiff\" \"$MERGED\" \"$LOCAL\"
+[push]
+	default = simple
+[credential]
+	helper = /opt/boxen/bin/boxen-git-credential
