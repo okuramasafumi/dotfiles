@@ -77,6 +77,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'taku-o/vim-toggle'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'rodjek/vim-puppet'
 "NeoBundleLazy 'kchmck/vim-coffee-script', {
       "\ 'autoload': {
       "\ 'filetypes': ['coffee', 'html', 'haml'] } }
