@@ -173,7 +173,9 @@ set modelines=10
 
 " Swapfile and backup
 set swapfile
+set directory=~/.vim/swap
 set backup
+set backupdir=~/.vim/backup
 
 " Clean menu
 let g:DrChipTopLvlMenu = ""
