@@ -1,9 +1,6 @@
 [user]
 	name = Okura Masafumi
 	email = masafumi.o1988@gmail.com
-[github]
-	user = okuramasafumi
-	token = 4b742a31766a33ac39f3204ff2a93f2d
 [hub]
 	protocol = https
 [core]
