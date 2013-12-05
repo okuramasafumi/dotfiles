@@ -176,6 +176,10 @@ set directory=~/.vim/swap
 set backup
 set backupdir=~/.vim/backup
 
+" : is important
+nnoremap ; :
+nnoremap : ;
+
 " Clean menu
 let g:DrChipTopLvlMenu = ""
 "unmenu &Plugin.&comment
