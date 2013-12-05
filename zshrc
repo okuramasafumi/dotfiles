@@ -47,3 +47,5 @@ antigen apply
 
 # Zaw
 source $ZSH_DIR/zaw/zaw.zsh
+zstyle ":filter:select" case-insensitive yes
+bindkey "^X'" zaw-cdr
