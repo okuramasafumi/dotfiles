@@ -32,8 +32,7 @@ NeoBundle 'Shougo/vimproc', {
       \ 'mac': 'make -f make_mac.mak',
       \ 'unix': 'make -f make_unix.mak' } }
 
-NeoBundleLazy 'Shougo/neocomplete', {
-      \ 'autoload': { 'insert': 1 } }
+NeoBundle'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet', {
       \ 'depends': 'Shougo/neocomplete'}
 "NeoBundleLazy 'Shougo/neocomplcache-rsense', {
