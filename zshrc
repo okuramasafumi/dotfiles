@@ -7,7 +7,7 @@ autoload -Uz is-at-least
 ZSH_DIR="$HOME/.zsh"
 
 # Remove dups from paths
-typeset -U path cdpath fpath manpath
+typeset -aU path cdpath fpath manpath
 
 # Add some completions (we need this before compinit)
 [ -e /opt/boxen/homebrew/share/zsh-completions ] && fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
@@ -49,3 +49,6 @@ antigen apply
 source $ZSH_DIR/zaw/zaw.zsh
 zstyle ":filter:select" case-insensitive yes
 bindkey "^X'" zaw-cdr
+
+# Reload path to remove dups
+path=($path)
