@@ -18,6 +18,9 @@ compinit
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
 
+# My aliases
+source $ZSH_DIR/aliases.zsh
+
 # Antigen
 source $ZSH_DIR/antigen/antigen.zsh
 
