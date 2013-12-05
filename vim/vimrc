@@ -185,18 +185,6 @@ if has("autocmd")
   " Remember last location in file
   au MyAutoCmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
-
-  " Thorfile, Rakefile, Guardfile, Vagrantfile and Gemfile are Ruby
-  au MyAutoCmd BufRead,BufNewFile {Rakefile,Guardfile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
-
-  " set filetype for neocomplete and load snippet
-  autocmd MyAutoCmd BufEnter *.rb
-        \ if (expand("%") =~ "_spec\.rb$") || (expand("%") =~ "^spec.*\.rb$")
-        \ | NeoCompleteSetFileType ruby.rspec
-        \ | call neosnippet#source_file(expand('~/.vim/snippets/rspec.snip'))
-        \ | endif
-  autocmd MyAutoCmd BufEnter *.rb if exists("b:rails_root") | NeoCompleteEnable | NeoCompleteSetFileType ruby.rails | NeoCompleteSyntaxMakeCache | endif
-  autocmd MyAutoCmd BufEnter *.haml if exists("b:rails_root") | NeoCompleteEnable | NeoCompleteSetFileType haml.ruby.rails | NeoCompleteSyntaxMakeCache | endif
 endif
 
 " Easy help keymapping
@@ -462,6 +450,23 @@ set completeopt-=preview
 "if has('conceal')
   "set conceallevel=2 concealcursor=i
 "endif
+
+" Define functions for various ruby files
+function! s:setup_for_rspec()
+  NeoCompleteSetFileType ruby.rspec
+  NeoSnippetSource ~/.vim/snippets/rspec.snip
+endfunction
+
+function! s:setup_for_rails()
+  NeoCompleteSetFileType ruby.rails
+  NeoSnippetSource ~/.vim/snippets/rails.snip
+endfunction
+
+if has('autocmd')
+  " set filetype for neocomplete and load snippet
+  autocmd MyAutoCmd BufEnter *_spec.rb call s:setup_for_rspec()
+  autocmd User Rails call s:setup_for_rails()
+endif
 
 "******************
 " Fugitive configuration
