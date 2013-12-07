@@ -291,27 +291,21 @@ nmap <Leader>u [Unite]
 
 " Open buffers
 nnoremap [Unite]b :<C-u>Unite buffer -no-start-insert<CR>
-nnoremap [Unite]<C-b> :<C-u>Unite buffer -no-start-insert<CR>
 
 " Open files
-nnoremap [Unite]f :<C-u>Unite file<CR>
-nnoremap [Unite]<C-f> :<C-u>Unite file<CR>
+nnoremap [Unite]f :<C-u>Unite file file/new<CR>
 
 " Open project files
 nnoremap [Unite]u :<C-u>Unite file_rec/async<CR>
-nnoremap [Unite]<C-u> :<C-u>Unite file_rec/async<CR>
 
 " Open recently-opened files
 nnoremap [Unite]m :<C-u>Unite file_mru<CR>
-nnoremap [Unite]<C-m> :<C-u>Unite file_mru<CR>
 
 " Open all
 nnoremap [Unite]a :<C-u>Unite buffer file file_mru file_rec/async<CR>
-nnoremap [Unite]<C-a> :<C-u>Unite buffer file file_mru file_rec/async<CR>
 
 " Open tags
 nnoremap [Unite]t :<C-u>Unite tag<CR>
-nnoremap [Unite]<C-t> :<C-u>Unite tag<CR>
 
 " Open outline
 nnoremap [Unite]o :<C-u>Unite outline<CR>
