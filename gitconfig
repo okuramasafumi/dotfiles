@@ -4,7 +4,7 @@
 [hub]
 	protocol = https
 [core]
-	editor = /usr/bin/vim
+	editor = vim
 	excludesfile = /opt/boxen/config/git/gitignore
 [color]
 	ui = auto
