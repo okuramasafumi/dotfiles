@@ -239,7 +239,7 @@ endif
 let g:ref_use_vimproc = 1
 
 " Gundo configuration
-nnoremap <Leader>u :GundoToggle<CR>
+nnoremap <Leader>d :<C-u>GundoToggle<CR>
 
 " Smartchr configuration
 inoremap <expr> = smartchr#loop('=', '==', ' = ', ' == ' )
@@ -287,7 +287,7 @@ endif
 " Unite.vim keymappings
 " Unite prefix
 nnoremap [Unite] <Nop>
-nmap <C-u> [Unite]
+nmap <Leader>u [Unite]
 
 " Open buffers
 nnoremap [Unite]b :<C-u>Unite buffer -no-start-insert<CR>
