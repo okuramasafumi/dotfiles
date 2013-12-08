@@ -67,6 +67,7 @@ NeoBundle 'mattn/zencoding-vim'
 
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'basyura/unite-rails'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'taku-o/vim-toggle'
@@ -275,7 +276,7 @@ nnoremap [Unite]f :<C-u>Unite file file/new<CR>
 nnoremap [Unite]u :<C-u>Unite file_rec/async<CR>
 
 " Open recently-opened files
-nnoremap [Unite]m :<C-u>Unite file_mru<CR>
+nnoremap [Unite]l :<C-u>Unite file_mru<CR>
 
 " Open all
 nnoremap [Unite]a :<C-u>Unite buffer file file_mru file_rec/async<CR>
@@ -331,6 +332,16 @@ function! s:unite_my_configuration()
 
   " Close unite with <C-q>
   imap <silent> <buffer> <C-q> <ESC><Plug>(unite_all_exit)
+endfunction
+
+autocmd MyAutoCmd User Rails call s:unite_rails_configuration()
+function! s:unite_rails_configuration()
+  nnoremap <buffer> [unite]v :<C-u>Unite rails/view<CR>
+  nnoremap <buffer> [unite]m :<C-u>Unite rails/model<CR>
+  nnoremap <buffer> [unite]c :<C-u>Unite rails/controller<CR>
+  nnoremap <buffer> [unite]g :<C-u>Unite rails/config<CR>
+  nnoremap <buffer> [unite]s :<C-u>Unite rails/spec<CR>
+  nnoremap <buffer> [unite]k          :<C-u>Unite rails/rake<CR>
 endfunction
 
 "***********************
