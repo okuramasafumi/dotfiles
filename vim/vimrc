@@ -322,14 +322,14 @@ function! s:unite_my_configuration()
   imap <silent> <buffer> <C-q> <ESC><Plug>(unite_all_exit)
 endfunction
 
-autocmd MyAutoCmd User Rails call s:unite_rails_configuration()
+autocmd User Rails call s:unite_rails_configuration()
 function! s:unite_rails_configuration()
-  nnoremap <buffer> [unite]v :<C-u>Unite rails/view<CR>
-  nnoremap <buffer> [unite]m :<C-u>Unite rails/model<CR>
-  nnoremap <buffer> [unite]c :<C-u>Unite rails/controller<CR>
-  nnoremap <buffer> [unite]g :<C-u>Unite rails/config<CR>
-  nnoremap <buffer> [unite]s :<C-u>Unite rails/spec<CR>
-  nnoremap <buffer> [unite]k          :<C-u>Unite rails/rake<CR>
+  nnoremap <buffer> [Unite]v :<C-u>Unite rails/view<CR>
+  nnoremap <buffer> [Unite]m :<C-u>Unite rails/model<CR>
+  nnoremap <buffer> [Unite]c :<C-u>Unite rails/controller<CR>
+  nnoremap <buffer> [Unite]g :<C-u>Unite rails/config<CR>
+  nnoremap <buffer> [Unite]s :<C-u>Unite rails/spec<CR>
+  nnoremap <buffer> [Unite]k          :<C-u>Unite rails/rake<CR>
 endfunction
 
 "***********************
