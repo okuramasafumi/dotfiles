@@ -1,0 +1,11 @@
+Pry.config.pager = false
+Pry.config.color = true
+Pry.config.editor = 'vim'
+
+Pry.config.prompt = proc do |obj, nest_level, _pry_|
+  prompt = ''
+  prompt << "Rails#{Rails.version}@" if defined? Rails
+  prompt << "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+
+  "#{prompt} pry(#{obj})> "
+end
