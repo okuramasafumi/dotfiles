@@ -596,6 +596,10 @@ let g:rails_projections = {
 " Ruby debugger
 let g:ruby_debugger_progname = 'mvim'
 
+" Taglist configuration
+" Ctags command is defined in local vimrc
+nnoremap <silent> <Leader>t :<C-u>TlistToggle<CR>
+
 " External rc files
 " Include vimrc for mac
 " Include user's local vim config
