@@ -57,7 +57,7 @@ if has("gui_macvim")
   " imap <Leader>= <Esc> <C-w>=
 
   " GUI Font
- 	set guifont=Ricty\ Regular:h14
+ 	set guifont=Ricty\ Regular\ for\ Powerline:h14
 
   " Window size
   set lines=80 columns=240
