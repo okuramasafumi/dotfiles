@@ -72,6 +72,7 @@ NeoBundle 'szw/vim-tags'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'rodjek/vim-puppet'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundleLazy 'skwp/vim-rspec', { 'autoload': { 'filetypes': 'ruby' } }
 NeoBundleLazy 'vim-ruby/vim-ruby', {
       \'autoload': {
