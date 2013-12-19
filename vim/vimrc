@@ -567,6 +567,31 @@ nnoremap [Fugitive]c :<C-u>Gcommit<CR>
 nnoremap [Fugitive]C :<C-u>Gcommit --amend<CR>
 nnoremap [Fugitive]b :<C-u>Gblame<CR>
 
+" Rails.vim projections
+" Require vim-bundler
+let g:rails_gem_projections = {
+      \ "carrierwave": {
+      \   "app/uploaders/*_uploader.rb": {
+      \     "command": "uploader",
+      \     "template":
+      \       "class %SUploader < CarrierWave::Uploader::Base\nend",
+      \     "test": "spec/models/%s_uploader_spec.rb",
+      \     "related": "app/models/images/%s.rb",
+      \     "keywords": "process version"
+      \ }}}
+
+let g:rails_projections = {
+      \ "app/forms/*_form.rb": {
+      \   "command": "form",
+      \   "test": "spec/forms/%s_form_spec.rb" },
+      \ "app/presenters/*_presenter.rb": {
+      \   "command": "presenter",
+      \   "test": "spec/presenters/%s_presenter_spec.rb"},
+      \ "app/services/*.rb": {
+      \   "command": "service",
+      \   "test": "spec/services/%s_spec.rb" }
+      \ }
+
 " Ruby debugger
 let g:ruby_debugger_progname = 'mvim'
 
