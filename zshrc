@@ -40,7 +40,7 @@ antigen use oh-my-zsh
 
 antigen bundle git
 antigen bundle git-flow
-antigen bundle rails4
+antigen bundle rails
 antigen theme simple
 
 antigen apply
