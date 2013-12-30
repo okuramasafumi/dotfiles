@@ -547,6 +547,7 @@ endfunction
 
 function! s:setup_for_rails()
   NeoCompleteSetFileType ruby.rails
+  NeoCompleteSyntaxMakeCache
   NeoSnippetSource ~/.vim/snippets/rails.snip
 endfunction
 
