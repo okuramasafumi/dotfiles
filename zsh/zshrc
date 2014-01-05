@@ -49,6 +49,7 @@ antigen apply
 source $ZSH_DIR/zaw/zaw.zsh
 zstyle ":filter:select" case-insensitive yes
 bindkey "^X'" zaw-cdr
+bindkey "^Xh" zaw-history
 
 # Reload path to remove dups
 path=($path)
