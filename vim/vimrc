@@ -280,6 +280,8 @@ set backupdir=~/.vim/backup
 " : is important
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " Clean menu
 let g:DrChipTopLvlMenu = ""
