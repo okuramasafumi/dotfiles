@@ -292,6 +292,9 @@ if has("autocmd")
   " Remember last location in file
   au MyAutoCmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
+
+  " md is markdown, not modula2!
+  au MyAutoCmd BufNewFile, BufRead *.md set filetype=markdown
 endif
 
 " Easy help keymapping
