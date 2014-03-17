@@ -15,13 +15,19 @@ snippet it
 	end
 
 snippet let
-  let(:${1:var}) {${2}}
+  let(:${1:var}) { ${2} }
 
 snippet fac
   FactoryGirl.create(:${1:factory})
 
 snippet fab
   FactoryGirl.build(:${1:factory})
+
+snippet cre
+  create(:${1:factory})
+
+snippet bui
+  build(:${1:factory})
 
 snippet bef
 	before do
