@@ -69,3 +69,15 @@ abbr expect to change from to
 	expect {
 	  ${1:action}
 	}.to change{${2:change}}.from(${3:from}).to(${4:to})
+
+snippet alt
+abbr allow to
+  allow(${1:target}).to ${2:action}
+
+snippet altr
+abbr allow to receive
+  allow(${1:target}).to receive(${2:method})
+
+snippet altrr
+abbr allow to receive and return
+  allow(${1:target}).to receive(${2:method}).and_return(${3:result})
