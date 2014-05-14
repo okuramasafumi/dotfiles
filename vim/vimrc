@@ -77,10 +77,8 @@ NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'Rykka/colorv.vim'
+NeoBundle 'vim-ruby/vim-ruby'
 NeoBundleLazy 'skwp/vim-rspec', { 'autoload': { 'filetypes': 'ruby' } }
-NeoBundleLazy 'vim-ruby/vim-ruby', {
-      \'autoload': {
-      \'filetypes': ['ruby', 'eruby', 'haml'] } }
 
 NeoBundle 'altercation/vim-colors-solarized'
 
