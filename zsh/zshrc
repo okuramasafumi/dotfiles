@@ -41,6 +41,7 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle git-flow
 antigen bundle rails
+antigen bundle chruby
 antigen theme simple
 
 antigen apply
