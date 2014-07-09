@@ -152,17 +152,7 @@ nnoremap <Leader>d :<C-u>GundoToggle<CR>
 " Smartchr configuration
 inoremap <expr> = smartchr#loop('=', '==', ' = ', ' == ' )
 
-"************************
-" Syntastic configuration
-"************************
-let g:syntastic_mode_map = { 'mode': 'passive',
-      \ 'active_filetypes': ['ruby', 'html', 'haml', 'javascript',
-      \ 'sass', 'scss'],
-      \ 'passive_filetypes': []}
-
-" Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_messages={ 'level': 'warnings' }
+source ~/.vim/settings/bundle/syntastic.vim
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
