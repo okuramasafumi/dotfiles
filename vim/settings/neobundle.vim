@@ -73,5 +73,16 @@ NeoBundle 'ZoomWin'
 NeoBundle 'sudo.vim'
 NeoBundle 'taglist.vim'
 
-" load the plugin and indent configuration for the detected filetype
+" End
+call neobundle#end()
+
+" Required
 filetype plugin indent on
+
+" Check all bundles are installed
+NeoBundleCheck
+
+" Call hook when reloading this file
+if !has('vim_starting')
+  call neobundle#call_hook('on_source')
+endif
