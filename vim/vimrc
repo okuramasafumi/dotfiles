@@ -37,7 +37,7 @@ NeoBundle 'Shougo/neosnippet', {
       \ 'depends': 'Shougo/neocomplete'}
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite-outline', { 'depends': 'Shougo/unite.vim' }
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
@@ -66,8 +66,8 @@ NeoBundleLazy 'rhysd/vim-textobj-ruby', {
       \ 'depends': 'kana/vim-textobj-user',
       \ 'autoload': { 'filetypes': 'ruby' } }
 
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'basyura/unite-rails'
+NeoBundle 'tsukkee/unite-tag', { 'depends': 'Shougo/unite.vim' }
+NeoBundle 'basyura/unite-rails', { 'depends': 'Shougo/unite.vim' }
 NeoBundle 'rking/ag.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'szw/vim-tags'
