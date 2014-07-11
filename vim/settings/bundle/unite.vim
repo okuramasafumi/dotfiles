@@ -89,3 +89,9 @@ function! s:unite_rails_configuration()
   nnoremap <buffer> [Unite]s :<C-u>Unite rails/spec<CR>
   nnoremap <buffer> [Unite]k          :<C-u>Unite rails/rake<CR>
 endfunction
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+  let g:unite_source_grep_max_candidate = 1000
+end
