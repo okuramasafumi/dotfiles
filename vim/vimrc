@@ -180,23 +180,11 @@ endif
 
 source ~/.vim/settings/bundle/unite.vim
 
-"***********************
-" VimFiler configuration
-"***********************
-
-" Open VimFiler with <Space>f
-nnoremap <Leader>f :VimFiler -buffer-name=explorer -split -winwidth=45 -toggle <CR>
-
-"let g:vimfiler_as_default_explorer = 1
-
 source ~/.vim/settings/bundle/neocomplete.vim
 
 source ~/.vim/settings/bundle/rails.vim
 
 source ~/.vim/settings/bundle/fugitive.vim
-
-" Ruby debugger
-let g:ruby_debugger_progname = 'mvim'
 
 " Taglist configuration
 " Ctags command is defined in local vimrc
