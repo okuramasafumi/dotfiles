@@ -49,7 +49,12 @@ let g:rails_gem_projections = {
       \     "keywords": "has_paper_trail"}},
       \ "squeel":{
       \   "app/models/*.rb": {
-      \     "keywords": "sifter"}}}
+      \     "keywords": "sifter"}},
+      \ "sidekiq": {
+      \   "app/workers/*.rb": {
+      \     "command": "worker",
+      \     "template": "%SWorker\n  include Sidekiq::Worker\nend",
+      \     "keywords": "sidekiq_options"}}}
 
 let g:rails_projections = {
       \ "app/forms/*_form.rb": {
