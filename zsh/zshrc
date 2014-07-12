@@ -33,6 +33,9 @@ fi
 # My aliases
 source $ZSH_DIR/aliases.zsh
 
+# Environment variables
+source $ZSH_DIR/exports.zsh
+
 # Antigen
 source $ZSH_DIR/antigen/antigen.zsh
 
