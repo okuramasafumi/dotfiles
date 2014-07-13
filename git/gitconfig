@@ -9,6 +9,12 @@
 [color]
 	ui = auto
 [alias]
+  a  = add
+  f  = fetch
+  l  = log
+  ps = push
+  pl = pull
+  re = rebase
 	co = checkout
 	ss = status
 	br = branch
