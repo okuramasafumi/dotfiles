@@ -1,3 +1,5 @@
+gem 'haml-rails'
+
 gem_group :test, :development do
   gem "rspec-rails"
   gem "capybara"
