@@ -30,6 +30,7 @@ endfunction
 
 if has("autocmd")
   autocmd User Rails call s:RailsConfigration()
+  autocmd User Rails DashKeywords rails rubygems ruby
 endif
 
 " Rails.vim projections
