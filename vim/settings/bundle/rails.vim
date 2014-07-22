@@ -54,7 +54,7 @@ let g:rails_gem_projections = {
       \ "sidekiq": {
       \   "app/workers/*.rb": {
       \     "command": "worker",
-      \     "template": "%SWorker\n  include Sidekiq::Worker\nend",
+      \     "template": "class %SWorker\n  include Sidekiq::Worker\nend",
       \     "keywords": "sidekiq_options"}}}
 
 let g:rails_projections = {
