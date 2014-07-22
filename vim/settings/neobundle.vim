@@ -65,6 +65,7 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'Rykka/colorv.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'rizzatti/dash.vim'
 NeoBundleLazy 'skwp/vim-rspec', { 'autoload': { 'filetypes': 'ruby' } }
 
 NeoBundle 'altercation/vim-colors-solarized'

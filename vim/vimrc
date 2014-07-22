@@ -147,7 +147,10 @@ endif
 let g:ref_use_vimproc = 1
 
 " Gundo configuration
-nnoremap <Leader>d :<C-u>GundoToggle<CR>
+nnoremap <Leader>n :<C-u>GundoToggle<CR>
+
+" dash.vim configuration
+nmap <silent> <Leader>d <Plug>DashSearch
 
 " Smartchr configuration
 inoremap <expr> = smartchr#loop('=', '==', ' = ', ' == ' )
