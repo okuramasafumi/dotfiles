@@ -60,11 +60,14 @@ let g:rails_gem_projections = {
 let g:rails_projections = {
       \ "app/forms/*_form.rb": {
       \   "command": "form",
+      \   "template": "class %SForm\nend",
       \   "test": "spec/forms/%s_form_spec.rb" },
       \ "app/presenters/*_presenter.rb": {
       \   "command": "presenter",
+      \   "template": "class %SPresenter\nend",
       \   "test": "spec/presenters/%s_presenter_spec.rb"},
       \ "app/services/*.rb": {
       \   "command": "service",
+      \   "template": "class %SService\nend",
       \   "test": "spec/services/%s_spec.rb" }
       \ }
