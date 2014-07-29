@@ -28,12 +28,6 @@ abbr when
 	when ${1:condition}
 		${2}
 
-snippet def
-abbr define method
-	def ${1:method_name}
-		${2}
-	end
-
 snippet if
 abbr if
 	if ${1:condition}
@@ -65,7 +59,7 @@ snippet while
 snippet for
 	for ${1:e} in ${2:c}
 		${3}
-	end		
+	end
 
 snippet until
 	until ${1:condition}
@@ -86,6 +80,18 @@ abbr attr_writer
 snippet ata
 abbr attr_accessor
 	attr_accessor :${1:attr_names}
+
+snippet def
+abbr define method
+	def ${1:method_name}
+		${2}
+	end
+
+snippet defi
+abbr define initializer
+  def initialize(${1:args})
+    ${2}
+  end
 
 snippet defs
 abbr define class method
@@ -137,7 +143,7 @@ snippet ead
 abbr each with do
 	each do |${1:e}|
 		${2}
-	end	
+	end
 
 snippet eak
 	each_key { |${1:key}| ${2} }
@@ -153,7 +159,7 @@ snippet eal
 snippet eald
 	each_line do |${1:line}|
 		${2}
-	end		
+	end
 
 snippet eap
 	each_pair { |${1:name}, ${2:val}| ${3} }
@@ -161,7 +167,7 @@ snippet eap
 snippet eapd
 	each_pair do |${1:name}, ${2:val}|
 		${3}
-	end			
+	end
 
 snippet reve
 	reverse_each { |${1:e}| ${2} }
@@ -169,7 +175,7 @@ snippet reve
 snippet reved
 	reverse_each do |${1:e}|
 		${2}
-	end	
+	end
 
 snippet inj
 	inject(${1:init}) { |${2:mem}, ${3:var}| ${4} }
@@ -177,7 +183,7 @@ snippet inj
 snippet injd
 	inject(${1:init}) do |${2:mem}, ${3:var}|
 		${4}
-	end		
+	end
 
 snippet map
 	map { |${1:e}| ${2} }
@@ -185,7 +191,7 @@ snippet map
 snippet mapd
 	map do |${1:e}|
 		${2}
-	end		
+	end
 
 snippet all
 	all? { |${1:e}| ${2} }

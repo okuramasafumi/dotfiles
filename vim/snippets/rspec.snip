@@ -81,3 +81,7 @@ abbr allow to receive
 snippet altrr
 abbr allow to receive and return
   allow(${1:target}).to receive(${2:method}).and_return(${3:result})
+
+snippet altrmc
+abbr allow to receive message chain
+  allow(${1:target}).to receive_message_chain(${2:messages})
