@@ -44,7 +44,6 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle git-flow
 antigen bundle rails
-antigen bundle chruby
 antigen theme simple
 
 antigen apply
@@ -54,6 +53,9 @@ source $ZSH_DIR/zaw/zaw.zsh
 zstyle ":filter:select" case-insensitive yes
 bindkey "^X'" zaw-cdr
 bindkey "^Xh" zaw-history
+
+# direnv
+eval "$(direnv hook zsh)"
 
 # Reload path to remove dups
 path=($path)
