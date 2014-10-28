@@ -8,7 +8,7 @@ if has('vim_starting')
   set runtimepath&
   set runtimepath+=$HOME/.vim/bundle/neobundle.vim
 endif
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -66,6 +66,7 @@ NeoBundle 'Rykka/colorv.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundleLazy 'skwp/vim-rspec', { 'autoload': { 'filetypes': 'ruby' } }
 
 NeoBundle 'altercation/vim-colors-solarized'
