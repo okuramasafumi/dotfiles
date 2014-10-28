@@ -4,6 +4,7 @@ gem_group :test, :development do
   gem "rspec-rails"
   gem "capybara"
   gem 'factory_girl', '~> 4.0'
+  gem 'spring-commands-rspec'
 end
 
 gem_group :development do
@@ -12,14 +13,14 @@ gem_group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rails-erd'
-  gem 'spring-commands-rspec'
 end
 
 gem_group :test do
   gem 'poltergeist'
   gem 'database_rewinder'
-  gem 'simplecov', '~> 0.7.1', require: false
+  gem 'simplecov', '~> 0.9', require: false
   gem 'simplecov-rcov', require: false
+  gem 'shoulda-matchers', require: false
 end
 
 # Gems mainly used by CI server
