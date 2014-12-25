@@ -30,12 +30,6 @@ fi
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
 
-# My aliases
-source $ZSH_DIR/aliases.zsh
-
-# Environment variables
-source $ZSH_DIR/exports.zsh
-
 # Antigen
 source $ZSH_DIR/antigen/antigen.zsh
 
@@ -47,6 +41,12 @@ antigen bundle rails
 antigen theme simple
 
 antigen apply
+
+# My aliases
+source $ZSH_DIR/aliases.zsh
+
+# Environment variables
+source $ZSH_DIR/exports.zsh
 
 # Zaw
 source $ZSH_DIR/zaw/zaw.zsh
