@@ -67,7 +67,7 @@ call neocomplete#set_dictionary_helper(g:neocomplete#same_filetype_lists,
 
 " Snippets editing
 noremap <silent> <Leader>es :NeoSnippetEdit<CR>
- 
+
 " Extract snippets with <C-k>
 imap <silent> <C-k> <Plug>(neosnippet_expand_or_jump)
 imap <silent> <C-j> <Plug>(neosnippet_jump)
@@ -90,5 +90,6 @@ endfunction
 if has('autocmd')
   " set filetype for neocomplete and load snippet
   autocmd NeocompleteAutoCmd BufEnter *_spec.rb call s:setup_for_rspec()
+  autocmd NeocompleteAutoCmd BufEnter *_steps.rb call s:setup_for_rspec()
   autocmd User Rails call s:setup_for_rails()
 endif
