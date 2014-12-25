@@ -1,8 +1,5 @@
 " This is vimrc
 
-" This is not vi, but vim!
-set nocompatible
-
 " Auto command group setting
 augroup MyAutoCmd
   autocmd!
