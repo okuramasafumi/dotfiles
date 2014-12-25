@@ -85,3 +85,13 @@ abbr allow to receive and return
 snippet altrmc
 abbr allow to receive message chain
   allow(${1:target}).to receive_message_chain(${2:messages})
+
+snippet itise
+abbr is it expected to
+  it { is_expected.to ${1:matcher} }
+
+snippet st
+abbr step
+  step '${1:description}' do
+    ${2:code}
+  end
