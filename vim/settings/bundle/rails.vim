@@ -58,6 +58,10 @@ let g:rails_gem_projections = {
       \     "keywords": "sidekiq_options"}}}
 
 let g:rails_projections = {
+      \ "app/errors/*_error.rb": {
+      \ "command": "error",
+      \ "template": "class %SError\nend",
+      \ "test": "spec/errors/%s_error_spec.rb" },
       \ "app/forms/*_form.rb": {
       \   "command": "form",
       \   "template": "class %SForm\nend",
