@@ -54,6 +54,7 @@ NeoBundleLazy 'rhysd/vim-textobj-ruby', {
 
 NeoBundle 'tsukkee/unite-tag', { 'depends': 'Shougo/unite.vim' }
 NeoBundle 'basyura/unite-rails', { 'depends': 'Shougo/unite.vim' }
+NeoBundle 'Lokaltog/vim-easymotion', { 'rev': 'v2.1.0' }
 NeoBundle 'rking/ag.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'szw/vim-tags'
