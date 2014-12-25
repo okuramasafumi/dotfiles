@@ -18,10 +18,10 @@ NeoBundle 'Shougo/vimproc', {
       \ 'mac': 'make -f make_mac.mak',
       \ 'unix': 'make -f make_unix.mak' } }
 
-NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neocomplete', { 'rev': 'ver.1.2' }
 NeoBundle 'Shougo/neosnippet', {
       \ 'depends': 'Shougo/neocomplete'}
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim', { 'rev': 'ver.6.1' }
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/unite-outline', { 'depends': 'Shougo/unite.vim' }
 
