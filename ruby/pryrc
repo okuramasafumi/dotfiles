@@ -2,10 +2,13 @@ Pry.config.pager = false
 Pry.config.color = true
 Pry.config.editor = 'vim'
 
-Pry.config.prompt = proc do |obj, nest_level, _pry_|
-  prompt = ''
-  prompt << "Rails#{Rails.version}@" if defined? Rails
-  prompt << "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+Pry.config.prompt = [
+  proc do |obj, nest_level, _pry_|
+  versions = ''
+  versions << "\001\e[1;36m\002Rails#{Rails.version}\001\e[0m\002@" if defined? Rails
+  versions << "\001\e[0;31m\002#{RUBY_VERSION}\001\e[0m\002"
+  versions << "\001\e[0;33m\002-p#{RUBY_PATCHLEVEL}\001\e[0m\002" if RUBY_VERSION.to_f < 2.1
 
-  "#{prompt} pry(#{obj})> "
-end
+  "#{versions} #{Pry.config.prompt_name}(#{Pry.view_clip(obj)})> "
+  end
+]
