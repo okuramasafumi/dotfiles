@@ -1,4 +1,8 @@
-" This is vimrc
+" Vimrc
+" Set encoding
+set encoding=utf-8
+
+scriptencoding utf-8
 
 " Auto command group setting
 augroup MyAutoCmd
@@ -46,9 +50,6 @@ set foldmethod=syntax
 set foldenable
 set foldlevel=2
 set foldopen=hor,insert,search
-
-" Set encoding
-set encoding=utf-8
 
 " Whitespace stuff
 set wrap
