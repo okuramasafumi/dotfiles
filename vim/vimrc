@@ -94,11 +94,11 @@ vnoremap ; :
 vnoremap : ;
 
 " Clean menu
-let g:DrChipTopLvlMenu = ""
+let g:DrChipTopLvlMenu = ''
 "unmenu &Plugin.&comment
 
 " Auto commands
-if has("autocmd")
+if has('autocmd')
   " Remember last location in file
   au MyAutoCmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
@@ -111,18 +111,18 @@ endif
 nnoremap <C-h> :<C-u>help<Space>
 
 " Close help with q
-if has("autocmd")
+if has('autocmd')
   autocmd FileType help nnoremap <buffer> q <C-W>c
 endif
 
 " Edit vimrc keymappings
 nnoremap <silent> <Leader>ev  :<C-u>edit $MYVIMRC<CR>
-if has("gui_running")
+if has('gui_running')
   nnoremap <silent> <Leader>eg  :<C-u>edit $MYGVIMRC<CR>
 endif
 
 " Auto load vimrc
-if has("gui_running")
+if has('gui_running')
   autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | source $MYGVIMRC
   \ | redraw
   autocmd MyAutoCmd BufWritePost $MYGVIMRC source $MYGVIMRC | redraw
@@ -131,7 +131,7 @@ else
 endif
 
 " Default color scheme for non_gui
-if !has("gui_running")
+if !has('gui_running')
   color wombat
 endif
 
@@ -174,7 +174,7 @@ vmap <C-Down> ]egv
 
 " coverage.vim
 " If coverage.vim was found in project directory, try to source it
-let g:coverage_path = $PWD."/coverage.vim"
+let g:coverage_path = $PWD.'/coverage.vim'
 if filereadable(coverage_path)
   autocmd MyAutoCmd BufRead $PWD/app/**/*.rb source $PWD/coverage.vim
 endif
@@ -194,7 +194,7 @@ nnoremap <silent> <Leader>t :<C-u>TlistToggle<CR>
 " External rc files
 " Include vimrc for mac
 " Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
+if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
 
