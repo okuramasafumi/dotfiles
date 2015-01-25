@@ -6,6 +6,7 @@
 augroup NeocompleteAutoCmd
   autocmd!
 augroup END
+
 " Neocomplete enabling
 let g:neocomplete#enable_at_startup = 1
 
@@ -91,5 +92,5 @@ if has('autocmd')
   " set filetype for neocomplete and load snippet
   autocmd NeocompleteAutoCmd BufEnter *_spec.rb call s:setup_for_rspec()
   autocmd NeocompleteAutoCmd BufEnter *_steps.rb call s:setup_for_rspec()
-  autocmd User Rails call s:setup_for_rails()
+  autocmd NeocompleteAutoCmd User Rails call s:setup_for_rails()
 endif

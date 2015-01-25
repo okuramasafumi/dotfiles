@@ -112,7 +112,7 @@ nnoremap <C-h> :<C-u>help<Space>
 
 " Close help with q
 if has('autocmd')
-  autocmd FileType help nnoremap <buffer> q <C-W>c
+  autocmd MyAutoCmd FileType help nnoremap <buffer> q <C-W>c
 endif
 
 " Edit vimrc keymappings

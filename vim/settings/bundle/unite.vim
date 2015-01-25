@@ -80,7 +80,7 @@ function! s:unite_my_configuration()
   imap <silent> <buffer> <C-q> <ESC><Plug>(unite_all_exit)
 endfunction
 
-autocmd User Rails call s:unite_rails_configuration()
+autocmd UniteAutoCmd User Rails call s:unite_rails_configuration()
 function! s:unite_rails_configuration()
   nnoremap <buffer> [Unite]v :<C-u>Unite rails/view<CR>
   nnoremap <buffer> [Unite]m :<C-u>Unite rails/model<CR>

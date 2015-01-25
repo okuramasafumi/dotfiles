@@ -2,6 +2,10 @@
 " Rails.vim configuration
 "************************
 
+augroup Rails-vim
+  autocmd!
+augroup END
+
 " Key mappings
 nnoremap [Rails] <Nop>
 function! s:RailsConfigration()
@@ -29,8 +33,8 @@ function! s:RailsConfigration()
 endfunction
 
 if has("autocmd")
-  autocmd User Rails call s:RailsConfigration()
-  autocmd User Rails DashKeywords rails rubygems ruby
+  autocmd Rails-vim User Rails call s:RailsConfigration()
+  autocmd Rails-vim User Rails DashKeywords rails rubygems ruby
 endif
 
 " Rails.vim projections
