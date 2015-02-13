@@ -9,9 +9,6 @@ if has("gui_macvim")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
-  " Command-Shift-F for Ack
-  map <D-F> :Ack<space>
-
   " Command-][ to increase/decrease indentation
   vmap <D-]> >gv
   vmap <D-[> <gv
@@ -52,19 +49,12 @@ if has("gui_macvim")
   map <D-M-Left> <C-w>h
   imap <D-M-Left> <C-w>h
 
-  " Adjust viewports to the same size
-  map <Leader>= <C-w>=
-  " imap <Leader>= <Esc> <C-w>=
-
   " GUI Font
  	set guifont=Ricty\ Diminished\ Regular:h14
 
   " Window size
   set lines=80 columns=240
 endif
-
-" Don't beep
-set visualbell
 
 " Start without the toolbar
 set guioptions&
@@ -80,6 +70,9 @@ color railscasts2
 
 " Transparent
 set transparency=10
+
+" Clean menu
+let g:DrChipTopLvlMenu = ''
 
 " Include user's local vim config
 if filereadable(expand("~/.gvimrc.local"))

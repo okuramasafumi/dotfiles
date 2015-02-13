@@ -35,16 +35,6 @@ set visualbell
 " Store command histories
 set history=1000
 
-" Statusline setting
-" Example => [git(master)] example.rb [RUBY][utf-8][unix]            C:10,L:20/100   20%
-" set statusline=%{fugitive#statusline()}\ %f\ %<%m%r%h%w[%Y][%{&fenc}][%{&ff}]%=C:%c,L:%l/%L%11p%%
-" highlight statusline guifg=RED
-
-" Status bar
-set laststatus=2
-
-source ~/.vim/settings/bundle/lightline.vim
-
 " Folding
 set foldmethod=syntax
 set foldenable
@@ -60,16 +50,16 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
+" Tab completion
+set wildmode=list:longest,list:full
+set wildignore&
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+
 " Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-" Tab completion
-set wildmode=list:longest,list:full
-set wildignore&
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 
 " Use English as default help language
 set helplang=en,ja
@@ -87,15 +77,16 @@ set directory=~/.vim/swap
 set backup
 set backupdir=~/.vim/backup
 
+" Status bar
+set laststatus=2
+
+source ~/.vim/settings/bundle/lightline.vim
+
 " : is important
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
-
-" Clean menu
-let g:DrChipTopLvlMenu = ''
-"unmenu &Plugin.&comment
 
 " Auto commands
 if has('autocmd')
@@ -161,9 +152,6 @@ map <C-\> :tnext<CR>
 set tags&
 set tags+=gems.tags
 
-" ZoomWin configuration
-map <Leader><Leader> :ZoomWin<CR>
-
 " Unimpaired configuration
 " Bubble single lines
 nmap <C-Up> [e
@@ -171,13 +159,6 @@ nmap <C-Down> ]e
 " Bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
-
-" coverage.vim
-" If coverage.vim was found in project directory, try to source it
-let g:coverage_path = $PWD.'/coverage.vim'
-if filereadable(coverage_path)
-  autocmd MyAutoCmd BufRead $PWD/app/**/*.rb source $PWD/coverage.vim
-endif
 
 source ~/.vim/settings/bundle/unite.vim
 
