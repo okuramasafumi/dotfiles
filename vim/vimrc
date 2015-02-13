@@ -144,8 +144,6 @@ nmap <silent> <Leader>d <Plug>DashSearch
 " Smartchr configuration
 inoremap <expr> = smartchr#loop('=', '==', ' = ', ' == ' )
 
-source ~/.vim/settings/bundle/syntastic.vim
-
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
@@ -160,13 +158,12 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-source ~/.vim/settings/bundle/unite.vim
-
-source ~/.vim/settings/bundle/neocomplete.vim
-
-source ~/.vim/settings/bundle/rails.vim
-
+source ~/.vim/settings/bundle/easy-align.vim
 source ~/.vim/settings/bundle/fugitive.vim
+source ~/.vim/settings/bundle/neocomplete.vim
+source ~/.vim/settings/bundle/rails.vim
+source ~/.vim/settings/bundle/syntastic.vim
+source ~/.vim/settings/bundle/unite.vim
 
 " Taglist configuration
 " Ctags command is defined in local vimrc
