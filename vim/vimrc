@@ -88,6 +88,9 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 
+" Easy escape
+inoremap jj <Esc>
+
 " Auto commands
 if has('autocmd')
   " Remember last location in file
