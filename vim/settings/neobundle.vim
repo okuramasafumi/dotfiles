@@ -69,6 +69,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'slim-template/vim-slim'
 NeoBundleLazy 'skwp/vim-rspec', { 'autoload': { 'filetypes': 'ruby' } }
 
 NeoBundle 'altercation/vim-colors-solarized'
