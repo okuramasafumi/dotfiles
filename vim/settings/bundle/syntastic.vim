@@ -9,3 +9,6 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_messages={ 'level': 'warnings' }
+
+" Specify Ruby executable
+let g:syntastic_ruby_exec = expand($RUBY_ROOT).'/bin/ruby'
