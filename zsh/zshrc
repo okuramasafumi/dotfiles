@@ -31,16 +31,19 @@ fi
 [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
 
 # Antigen
-source $ZSH_DIR/antigen/antigen.zsh
+if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
+  source $ZSH_DIR/antigen/antigen.zsh
 
-antigen use oh-my-zsh
+  antigen use oh-my-zsh
 
-antigen bundle git
-antigen bundle git-flow
-antigen bundle rails
-antigen theme simple
+  antigen bundle git
+  antigen bundle git-flow
+  antigen bundle rails
+  antigen bundle mollifier/anyframe
+  antigen theme simple
 
-antigen apply
+  antigen apply
+fi
 
 # My aliases
 source $ZSH_DIR/aliases.zsh
@@ -48,11 +51,11 @@ source $ZSH_DIR/aliases.zsh
 # Environment variables
 source $ZSH_DIR/exports.zsh
 
-# Zaw
-source $ZSH_DIR/zaw/zaw.zsh
-zstyle ":filter:select" case-insensitive yes
-bindkey "^X'" zaw-cdr
-bindkey "^Xh" zaw-history
+# Anyframe
+bindkey "^X'" anyframe-widget-cdr
+bindkey "^Xh" anyframe-widget-put-history
+bindkey "^Xt" anyframe-widget-tmux-attach
+bindkey "^Xb" anyframe-widget-checkout-git-branch
 
 # direnv
 eval "$(direnv hook zsh)"
