@@ -18,7 +18,7 @@ NeoBundle 'Shougo/vimproc', {
       \ 'mac': 'make -f make_mac.mak',
       \ 'unix': 'make -f make_unix.mak' } }
 
-NeoBundle 'Shougo/neocomplete', { 'rev': 'ver.1.2' }
+NeoBundle 'Shougo/neocomplete', { 'rev': 'ver.2.0' }
 NeoBundle 'Shougo/neosnippet', {
       \ 'depends': 'Shougo/neocomplete'}
 NeoBundle 'Shougo/unite.vim', { 'rev': 'ver.6.1' }
@@ -36,7 +36,6 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundleLazy 'tpope/vim-haml', { 'autoload': { 'filetypes': ['haml'] } }
 
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'nelstrom/vim-visual-star-search'
@@ -54,7 +53,6 @@ NeoBundleLazy 'rhysd/vim-textobj-ruby', {
 
 NeoBundle 'tsukkee/unite-tag', { 'depends': 'Shougo/unite.vim' }
 NeoBundle 'basyura/unite-rails', { 'depends': 'Shougo/unite.vim' }
-NeoBundle 'Lokaltog/vim-easymotion', { 'rev': 'v2.1.0' }
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'sjl/gundo.vim'
@@ -71,8 +69,6 @@ NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'slim-template/vim-slim'
 NeoBundleLazy 'skwp/vim-rspec', { 'autoload': { 'filetypes': 'ruby' } }
-
-NeoBundle 'altercation/vim-colors-solarized'
 
 NeoBundle 'ZoomWin'
 NeoBundle 'sudo.vim'
