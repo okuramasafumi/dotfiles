@@ -34,13 +34,13 @@ fi
 if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
   source $ZSH_DIR/antigen/antigen.zsh
 
-  antigen use oh-my-zsh
+  # antigen use oh-my-zsh
 
   antigen bundle git
   antigen bundle git-flow
   antigen bundle rails
   antigen bundle mollifier/anyframe
-  antigen theme simple
+  antigen bundle nojhan/liquidprompt
 
   antigen apply
 fi
