@@ -45,17 +45,13 @@ if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
   antigen apply
 fi
 
-# My aliases
-source $ZSH_DIR/aliases.zsh
-
-# Environment variables
-source $ZSH_DIR/exports.zsh
-
 # Anyframe
 bindkey "^X'" anyframe-widget-cdr
 bindkey "^Xh" anyframe-widget-put-history
 bindkey "^Xt" anyframe-widget-tmux-attach
 bindkey "^Xb" anyframe-widget-checkout-git-branch
+
+for config ($ZSH_DIR/*.zsh) do source $config; done
 
 # direnv
 eval "$(direnv hook zsh)"
