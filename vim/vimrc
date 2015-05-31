@@ -66,9 +66,6 @@ set smartcase
 " Use English as default help language
 set helplang=en,ja
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
 " Use modeline overrides
 set modeline
 set modelines=10

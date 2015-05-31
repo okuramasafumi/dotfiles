@@ -34,6 +34,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-sensible'
 NeoBundleLazy 'tpope/vim-haml', { 'autoload': { 'filetypes': ['haml'] } }
 
 NeoBundle 'scrooloose/syntastic'
