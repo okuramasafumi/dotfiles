@@ -74,6 +74,12 @@ NeoBundle 'ZoomWin'
 NeoBundle 'sudo.vim'
 NeoBundle 'taglist.vim'
 
+" Colorschemes
+NeoBundle 'Lokaltog/vim-distinguished'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'tomasr/molokai'
+
 " End
 call neobundle#end()
 

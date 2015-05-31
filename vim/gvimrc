@@ -65,9 +65,6 @@ set guioptions-=r
 set guioptions-=l
 set guioptions-=L
 
-" Railscast color scheme
-color railscasts2
-
 " Transparent
 set transparency=10
 

@@ -124,9 +124,11 @@ else
   autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | redraw
 endif
 
-" Default color scheme for non_gui
+" colorscheme
+set t_Co=256
+color molokai
 if !has('gui_running')
-  color wombat
+  hi Normal ctermbg=none
 endif
 
 " Save undo history after quitting
