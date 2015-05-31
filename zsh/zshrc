@@ -55,6 +55,10 @@ bindkey "^Xb" anyframe-widget-checkout-git-branch
 
 for config ($ZSH_DIR/*.zsh) do source $config; done
 
+if [[ -a ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
+
 # direnv
 eval "$(direnv hook zsh)"
 
