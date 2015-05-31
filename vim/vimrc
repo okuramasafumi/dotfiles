@@ -18,7 +18,9 @@ source ~/.vim/settings/neobundle.vim
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
 
-" Basic configuration, showing number and ruler
+" Basic configuration, showing relative number, absolute line number of
+" current line and ruler
+set relativenumber
 set number
 set ruler
 
