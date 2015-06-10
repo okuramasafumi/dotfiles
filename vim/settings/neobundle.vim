@@ -69,6 +69,7 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'slim-template/vim-slim'
+NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundleLazy 'skwp/vim-rspec', { 'autoload': { 'filetypes': 'ruby' } }
 
 NeoBundle 'ZoomWin'
