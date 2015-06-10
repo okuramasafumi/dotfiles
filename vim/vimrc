@@ -82,10 +82,12 @@ set laststatus=2
 source ~/.vim/settings/bundle/lightline.vim
 
 " : is important
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+if !has('mac')
+  nnoremap ; :
+  nnoremap : ;
+  vnoremap ; :
+  vnoremap : ;
+endif
 
 " Easy escape
 inoremap jj <Esc>
