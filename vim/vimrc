@@ -103,7 +103,7 @@ if has('autocmd')
 endif
 
 " Easy help keymapping
-nnoremap <C-h> :<C-u>help<Space>
+nnoremap <Leader>h :<C-u>help<Space>
 
 " Close help with q
 if has('autocmd')
