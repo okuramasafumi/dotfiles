@@ -10,79 +10,21 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle'))
 
-NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/vimproc', {
-      \ 'build': {
-      \ 'windows': 'make -f make_mingw32.mak',
-      \ 'mac': 'make -f make_mac.mak',
-      \ 'unix': 'make -f make_unix.mak' } }
+if neobundle#load_cache()
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/neocomplete', { 'rev': 'ver.2.0' }
-NeoBundle 'Shougo/neosnippet', {
-      \ 'depends': 'Shougo/neocomplete'}
-NeoBundle 'Shougo/unite.vim', { 'rev': 'ver.6.1' }
-NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'Shougo/unite-outline', { 'depends': 'Shougo/unite.vim' }
+  NeoBundle 'Shougo/vimproc', {
+        \ 'build': {
+        \ 'windows': 'make -f make_mingw32.mak',
+        \ 'mac': 'make -f make_mac.mak',
+        \ 'unix': 'make -f make_unix.mak' } }
 
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-sensible'
-NeoBundleLazy 'tpope/vim-haml', { 'autoload': { 'filetypes': ['haml'] } }
+  " Load from TOML file
+  call neobundle#load_toml(expand('~/.vim/neobundle.toml'))
 
-NeoBundle 'scrooloose/syntastic'
-
-NeoBundle 'nelstrom/vim-visual-star-search'
-
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-qfreplace'
-
-NeoBundle 'kana/vim-smartchr'
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundleLazy 'rhysd/vim-textobj-ruby', {
-      \ 'depends': 'kana/vim-textobj-user',
-      \ 'autoload': { 'filetypes': 'ruby' } }
-
-NeoBundle 'tsukkee/unite-tag', { 'depends': 'Shougo/unite.vim' }
-NeoBundle 'basyura/unite-rails', { 'depends': 'Shougo/unite.vim' }
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'szw/vim-tags'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'rodjek/vim-puppet'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'Rykka/colorv.vim'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'rizzatti/dash.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'tmux-plugins/vim-tmux-focus-events'
-NeoBundle 'tmux-plugins/vim-tmux'
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundleLazy 'skwp/vim-rspec', { 'autoload': { 'filetypes': 'ruby' } }
-
-NeoBundle 'ZoomWin'
-NeoBundle 'sudo.vim'
-NeoBundle 'taglist.vim'
-
-" Colorschemes
-NeoBundle 'Lokaltog/vim-distinguished'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'jpo/vim-railscasts-theme'
-NeoBundle 'tomasr/molokai'
+  NeoBundleSaveCache
+endif
 
 " End
 call neobundle#end()
