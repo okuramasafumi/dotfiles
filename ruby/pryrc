@@ -12,3 +12,9 @@ Pry.config.prompt = [
   "#{versions} #{Pry.config.prompt_name}(#{Pry.view_clip(obj)})> "
   end
 ]
+
+begin
+  require 'bond'
+  Bond.start
+rescue LoadError => e
+end
