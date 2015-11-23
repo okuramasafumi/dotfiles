@@ -5,7 +5,7 @@
 	protocol = https
 [core]
 	editor = vim
-	excludesfile = /opt/boxen/config/git/gitignore
+	excludesfile = ~/.gitignore
 [color]
 	ui = auto
 [alias]
