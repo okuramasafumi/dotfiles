@@ -127,6 +127,9 @@ repository = 'rodjek/vim-puppet'
 [[plugins]]
 repository = 'slim-template/vim-slim'
 
+[[plugins]]
+repository = 'cespare/vim-toml'
+
 #### Code quality ####
 
 [[plugins]]
