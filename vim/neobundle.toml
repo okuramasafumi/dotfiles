@@ -159,11 +159,11 @@ repository = 'rking/ag.vim'
 
 [[plugins]]
 repository = 'airblade/vim-gitgutter'
-lazy = 1
-depends = 'tpope/vim-fugitive'
 
 [[plugins]]
 repository = 'gregsexton/gitv'
+lazy = 1
+depends = 'tpope/vim-fugitive'
 
 #### Misc ####
 
