@@ -153,8 +153,6 @@ endif
 inoremap <expr> = smartchr#loop('=', '==', ' = ', ' == ' )
 
 " CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-map <C-\> :tnext<CR>
 set tags&
 set tags+=gems.tags
 
@@ -172,10 +170,6 @@ source ~/.vim/settings/bundle/neocomplete.vim
 source ~/.vim/settings/bundle/rails.vim
 source ~/.vim/settings/bundle/syntastic.vim
 source ~/.vim/settings/bundle/unite.vim
-
-" Taglist configuration
-" Ctags command is defined in local vimrc
-nnoremap <silent> <Leader>t :<C-u>TlistToggle<CR>
 
 " External rc files
 " Include vimrc for mac
