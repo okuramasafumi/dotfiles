@@ -106,14 +106,20 @@ repository = 'tmux-plugins/vim-tmux-focus-events'
 [[plugins]]
 repository = 'christoomey/vim-tmux-navigator'
 
+[[plugins]]
+repository = 'benmills/vimux'
+
 #### Ruby ####
 [[plugins]]
 repository = 'vim-ruby/vim-ruby'
+
+[[plugins]]
+repository = 'skwp/vim-rspec'
 lazy = 1
 filetypes = 'ruby'
 
 [[plugins]]
-repository = 'skwp/vim-rspec'
+repository = 'jgdavey/vim-turbux'
 lazy = 1
 filetypes = 'ruby'
 
