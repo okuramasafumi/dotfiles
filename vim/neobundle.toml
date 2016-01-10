@@ -136,6 +136,9 @@ repository = 'slim-template/vim-slim'
 [[plugins]]
 repository = 'cespare/vim-toml'
 
+[[plugins]]
+repository = 'fatih/vim-go'
+
 #### Code quality ####
 
 [[plugins]]
