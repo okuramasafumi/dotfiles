@@ -46,6 +46,7 @@ if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
   antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle mollifier/anyframe
   antigen bundle nojhan/liquidprompt
+  antigen bundle okuramasafumi/zsh-sensible
 
   antigen apply
 fi
