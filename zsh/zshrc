@@ -51,13 +51,13 @@ if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
   antigen apply
 fi
 
+for config ($ZSH_DIR/*.zsh) do source $config; done
+
 # Anyframe
 bindkey "^X'" anyframe-widget-cdr
 bindkey "^Xh" anyframe-widget-put-history
 bindkey "^Xt" anyframe-widget-tmux-attach
 bindkey "^Xb" anyframe-widget-checkout-git-branch
-
-for config ($ZSH_DIR/*.zsh) do source $config; done
 
 if [[ -a ~/.zshrc.local ]]; then
   source ~/.zshrc.local
