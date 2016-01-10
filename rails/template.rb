@@ -47,25 +47,22 @@ if yes?("Use settingslogic?")
   run "echo '' >> .gitignore"
 end
 
-if yes?("Use bootstrap?")
-  gem 'bootstrap-sass', '~> 3.0'
+after_bundle do
+
+  # generate "rspec:install"    <- This didn't work
+  run "rails g rspec:install"
+
+  run "bundle exec guard init rspec"
+
+  run "rm README.rdoc"
+  run "touch README.md"
+
+  %w(vendor/bundle config/database.yml coverage).each do |line|
+    run "echo '#{line}' >> .gitignore"
+    run "echo '' >> .gitignore"
+  end
+
+  git :init
+  git add: "-A"
+  git commit: "-m 'Initial commit'"
 end
-
-run "bundle install --path=/vendor/bundle"
-
-# generate "rspec:install"    <- This didn't work
-run "rails g rspec:install"
-
-run "bundle exec guard init rails_template.rb"
-
-run "rm README.rdoc"
-run "touch README.md"
-
-%w(vendor/bundle config/database.yml coverage).each do |line|
-  run "echo '#{line}' >> .gitignore"
-  run "echo '' >> .gitignore"
-end
-
-git :init
-git add: "-A"
-git commit: "-m 'Initial commit'"
