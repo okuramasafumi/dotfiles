@@ -39,8 +39,11 @@ if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
   antigen bundle git-flow
   antigen bundle rails
   antigen bundle chruby
+  antigen bundle osx
+  antigen bundle go
   antigen bundle zsh-users/zsh-completions src
   antigen bundle zsh-users/zsh-syntax-highlighting
+  antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle mollifier/anyframe
   antigen bundle nojhan/liquidprompt
 
