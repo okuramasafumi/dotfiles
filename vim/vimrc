@@ -167,10 +167,12 @@ vmap <C-Down> ]egv
 
 source ~/.vim/settings/bundle/easy-align.vim
 source ~/.vim/settings/bundle/fugitive.vim
-source ~/.vim/settings/bundle/neocomplete.vim
+" source ~/.vim/settings/bundle/neocomplete.vim
 source ~/.vim/settings/bundle/rails.vim
 source ~/.vim/settings/bundle/syntastic.vim
 source ~/.vim/settings/bundle/unite.vim
+source ~/.vim/settings/bundle/ycm.vim
+source ~/.vim/settings/bundle/ultisnips.vim
 
 " External rc files
 " Include vimrc for mac

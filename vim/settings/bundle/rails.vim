@@ -35,6 +35,7 @@ endfunction
 if has("autocmd")
   autocmd Rails-vim User Rails call s:RailsConfigration()
   autocmd Rails-vim User Rails DashKeywords rails rubygems ruby
+  autocmd Rails-vim User Rails UltiSnipsAddFiletypes rails.ruby
 endif
 
 " Rails.vim projections

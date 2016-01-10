@@ -1,16 +1,17 @@
 #### Completion ####
 
 [[plugins]]
-repository = 'Shougo/neocomplete'
-lazy = 1
-depends = 'Shougo/context_filetype.vim'
-insert = 1
+repository = 'Valloric/YouCompleteMe'
+  [plugins.build]
+  mac = './install.py --gocode-completer'
+  unix = './install.py --gocode-completer'
+  windows = 'install.py'
 
 [[plugins]]
-repository = 'Shougo/neosnippet'
-lazy = 1
-depends = 'Shougo/neocomplete'
-insert = 1
+repository = 'SirVer/ultisnips'
+
+[[plugins]]
+repository = 'honza/vim-snippets'
 
 [[plugins]]
 repository = 'Shougo/context_filetype.vim'

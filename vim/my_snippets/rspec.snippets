@@ -1,0 +1,108 @@
+# Snippets for rspec
+snippet desc "describe" w
+describe '${1:description}' do
+	${2}
+end
+endsnippet
+
+snippet cont "context" w
+context '${1:context}' do
+	${2}
+end
+endsnippet
+
+snippet it "it" w
+it '${1}' do
+	${2}
+end
+endsnippet
+
+snippet let "let" w
+let(:${1:var}) { ${2} }
+endsnippet
+
+snippet fac "FactoryGirl create" w
+FactoryGirl.create(:${1:factory})
+endsnippet
+
+snippet fab "FactoryGirl build" w
+FactoryGirl.build(:${1:factory})
+endsnippet
+
+snippet cre "factory create" w
+create(:${1:factory})
+endsnippet
+
+snippet bui "factory build" w
+build(:${1:factory})
+endsnippet
+
+snippet bef "before" w
+before do
+	${1}
+end
+endsnippet
+
+snippet befa "before all" w
+before(:all) do
+	${1}
+end
+endsnippet
+
+snippet aft "after" w
+after do
+	${1}
+end
+endsnippet
+
+snippet exp "expect to" w
+expect(${1:target}).to ${2:expectation}
+endsnippet
+
+snippet expn "expect not to" w
+expect(${1:target}).not_to ${2:expectation}
+endsnippet
+
+snippet exerr "expect to raise error" w
+expect {
+	${1:action}
+}.to raise_error(${2:error})
+endsnippet
+
+snippet extcb "expect to change by" w
+expect {
+	${1:action}
+}.to change{${2:change}}.by(${3:number})
+endsnippet
+
+snippet extcft "expect to change A from B" w
+expect {
+	${1:action}
+}.to change{${2:change}}.from(${3:from}).to(${4:to})
+endsnippet
+
+snippet alt "allow to" w
+allow(${1:target}).to ${2:action}
+endsnippet
+
+snippet altr "allow to receive" w
+allow(${1:target}).to receive(${2:method})
+endsnippet
+
+snippet altrr "allow to receive and return" w
+allow(${1:target}).to receive(${2:method}).and_return(${3:result})
+endsnippet
+
+snippet altrmc "allow to receive message chain" w
+allow(${1:target}).to receive_message_chain(${2:messages})
+endsnippet
+
+snippet itise "is expected to" w
+it { is_expected.to ${1:matcher} }
+endsnippet
+
+snippet st "step" w
+step '${1:description}' do
+	${2:code}
+end
+endsnippet
