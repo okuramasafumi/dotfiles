@@ -98,34 +98,32 @@ inoremap jj <Esc>
 " Auto commands
 if has('autocmd')
   " Remember last location in file
-  au MyAutoCmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+  autocmd MyAutoCmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
 
   " md is markdown, not modula2!
-  au MyAutoCmd BufNewFile, BufRead *.md set filetype=markdown
+  autocmd MyAutoCmd BufNewFile, BufRead *.md set filetype=markdown
+
+  " Close help with q
+  autocmd MyAutoCmd FileType help nnoremap <buffer> q <C-W>c
+
+  " Auto load vimrc
+  if has('gui_running')
+    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | source $MYGVIMRC
+          \ | redraw
+    autocmd MyAutoCmd BufWritePost $MYGVIMRC source $MYGVIMRC | redraw
+  else
+    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | redraw
+  endif
 endif
 
 " Easy help keymapping
 nnoremap <Leader>h :<C-u>help<Space>
 
-" Close help with q
-if has('autocmd')
-  autocmd MyAutoCmd FileType help nnoremap <buffer> q <C-W>c
-endif
-
 " Edit vimrc keymappings
 nnoremap <silent> <Leader>ev  :<C-u>edit $MYVIMRC<CR>
 if has('gui_running')
   nnoremap <silent> <Leader>eg  :<C-u>edit $MYGVIMRC<CR>
-endif
-
-" Auto load vimrc
-if has('gui_running')
-  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | source $MYGVIMRC
-  \ | redraw
-  autocmd MyAutoCmd BufWritePost $MYGVIMRC source $MYGVIMRC | redraw
-else
-  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | redraw
 endif
 
 " colorscheme
