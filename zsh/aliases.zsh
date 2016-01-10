@@ -8,3 +8,8 @@ alias be='bundle exec'
 alias va='vagrant'
 alias vsh='vagrant ssh'
 alias reload='source ~/.zshrc'
+
+# ls
+alias ll='ls -l'
+alias la='ls -a'
+alias las='ls -la'
