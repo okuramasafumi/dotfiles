@@ -1,7 +1,7 @@
 gem 'slim-rails', '~> 3.0'
 
 gem_group :test, :development do
-  gem "rspec-rails"
+  gem "rspec-rails", '~> 3.0'
   gem "capybara"
   gem 'factory_girl', '~> 4.0'
   gem 'spring-commands-rspec'
@@ -18,7 +18,7 @@ end
 gem_group :test do
   gem 'poltergeist'
   gem 'database_rewinder'
-  gem 'simplecov', '~> 0.9', require: false
+  gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
   gem 'shoulda-matchers', require: false
 end
