@@ -1,4 +1,4 @@
-gem 'haml-rails'
+gem 'slim-rails', '~> 3.0'
 
 gem_group :test, :development do
   gem "rspec-rails"
