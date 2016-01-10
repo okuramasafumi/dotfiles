@@ -33,15 +33,11 @@ nnoremap [Unite]t :<C-u>Unite tag<CR>
 " Open outline
 nnoremap [Unite]o :<C-u>Unite outline<CR>
 
-" Open completion candidates
-nnoremap [Unite]c :<C-u>Unite neocomplcache<CR>
-inoremap <C-x>c <ESC>:<C-u>Unite neocomplcache<CR>
-
 " Create new file
 nnoremap [Unite]n :<C-u>Unite file/new<CR>
 
 " Open register
-nnoremap [Unite]r :<C-u>Unite register<CR>
+nnoremap [Unite]rr :<C-u>Unite register<CR>
 
 " Start insert-mode when opening unite.vim
 let g:unite_enable_start_insert=1
@@ -82,13 +78,18 @@ endfunction
 
 autocmd UniteAutoCmd User Rails call s:unite_rails_configuration()
 function! s:unite_rails_configuration()
-  nnoremap <buffer> [Unite]v :<C-u>Unite rails/view<CR>
-  nnoremap <buffer> [Unite]m :<C-u>Unite rails/model<CR>
-  nnoremap <buffer> [Unite]c :<C-u>Unite rails/controller<CR>
-  nnoremap <buffer> [Unite]g :<C-u>Unite rails/config<CR>
-  nnoremap <buffer> [Unite]s :<C-u>Unite rails/spec<CR>
-  nnoremap <buffer> [Unite]k          :<C-u>Unite rails/rake<CR>
+  nnoremap <buffer> [Unite]rv :<C-u>Unite rails/view<CR>
+  nnoremap <buffer> [Unite]rm :<C-u>Unite rails/model<CR>
+  nnoremap <buffer> [Unite]rc :<C-u>Unite rails/controller<CR>
+  nnoremap <buffer> [Unite]rs :<C-u>Unite rails/spec<CR>
+  nnoremap <buffer> [Unite]rk          :<C-u>Unite rails/rake<CR>
 endfunction
+
+" grep
+nnoremap <silent> [Unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" grep with cursor word
+nnoremap <silent> [Unite]cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
 
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
