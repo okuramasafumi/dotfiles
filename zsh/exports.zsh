@@ -4,3 +4,5 @@ export PATH=~/bin:$PATH
 
 # liquidprompt
 export LP_ENABLE_BATT=false
+
+export GOPATH=~/.go
