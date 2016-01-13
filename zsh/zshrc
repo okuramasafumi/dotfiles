@@ -54,6 +54,9 @@ fi
 
 for config ($ZSH_DIR/*.zsh) do source $config; done
 
+stty stop undef
+stty start undef
+
 # Anyframe
 bindkey "^X'" anyframe-widget-cdr
 bindkey "^Xh" anyframe-widget-put-history
