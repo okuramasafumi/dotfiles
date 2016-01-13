@@ -165,6 +165,9 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+" Disable <C-S> in insert mode
+let g:surround_no_insert_mappings = 1
+
 source ~/.vim/settings/bundle/easy-align.vim
 source ~/.vim/settings/bundle/fugitive.vim
 " source ~/.vim/settings/bundle/neocomplete.vim
