@@ -95,4 +95,8 @@ if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nocolor --nogroup'
   let g:unite_source_grep_max_candidate = 1000
+  " Using ag as recursive command.
+  let g:unite_source_rec_async_command =
+        \ ['ag', '--follow', '--nocolor', '--nogroup',
+        \  '--hidden', '-g', '']
 end
