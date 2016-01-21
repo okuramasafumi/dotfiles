@@ -1,8 +1,5 @@
 [include]
   path = .gitconfig.local
-[user]
-	name = Okura Masafumi
-	email = masafumi.o1988@gmail.com
 [hub]
 	protocol = https
 [core]
@@ -25,12 +22,8 @@
 	df = diff
 [merge]
 	tool = fugitive
-[mergetool "fugitive"]
-  cmd = mvim -f -c \"Gvdiff\" \"$MERGED\" \"$LOCAL\"
 [push]
 	default = simple
-[credential]
-	helper = /opt/boxen/bin/boxen-git-credential
 [filter "media"]
 	required = true
 	clean = git media clean %f
