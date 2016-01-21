@@ -1,3 +1,5 @@
+[include]
+  path = .gitconfig.local
 [user]
 	name = Okura Masafumi
 	email = masafumi.o1988@gmail.com
