@@ -25,12 +25,6 @@
 	df = diff
 [merge]
 	tool = fugitive
-[mergetool "gvimdiff"]
-	cmd = mvimdiff
-[mergetool "gvimdiff3"]
-	cmd = mvimdiff -f \"$MERGED\" \"$LOCAL\" \"$REMOTE\"
-[mergetool "gvimdiff2"]
-	path = /usr/local/bin/mvimdiff
 [mergetool "fugitive"]
   cmd = mvim -f -c \"Gvdiff\" \"$MERGED\" \"$LOCAL\"
 [push]
