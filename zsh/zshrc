@@ -35,7 +35,6 @@ if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
 
   # antigen use oh-my-zsh
 
-  antigen bundle git
   antigen bundle git-flow
   antigen bundle rails
   antigen bundle chruby
