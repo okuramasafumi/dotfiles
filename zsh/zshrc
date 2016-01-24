@@ -13,6 +13,8 @@ typeset -aU path cdpath fpath manpath
 [ -e /opt/boxen/homebrew/share/zsh-completions ] && fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
 #[ -f /opt/boxen/homebrew/share/zsh/site-functions/git-completion.bash ] && source /opt/boxen/homebrew/share/zsh/site-functions/git-completion.bash
 
+[ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
+
 # The most important feature of zsh
 autoload -Uz compinit
 compinit
