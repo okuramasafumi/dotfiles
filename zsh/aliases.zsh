@@ -13,3 +13,7 @@ alias reload='source ~/.zshrc'
 alias ll='ls -l'
 alias la='ls -a'
 alias las='ls -la'
+
+# Git
+alias g='git'
+alias gss='git status --short'
