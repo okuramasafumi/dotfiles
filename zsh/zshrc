@@ -64,6 +64,8 @@ bindkey "^Xh" anyframe-widget-put-history
 bindkey "^Xt" anyframe-widget-tmux-attach
 bindkey "^Xb" anyframe-widget-checkout-git-branch
 
+bindkey -e
+
 if [[ -a ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
