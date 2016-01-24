@@ -60,13 +60,19 @@ let g:rails_gem_projections = {
       \   "app/workers/*.rb": {
       \     "command": "worker",
       \     "template": "class %SWorker\n  include Sidekiq::Worker\nend",
-      \     "keywords": "sidekiq_options"}}}
+      \     "keywords": "sidekiq_options"}},
+      \ "active_model_serializers": {
+      \   "app/serializers/*.rb": {
+      \     "command": "serializer",
+      \     "template": "class %SSerializer < ActiveModel::Serializer\nend",
+      \     "keywords": "attribute attributes cache cache_key type"}}
+      \ }
 
 let g:rails_projections = {
       \ "app/errors/*_error.rb": {
-      \ "command": "error",
-      \ "template": "class %SError\nend",
-      \ "test": "spec/errors/%s_error_spec.rb" },
+      \   "command": "error",
+      \   "template": "class %SError\nend",
+      \   "test": "spec/errors/%s_error_spec.rb" },
       \ "app/forms/*_form.rb": {
       \   "command": "form",
       \   "template": "class %SForm\nend",
@@ -78,5 +84,9 @@ let g:rails_projections = {
       \ "app/services/*.rb": {
       \   "command": "service",
       \   "template": "class %SService\nend",
-      \   "test": "spec/services/%s_spec.rb" }
+      \   "test": "spec/services/%s_spec.rb" },
+      \ "app/queries/*.rb": {
+      \   "command": "query",
+      \   "template": "class %SQuery\nend",
+      \   "test": "spec/queries/%s_spec.rb" }
       \ }
