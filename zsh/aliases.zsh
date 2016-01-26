@@ -17,3 +17,5 @@ alias las='ls -la'
 # Git
 alias g='git'
 alias gss='git status --short'
+alias gp='git push'
+alias gl='git pull'
