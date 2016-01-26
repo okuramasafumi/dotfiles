@@ -38,6 +38,10 @@ if has("autocmd")
   autocmd Rails-vim User Rails UltiSnipsAddFiletypes rails.ruby
 endif
 
+" RSpec configurations
+let g:rspec_command = 'bin/rspec'
+let g:turbux_rspec_command = 'bin/rspec'
+
 " Rails.vim projections
 " Require vim-bundler
 let g:rails_gem_projections = {
