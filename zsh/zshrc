@@ -43,9 +43,9 @@ if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
   antigen bundle osx
   antigen bundle go
   antigen bundle zsh-users/zsh-completions src
-  antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle zsh-users/zsh-history-substring-search
-  antigen bundle tarruda/zsh-autosuggestions
+  antigen bundle tarruda/zsh-autosuggestions --branch='v0.1.x'
+  antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle mollifier/anyframe
   antigen bundle nojhan/liquidprompt
   antigen bundle okuramasafumi/zsh-sensible
