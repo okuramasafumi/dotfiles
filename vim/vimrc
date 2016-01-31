@@ -177,6 +177,8 @@ source ~/.vim/settings/bundle/unite.vim
 source ~/.vim/settings/bundle/ycm.vim
 source ~/.vim/settings/bundle/ultisnips.vim
 
+hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+
 " External rc files
 " Include vimrc for mac
 " Include user's local vim config
