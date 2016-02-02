@@ -40,7 +40,7 @@ endif
 
 " RSpec configurations
 let g:rspec_command = 'bin/rspec'
-let g:turbux_rspec_command = 'bin/rspec'
+let g:turbux_command_rspec = 'bin/rspec'
 
 " Rails.vim projections
 " Require vim-bundler
