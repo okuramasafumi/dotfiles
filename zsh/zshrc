@@ -31,26 +31,27 @@ fi
 # Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
-# Antigen
-if [[ -f $ZSH_DIR/antigen/antigen.zsh ]]; then
-  source $ZSH_DIR/antigen/antigen.zsh
+# Zplug
+if [[ -f ~/.zplug/zplug ]]; then
+  source ~/.zplug/zplug
 
-  # antigen use oh-my-zsh
+  zplug "b4b4r07/zplug"
+  zplug "zsh-users/zsh-completions"
+  zplug "zsh-users/zsh-history-substring-search"
+  zplug "tarruda/zsh-autosuggestions", at:v0.1.x
+  zplug "zsh-users/zsh-syntax-highlighting", nice:19
+  zplug "mollifier/anyframe"
+  zplug "nojhan/liquidprompt"
+  zplug "okuramasafumi/zsh-sensible"
 
-  antigen bundle git-flow
-  antigen bundle rails
-  antigen bundle chruby
-  antigen bundle osx
-  antigen bundle go
-  antigen bundle zsh-users/zsh-completions src
-  antigen bundle zsh-users/zsh-history-substring-search
-  antigen bundle tarruda/zsh-autosuggestions --branch='v0.1.x'
-  antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen bundle mollifier/anyframe
-  antigen bundle nojhan/liquidprompt
-  antigen bundle okuramasafumi/zsh-sensible
+  if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+      echo; zplug install
+    fi
+  fi
 
-  antigen apply
+  zplug load
 fi
 
 for config ($ZSH_DIR/*.zsh) do source $config; done
