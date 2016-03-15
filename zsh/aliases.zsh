@@ -16,7 +16,12 @@ alias las='ls -la'
 
 # Git
 alias g='git'
+alias gci='git commit'
 alias gss='git status --short'
 alias gp='git push'
+alias gpf='git push --force-with-lease'
 alias gl='git pull'
+alias glr='git pull --rebase'
+alias gst='git stash'
+alias gstp='git stash pop'
 alias grpo='git remote prune origin'
