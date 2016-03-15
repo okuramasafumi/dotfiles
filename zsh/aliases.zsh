@@ -1,7 +1,6 @@
 alias vi='vim -N -u NONE -U NONE --noplugin --cmd "filetype indent on"'
 alias todo='todo.sh'
 alias sed='gsed'
-alias ra='rails'
 alias ss='ssh'
 alias bu='bundle'
 alias be='bundle exec'
@@ -25,3 +24,8 @@ alias glr='git pull --rebase'
 alias gst='git stash'
 alias gstp='git stash pop'
 alias grpo='git remote prune origin'
+
+# Rails
+alias ra='rails'
+alias rdm='bin/rake db:migrate'
+alias rdr='bin/rake db:rollback'
