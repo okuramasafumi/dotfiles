@@ -43,6 +43,7 @@ if [[ -f ~/.zplug/zplug ]]; then
   zplug "zsh-users/zsh-syntax-highlighting", nice:19
   zplug "mollifier/anyframe"
   zplug "nojhan/liquidprompt"
+  zplug "b4b4r07/emoji-cli"
   zplug "okuramasafumi/zsh-sensible"
 
   if ! zplug check --verbose; then
