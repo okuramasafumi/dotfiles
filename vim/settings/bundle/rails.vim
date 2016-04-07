@@ -34,8 +34,10 @@ endfunction
 
 if has("autocmd")
   autocmd Rails-vim User Rails call s:RailsConfigration()
-  autocmd Rails-vim User Rails DashKeywords rails rubygems ruby
   autocmd Rails-vim User Rails UltiSnipsAddFiletypes rails.ruby
+  if has("mac")
+    autocmd Rails-vim User Rails DashKeywords rails rubygems ruby
+  endif
 endif
 
 " RSpec configurations
