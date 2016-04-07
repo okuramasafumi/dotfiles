@@ -11,8 +11,6 @@ typeset -aU path cdpath fpath manpath
 
 # Add some completions (we need this before compinit)
 [ -e /usr/local/share/zsh-completions ] && fpath=(/usr/local/share/zsh-completions $fpath)
-[ -e /opt/boxen/homebrew/share/zsh-completions ] && fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
-#[ -f /opt/boxen/homebrew/share/zsh/site-functions/git-completion.bash ] && source /opt/boxen/homebrew/share/zsh/site-functions/git-completion.bash
 
 [ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
 
@@ -28,9 +26,6 @@ if is-at-least 4.3.11; then
   zstyle ":chpwd:*" recent-dirs-defalut true
   zstyle ":completion:*" recent-dirs-insert always
 fi
-
-# Boxen
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
 # Zplug
 if [[ -f ~/.zplug/zplug ]]; then
