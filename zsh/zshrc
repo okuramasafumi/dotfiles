@@ -72,7 +72,14 @@ if [[ -a ~/.zshrc.local ]]; then
 fi
 
 # direnv
-eval "$(direnv hook zsh)"
+if type direnv > /dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
+# the fuck
+if type thefuck > /dev/null 2>&1; then
+  eval "$(thefuck --alias)"
+fi
 
 # Reload path to remove dups
 path=($path)
