@@ -1,0 +1,184 @@
+#### Completion ####
+
+[[plugins]]
+repo = 'Valloric/YouCompleteMe'
+timeout = 600
+post_update = './install.py --gocode-completer'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+#### Unite ####
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'basyura/unite-rails'
+lazy = 1
+depends = ['Shougo/unite.vim', 'tpope/vim-rails']
+
+#### Tpope ####
+
+[[plugins]]
+repo = 'tpope/vim-sensible'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-unimpaired'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+lazy = 1
+insert = 1
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+
+[[plugins]]
+repo = 'tpope/vim-bundler'
+lazy = 1
+filetypes = 'ruby'
+
+[[plugins]]
+repo = 'tpope/vim-haml'
+lazy = 1
+filetypes = 'haml'
+
+#### Thinca ####
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+lazy = 1
+filetypes = ['unite', 'quickfix']
+
+#### Kana, textobj ####
+
+[[plugins]]
+repo = 'kana/vim-smartchr'
+lazy = 1
+insert = 1
+
+[[plugins]]
+repo = 'kana/vim-smartinput'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-ruby'
+lazy = 1
+depends = 'kana/vim-textobj-user'
+filetypes = 'ruby'
+
+#### Tmux ####
+
+[[plugins]]
+repo = 'tmux-plugins/vim-tmux'
+
+[[plugins]]
+repo = 'tmux-plugins/vim-tmux-focus-events'
+
+[[plugins]]
+repo = 'christoomey/vim-tmux-navigator'
+
+[[plugins]]
+repo = 'benmills/vimux'
+
+#### Ruby ####
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+
+[[plugins]]
+repo = 'skwp/vim-rspec'
+lazy = 1
+filetypes = 'ruby'
+
+[[plugins]]
+repo = 'jgdavey/vim-turbux'
+lazy = 1
+filetypes = 'ruby'
+
+#### filetypes ####
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+
+[[plugins]]
+repo = 'rodjek/vim-puppet'
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
+#### Code quality ####
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+#### Search ####
+
+[[plugins]]
+repo = 'nelstrom/vim-visual-star-search'
+
+[[plugins]]
+repo = 'rking/ag.vim'
+
+#### Git ####
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'gregsexton/gitv'
+lazy = 1
+depends = 'tpope/vim-fugitive'
+
+#### Misc ####
+
+[[plugins]]
+repo = 'sjl/gundo.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'rizzatti/dash.vim'
+
+#### Colorscheme ####
+
+[[plugins]]
+repo = 'tomasr/molokai'

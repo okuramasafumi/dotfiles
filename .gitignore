@@ -1,4 +1,5 @@
 vim/bundle
+vim/plugins
 vim/undo
 vim/swap
 vim/backup
