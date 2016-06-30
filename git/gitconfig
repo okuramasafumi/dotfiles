@@ -5,6 +5,7 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = auto
 [alias]
@@ -38,3 +39,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[interactive]
+	diffFilter = diff-so-fancy
