@@ -18,3 +18,9 @@ begin
   Bond.start
 rescue LoadError => e
 end
+
+begin
+  require 'awesome_print'
+  AwesomePrint.pry!
+rescue LoadError
+end
