@@ -21,6 +21,7 @@
 	ci = commit
 	mt = mergetool
 	df = diff
+  hash = rev-parse HEAD
 [merge]
 	tool = fugitive
 [push]
