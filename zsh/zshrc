@@ -83,3 +83,5 @@ fi
 
 # Reload path to remove dups
 path=($path)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
