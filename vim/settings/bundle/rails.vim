@@ -79,7 +79,10 @@ let g:rails_gem_projections = {
       \   "app/serializers/*.rb": {
       \     "command": "serializer",
       \     "template": "class %SSerializer < ActiveModel::Serializer\nend",
-      \     "keywords": "attribute attributes cache cache_key type"}}
+      \     "keywords": "attribute attributes cache cache_key type"}},
+      \ "aasm": {
+      \   "app/models/*.rb": {
+      \     "keywords": "aasm state event transitions"}}
       \ }
 
 let g:rails_projections = {
