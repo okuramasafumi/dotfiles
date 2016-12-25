@@ -56,6 +56,14 @@ let g:rails_gem_projections = {
       \     "related": "app/models/images/%s.rb",
       \     "keywords": "process version"
       \ }},
+      \ "shrine": {
+      \   "app/uploaders/*_uploader.rb": {
+      \     "command": "uploader",
+      \     "template":
+      \       "class %SUploader < Shrine\nend",
+      \     "test": "spec/models/%s_uploader_spec.rb",
+      \     "keywords": "process plugin"
+      \ }},
       \ "paper_trail": {
       \   "app/models/*.rb": {
       \     "keywords": "has_paper_trail"}},
