@@ -9,31 +9,50 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath^=~/.vim/plugins/repos/github.com/Shougo/dein.vim
+call plug#begin('~/.vim/plugins')
 
-" Required:
-call dein#begin(expand('~/.vim/plugins'))
+" Make sure you use single quotes
 
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'kana/vim-smartchr'
+Plug 'kana/vim-smartinput'
+Plug 'kana/vim-textobj-user' | Plug 'rhysd/vim-textobj-ruby'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-ruby/vim-ruby'
+Plug 'skwp/vim-rspec', { 'for': 'ruby' }
+Plug 'fatih/vim-go'
+Plug 'scrooloose/syntastic'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'airblade/vim-gitgutter'
+Plug 'sjl/gundo.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'tomasr/molokai'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-key-bindings' }
+Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-dirvish'
+Plug 'mattn/emmet-vim'
+Plug 'direnv/direnv.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
-call dein#load_toml("~/.vim/dein.toml")
-
-" Required:
-call dein#end()
-
-" Required:
-filetype plugin indent on
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
-"End dein Scripts-------------------------
-
+" Add plugins to &runtimepath
+call plug#end()
 
 " Auto command group setting
 augroup MyAutoCmd
@@ -195,12 +214,15 @@ let g:surround_no_insert_mappings = 1
 let g:go_dispatch_enabled = 1
 let g:go_metalinter_autosave = 1
 
+nnoremap <Leader>f :<C-u>Files<CR>
+nnoremap <Leader>b :<C-u>Buffers<CR>
+nnoremap <Leader>d :<C-u>Dirvish<CR>
+nnoremap <Leader>t :<C-u>Dispatch<CR>
+
 source ~/.vim/settings/bundle/easy-align.vim
 source ~/.vim/settings/bundle/fugitive.vim
-" source ~/.vim/settings/bundle/neocomplete.vim
 source ~/.vim/settings/bundle/rails.vim
 source ~/.vim/settings/bundle/syntastic.vim
-source ~/.vim/settings/bundle/unite.vim
 source ~/.vim/settings/bundle/ycm.vim
 source ~/.vim/settings/bundle/ultisnips.vim
 
