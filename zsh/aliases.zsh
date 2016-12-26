@@ -28,6 +28,7 @@ alias grpo='git remote prune origin'
 # Rails
 alias ra='rails'
 alias rdm='rake db:migrate'
+alias rdmr='rake db:migrate:reset'
 alias rdr='rake db:rollback'
 
 function _rails_command () {
