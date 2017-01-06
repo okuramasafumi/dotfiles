@@ -50,6 +50,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'mattn/emmet-vim'
 Plug 'direnv/direnv.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'janko-m/vim-test'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -214,10 +215,16 @@ let g:surround_no_insert_mappings = 1
 let g:go_dispatch_enabled = 1
 let g:go_metalinter_autosave = 1
 
+" test.vim
+let test#strategy = "dispatch"
+
 nnoremap <Leader>f :<C-u>Files<CR>
 nnoremap <Leader>b :<C-u>Buffers<CR>
 nnoremap <Leader>d :<C-u>Dirvish<CR>
-nnoremap <Leader>t :<C-u>Dispatch<CR>
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>l :TestLast<CR>
 
 source ~/.vim/settings/bundle/easy-align.vim
 source ~/.vim/settings/bundle/fugitive.vim
