@@ -150,6 +150,8 @@ if has('autocmd')
   " Close help with q
   autocmd MyAutoCmd FileType help nnoremap <buffer> q <C-W>c
 
+  autocmd MyAutoCmd VimEnter COMMIT_EDITMSG,*.txt,*.md,*.markdown setlocal spell
+
   " Auto load vimrc
   if has('gui_running')
     autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | source $MYGVIMRC
