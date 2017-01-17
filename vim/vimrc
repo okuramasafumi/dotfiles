@@ -147,12 +147,21 @@ if has('autocmd')
     \| exe "normal g'\"" | endif
 
   " md is markdown, not modula2!
-  autocmd MyAutoCmd BufNewFile, BufRead *.md set filetype=markdown
+  autocmd MyAutoCmd BufNewFile,BufRead *.md set filetype=markdown
+
+  " ES6 is javascript
+  autocmd MyAutoCmd BufNewFile,BufRead *.{es6,es6.js} set filetype=javascript
 
   " Close help with q
-  autocmd MyAutoCmd FileType help nnoremap <buffer> q <C-W>c
+  autocmd MyAutoCmd FileType help nnoremap <silent> <buffer> q <C-W>c
+  autocmd MyAutoCmd FileType qf nnoremap <silent> <buffer> q :cclose<CR>
 
-  autocmd MyAutoCmd VimEnter COMMIT_EDITMSG,*.txt,*.md,*.markdown setlocal spell
+  autocmd MyAutoCmd VimEnter *.txt,*.md,*.markdown setlocal spell
+  autocmd MyAutoCmd FileType gitcommit setlocal spell
+
+  autocmd MyAutoCmd FileType ruby setlocal iskeyword+=?
+  autocmd MyAutoCmd FileType ruby setlocal iskeyword+=!
+  autocmd MyAutoCmd FileType ruby setlocal iskeyword+=@-@
 
   " Auto load vimrc
   if has('gui_running')
