@@ -82,7 +82,10 @@ let g:rails_gem_projections = {
       \     "keywords": "attribute attributes cache cache_key type"}},
       \ "aasm": {
       \   "app/models/*.rb": {
-      \     "keywords": "aasm state event transitions"}}
+      \     "keywords": "aasm state event transitions"}},
+      \ "friendly_id": {
+      \   "app/models/*.rb": {
+      \     "keywords": "friendly_id"}}
       \ }
 
 let g:rails_projections = {
