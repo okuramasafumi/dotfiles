@@ -76,7 +76,7 @@ let g:rails_gem_projections = {
       \     "template": "class %SWorker\n  include Sidekiq::Worker\nend",
       \     "keywords": "sidekiq_options"}},
       \ "active_model_serializers": {
-      \   "app/serializers/*.rb": {
+      \   "app/serializers/*_serializer.rb": {
       \     "command": "serializer",
       \     "template": "class %SSerializer < ActiveModel::Serializer\nend",
       \     "keywords": "attribute attributes cache cache_key type"}},
