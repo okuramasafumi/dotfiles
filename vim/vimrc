@@ -52,6 +52,7 @@ Plug 'direnv/direnv.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'janko-m/vim-test'
 Plug 'othree/yajs.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
