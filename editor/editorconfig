@@ -13,3 +13,6 @@ indent_size  = 2
 [*.go]
 indent_style = tab
 tab_width = 8
+
+[*.{md,markdown}]
+trim_trailing_whitespace = false
