@@ -97,6 +97,10 @@ snippet altrmc "allow to receive message chain" w
 allow(${1:target}).to receive_message_chain(${2:messages})
 endsnippet
 
+snippet alaio "allow any instance of" w
+allow_any_instance_of(${1:target}).to receive(${2:message})
+endsnippet
+
 snippet itise "is expected to" w
 it { is_expected.to ${1:matcher} }
 endsnippet
@@ -107,6 +111,28 @@ step '${1:description}' do
 end
 endsnippet
 
+snippet rpb "expect response body" w
+expect(response.body).to ${1:expectation}
+endsnippet
+
+snippet rbj "expect response body to be json eql" w
+expect(response.body).to be_json_eql(
+	${1:json}
+)
+endsnippet
+
+snippet rhjt "expect response body to have json type at path" w
+expect(response.body).to have_json_type(${1:type}).at_path(${2:path})
+endsnippet
+
 snippet 200 "expect success" w
 is_expected.to eq(200)
+endsnippet
+
+snippet 400 "expect bad request" w
+is_expected.to eq(400)
+endsnippet
+
+snippet 500 "expect internal server error" w
+is_expected.to eq(500)
 endsnippet
