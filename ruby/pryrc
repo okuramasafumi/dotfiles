@@ -14,13 +14,14 @@ Pry.config.prompt = [
 ]
 
 begin
-  require 'bond'
-  Bond.start
-rescue LoadError => e
-end
-
-begin
   require 'awesome_print'
   AwesomePrint.pry!
 rescue LoadError
+  puts 'Could not load awesome_print'
+end
+
+begin
+  require 'factory_bot'
+  include FactoryBot::Syntax::Methods
+rescue LoadError => e
 end
