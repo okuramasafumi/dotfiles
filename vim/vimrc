@@ -179,7 +179,7 @@ if has('autocmd')
 endif
 
 " Easy help keymapping
-nnoremap <Leader>h :<C-u>help<Space>
+" nnoremap <Leader>h :<C-u>help<Space>
 
 " Edit vimrc keymappings
 nnoremap <silent> <Leader>ev  :<C-u>edit $MYVIMRC<CR>
@@ -238,6 +238,7 @@ let test#strategy = "dispatch"
 
 nnoremap <Leader>f :<C-u>Files<CR>
 nnoremap <Leader>b :<C-u>Buffers<CR>
+nnoremap <Leader>hi :<C-u>History<CR>
 nnoremap <Leader>d :<C-u>Dirvish<CR>
 
 nmap <silent> <leader>t :TestNearest<CR>
