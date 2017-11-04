@@ -18,6 +18,8 @@ typeset -aU path cdpath fpath manpath
 autoload -Uz compinit
 compinit
 
+autoload -Uz zmv
+
 # cdr
 if is-at-least 4.3.11; then
   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
