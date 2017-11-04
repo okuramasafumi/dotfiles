@@ -12,3 +12,6 @@ www
 frontend
 activerecord
 serializer
+Redis
+stylesheet
+precompile
