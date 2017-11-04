@@ -226,6 +226,11 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+let g:startify_bookmarks = [ {'c': '~/.vimrc'}, '~/.zshrc' ]
+let g:startify_skiplist = [
+      \ 'COMMIT_EDITMSG',
+      \ ]
+
 " Disable <C-S> in insert mode
 let g:surround_no_insert_mappings = 1
 
