@@ -16,6 +16,7 @@ alias las='ls -la'
 # Git
 alias g='git'
 alias gci='git commit'
+alias gco='git checkout'
 alias gss='git status --short'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
