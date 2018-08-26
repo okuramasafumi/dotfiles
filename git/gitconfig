@@ -23,7 +23,15 @@
 	df = diff
   hash = rev-parse HEAD
 [merge]
-	tool = fugitive
+	tool = vimdiff
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+  prompt = false
+[diff]
+  tool = vimdiff
 [push]
 	default = simple
 [filter "media"]
@@ -37,8 +45,12 @@
 	smudge = git hawser smudge %f
 	required = true
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [interactive]
-	diffFilter = diff-so-fancy
+	; diffFilter = diff-so-fancy
+[user]
+	name = okuramasafumi
+	email = masafumi.o1988@gmail.com
