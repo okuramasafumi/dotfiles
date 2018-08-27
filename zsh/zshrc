@@ -42,6 +42,7 @@ if [[ -f ~/.zplug/init.zsh ]]; then
   zplug "b4b4r07/emoji-cli"
   zplug "supercrabtree/k"
   zplug "okuramasafumi/zsh-sensible"
+  zplug "zpm-zsh/ssh"
 
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
