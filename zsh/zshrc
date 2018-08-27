@@ -10,7 +10,7 @@ ZSH_DIR="$HOME/.zsh"
 typeset -aU path cdpath fpath manpath
 
 # Add some completions (we need this before compinit)
-[ -e /usr/local/share/zsh-completions ] && fpath=(/usr/local/share/zsh-completions $fpath)
+[ -e /usr/local/share/zsh/functions ] && fpath=(/usr/local/share/zsh/functions $fpath)
 
 [ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
 
