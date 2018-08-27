@@ -3,7 +3,8 @@ export GOPATH=~/.go
 export EDITOR=vim
 export DISABLE_AUTO_TITLE=true
 export TERM="xterm-256color"
-export PATH=~/bin:$PATH:$GOPATH/bin
+export PATH="~/bin:$PATH:$GOPATH/bin"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # liquidprompt
