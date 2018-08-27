@@ -1,6 +1,6 @@
 Pry.config.pager = false
 Pry.config.color = true
-Pry.config.editor = 'vim'
+Pry.config.editor = 'nvim'
 
 Pry.config.prompt = [
   proc do |obj, nest_level, _pry_|
