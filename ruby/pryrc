@@ -13,6 +13,8 @@ Pry.config.prompt = [
   end
 ]
 
+Pry.config.history.file = Bundler.root.join ".pry_history" if defined? Bundler
+
 begin
   require 'awesome_print'
   AwesomePrint.pry!
