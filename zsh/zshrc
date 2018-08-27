@@ -15,8 +15,7 @@ typeset -aU path cdpath fpath manpath
 [ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
 
 # The most important feature of zsh
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 autoload -Uz zmv
 
