@@ -5,7 +5,7 @@
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
-      \   'left': [ [ 'mode', 'readonly' ], [ 'fugitive', 'filename' ]],
+      \   'left': [ [ 'mode', 'readonly' ], [ 'fugitive', 'filename' ] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
@@ -18,7 +18,7 @@ let g:lightline = {
       \   'fileformat': 'MyFileformat',
       \   'filetype': 'MyFiletype',
       \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
+      \   'mode': 'MyMode'
       \ },
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag',
@@ -88,6 +88,10 @@ function! MyMode()
         \ &ft == 'vimfiler' ? 'VimFiler' :
         \ &ft == 'vimshell' ? 'VimShell' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! ALEStatus()
+  return ALEStatusLine()
 endfunction
 
 let g:tagbar_status_func = 'TagbarStatusFunc'

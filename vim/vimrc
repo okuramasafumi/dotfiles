@@ -24,7 +24,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'kana/vim-smartchr'
 Plug 'kana/vim-smartinput'
@@ -35,12 +35,11 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-ruby/vim-ruby'
 Plug 'skwp/vim-rspec', { 'for': 'ruby' }
 Plug 'fatih/vim-go'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'airblade/vim-gitgutter'
-Plug 'sjl/gundo.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'tomasr/molokai'
@@ -48,16 +47,41 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-key-bindings' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'mattn/emmet-vim'
-Plug 'direnv/direnv.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'janko-m/vim-test'
 Plug 'othree/yajs.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'mhinz/vim-startify'
-Plug 'neomake/neomake'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'pearofducks/ansible-vim'
+Plug 'w0rp/ale'
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
+Plug 'Shougo/deoplete-rct'
+Plug 'Shougo/neco-syntax'
+
+Plug 'mileszs/ack.vim'
+Plug 'mbbill/undotree'
+Plug 'cohama/agit.vim'
+
+if has('nvim')
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'direnv/direnv.vim'
+  Plug 'kassio/neoterm'
+else
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -142,9 +166,6 @@ set laststatus=2
 
 source ~/.vim/settings/bundle/lightline.vim
 
-" Easy escape
-inoremap jj <Esc>
-
 " Auto commands
 if has('autocmd')
   " Remember last location in file
@@ -203,9 +224,6 @@ endif
 " Ref.vim
 let g:ref_use_vimproc = 1
 
-" Gundo configuration
-nnoremap <Leader>n :<C-u>GundoToggle<CR>
-
 " dash.vim configuration
 if has('mac')
   nmap <silent> <Leader>d <Plug>DashSearch
@@ -238,26 +256,63 @@ let g:surround_no_insert_mappings = 1
 let g:go_dispatch_enabled = 1
 let g:go_metalinter_autosave = 1
 
-" test.vim
 let test#strategy = "dispatch"
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>l :TestLast<CR>
 
 nnoremap <Leader>f :<C-u>Files<CR>
 nnoremap <Leader>b :<C-u>Buffers<CR>
 nnoremap <Leader>hi :<C-u>History<CR>
 nnoremap <Leader>d :<C-u>Dirvish<CR>
 
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>l :TestLast<CR>
-
 source ~/.vim/settings/bundle/easy-align.vim
 source ~/.vim/settings/bundle/fugitive.vim
 source ~/.vim/settings/bundle/rails.vim
-source ~/.vim/settings/bundle/syntastic.vim
-source ~/.vim/settings/bundle/ycm.vim
+" source ~/.vim/settings/bundle/syntastic.vim
+" source ~/.vim/settings/bundle/ycm.vim
 source ~/.vim/settings/bundle/ultisnips.vim
 
 hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+
+set hidden
+
+if has('nvim')
+  let g:LanguageClient_serverCommands = {
+        \ 'ruby': ['solargraph', 'socket', '--port', '0'],
+        \ }
+
+  " Automatically start language servers.
+  let g:LanguageClient_autoStart = 1
+else
+  if executable('language_server-ruby')
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'language_server-ruby',
+          \ 'cmd': {server_info->['language_server-ruby']},
+          \ 'whitelist': ['ruby'],
+          \ })
+    autocmd FileType ruby setlocal omnifunc=lsp#complete
+  endif
+endif
+
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
+call deoplete#custom#option('sources', {
+      \ 'ruby': ['syntax', 'buffer', 'member', 'omni', 'LanguageClient', 'ultisnips', 'around'],
+      \})
+autocmd CompleteDone * silent! pclose!
+
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'ruby': ['rubocop'],
+\}
+let g:ale_enabled = 1
+let g:ale_fix_on_save = 1
+let g:ale_ruby_rubocop_executable='bundle'
 
 " External rc files
 " Include vimrc for mac
@@ -265,4 +320,3 @@ hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NO
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
-
