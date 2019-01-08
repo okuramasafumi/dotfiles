@@ -1,1 +1,1 @@
---skip-test --database=postgresql
+--skip-test --database=postgresql --skip-action-cable --skip-coffee
