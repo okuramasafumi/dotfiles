@@ -230,9 +230,6 @@ if has('mac')
   nmap <silent> <Leader>d <Plug>DashSearch
 endif
 
-" Smartchr configuration
-inoremap <expr> = smartchr#loop('=', '==', ' = ', ' == ' )
-
 " CTags
 set tags&
 set tags+=gems.tags
