@@ -4,3 +4,4 @@ vim/undo
 vim/swap
 vim/backup
 vim/.netrwhist
+vim/autoload/plug.vim
