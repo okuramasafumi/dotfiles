@@ -71,3 +71,7 @@ cscope.po.out
 
 # direnv
 .envrc
+
+
+# Ruby
+.pry_history
