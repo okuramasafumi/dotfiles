@@ -75,3 +75,7 @@ cscope.po.out
 
 # Ruby
 .pry_history
+
+
+# Git
+**/*.orig
