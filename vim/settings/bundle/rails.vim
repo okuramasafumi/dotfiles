@@ -85,7 +85,13 @@ let g:rails_gem_projections = {
       \     "keywords": "aasm state event transitions"}},
       \ "friendly_id": {
       \   "app/models/*.rb": {
-      \     "keywords": "friendly_id"}}
+      \     "keywords": "friendly_id"}},
+      \ "interactor": {
+      \   "app/interactors/*.rb": {
+      \     "command": "interactor",
+      \     "template": ["class %S", "include Interactor", "end"],
+      \     "test": "spec/interactors/%s_spec.rb",
+      \     "keywords": "organize" }}
       \ }
 
 let g:rails_projections = {
