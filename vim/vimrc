@@ -25,6 +25,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'slim-template/vim-slim'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'kana/vim-smartchr'
