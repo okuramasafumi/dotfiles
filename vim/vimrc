@@ -58,6 +58,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'pearofducks/ansible-vim'
 Plug 'w0rp/ale'
+Plug 'luochen1990/rainbow'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -312,6 +313,8 @@ let g:ale_fixers = {
 let g:ale_enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_ruby_rubocop_executable='bundle'
+
+let g:rainbow_active = 1
 
 " External rc files
 " Include vimrc for mac
