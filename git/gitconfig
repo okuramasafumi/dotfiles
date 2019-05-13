@@ -1,3 +1,6 @@
+[user]
+	name = OKURA Masafumi
+	email = masafumi.o1988@gmail.com
 [include]
   path = ~/.gitconfig.local
 [hub]
@@ -51,6 +54,3 @@
 	process = git-lfs filter-process
 [interactive]
 	; diffFilter = diff-so-fancy
-[user]
-	name = okuramasafumi
-	email = masafumi.o1988@gmail.com
