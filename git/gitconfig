@@ -24,6 +24,7 @@
 	ci = commit
 	mt = mergetool
 	df = diff
+  sw = switch
   hash = rev-parse HEAD
 [merge]
 	tool = vimdiff
