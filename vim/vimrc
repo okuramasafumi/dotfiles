@@ -69,6 +69,7 @@ Plug 'Shougo/neco-syntax'
 Plug 'mileszs/ack.vim'
 Plug 'mbbill/undotree'
 Plug 'cohama/agit.vim'
+Plug 'thinca/vim-quickrun'
 
 if has('nvim')
   Plug 'autozimu/LanguageClient-neovim', {
