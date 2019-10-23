@@ -71,6 +71,8 @@ Plug 'mbbill/undotree'
 Plug 'cohama/agit.vim'
 Plug 'thinca/vim-quickrun'
 
+Plug 'vim-jp/vimdoc-ja'
+
 if has('nvim')
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
