@@ -26,6 +26,7 @@ alias glr='git pull --rebase'
 alias gst='git stash'
 alias gstp='git stash pop'
 alias grpo='git remote prune origin'
+alias grm='git rebase master'
 
 # Rails
 alias ra='rails'
