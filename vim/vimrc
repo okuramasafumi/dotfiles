@@ -319,6 +319,9 @@ let g:ale_ruby_rubocop_executable='bundle'
 
 let g:rainbow_active = 1
 
+nmap <Leader>q <Plug>(quickrun)
+vmap <Leader>q <Plug>(quickrun-op)
+
 " External rc files
 " Include vimrc for mac
 " Include user's local vim config
