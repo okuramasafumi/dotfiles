@@ -38,7 +38,6 @@ if [[ -f ~/.zplug/init.zsh ]]; then
   zplug "zsh-users/zsh-history-substring-search", defer:3
   zplug "zsh-users/zsh-autosuggestions"
   zplug "zsh-users/zsh-syntax-highlighting", defer:2
-  zplug "mollifier/anyframe"
   zplug "nojhan/liquidprompt"
   zplug "b4b4r07/emoji-cli"
   zplug "supercrabtree/k"
@@ -59,12 +58,6 @@ for config ($ZSH_DIR/*.zsh) do source $config; done
 
 stty stop undef
 stty start undef
-
-# Anyframe
-bindkey "^X'" anyframe-widget-cdr
-bindkey "^Xh" anyframe-widget-put-history
-bindkey "^Xt" anyframe-widget-tmux-attach
-bindkey "^Xb" anyframe-widget-checkout-git-branch
 
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down

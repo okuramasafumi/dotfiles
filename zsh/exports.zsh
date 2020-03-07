@@ -11,4 +11,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export LP_ENABLE_BATT=false
 
 # FZF
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='cdr -l'

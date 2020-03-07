@@ -45,7 +45,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'tomasr/molokai'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-key-bindings' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'mattn/emmet-vim'
