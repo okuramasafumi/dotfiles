@@ -16,7 +16,12 @@ typeset -aU path cdpath fpath manpath
 [ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
 
 # The most important feature of zsh
-autoload -Uz compinit && compinit
+# It's so slow that we want to do it once a day
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 autoload -Uz zmv
 
@@ -35,21 +40,10 @@ if [[ -f ~/.zplug/init.zsh ]]; then
 
   zplug "zplug/zplug", hook-build:"zplug --self-manage"
   zplug "zsh-users/zsh-completions"
-  zplug "zsh-users/zsh-history-substring-search", defer:3
   zplug "zsh-users/zsh-autosuggestions"
   zplug "zsh-users/zsh-syntax-highlighting", defer:2
   zplug "nojhan/liquidprompt"
-  zplug "b4b4r07/emoji-cli"
-  zplug "supercrabtree/k"
   zplug "okuramasafumi/zsh-sensible"
-  zplug "zpm-zsh/ssh"
-
-  if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-      echo; zplug install
-    fi
-  fi
 
   zplug load
 fi
