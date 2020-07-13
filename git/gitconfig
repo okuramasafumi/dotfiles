@@ -55,3 +55,5 @@
 	process = git-lfs filter-process
 [interactive]
 	; diffFilter = diff-so-fancy
+[pull]
+	ff = only
