@@ -62,6 +62,8 @@ Plug 'luochen1990/rainbow'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'Shougo/deoplete-rct'
 Plug 'Shougo/neco-syntax'
@@ -72,6 +74,9 @@ Plug 'cohama/agit.vim'
 Plug 'thinca/vim-quickrun'
 
 Plug 'vim-jp/vimdoc-ja'
+Plug 'jsfaint/gen_tags.vim' " CTags generation
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 if has('nvim')
   Plug 'autozimu/LanguageClient-neovim', {
