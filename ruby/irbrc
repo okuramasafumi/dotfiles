@@ -1,0 +1,20 @@
+versions = ''
+versions << "\001\e[1;36m\002Rails#{Rails.version}\001\e[0m\002@" if defined? Rails
+versions << "\001\e[0;31m\002#{RUBY_VERSION}\001\e[0m\002"
+
+IRB.conf[:PROMPT][:MY_PROMPT] = {
+  :PROMPT_I => "%N(%m):#{versions}:%03n:%i> ",          # 通常時のプロンプト
+  :PROMPT_N => "%N(%m):#{versions}:%03n:%i%l ",          # 継続行のプロンプト
+  :PROMPT_S => "%N(%m):#{versions}:%03n:%i%l ",          # 文字列などの継続行のプロンプト
+  :PROMPT_C => "%N(%m):#{versions}:%03n:%i* ",          # 式が継続している時のプロンプト
+  :RETURN => "%s\n"   # メソッドから戻る時のプロンプト
+}
+
+IRB.conf[:PROMPT_MODE] = :MY_PROMPT
+
+begin
+  require 'awesome_print'
+  AwesomePrint.irb!
+rescue LoadError
+  puts 'Could not load awesome_print'
+end
