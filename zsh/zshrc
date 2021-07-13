@@ -1,6 +1,11 @@
 stty stop undef
 stty start undef
 
+# direnv export here so that it doesn't print warnings about p10k instant prompt
+if type direnv > /dev/null 2>&1; then
+  emulate zsh -c "$(direnv export zsh)"
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -77,7 +82,7 @@ fi
 
 # direnv
 if type direnv > /dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
+  emulate zsh -c "$(direnv hook zsh)"
 fi
 
 # the fuck
