@@ -65,10 +65,13 @@ zinit light-mode for \
 
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-apple-touchbar
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice depth"1"
 zinit light romkatv/powerlevel10k
 zinit light okuramasafumi/zsh-sensible
+zinit light vasyharan/zsh-brew-services
+zinit light scriptingosx/mac-zsh-completions
 fi
 
 ### End of Zinit's installer chunk
