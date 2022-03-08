@@ -49,20 +49,29 @@ if is-at-least 4.3.11; then
   zstyle ":completion:*" recent-dirs-insert always
 fi
 
-# Zplug
-if [[ -f ~/.zplug/init.zsh ]]; then
-  source ~/.zplug/init.zsh
+### Added by Zinit's installer
+if [[ -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+  source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+  autoload -Uz _zinit
+  (( ${+_comps} )) && _comps[zinit]=_zinit
 
-  zplug "zplug/zplug", hook-build:"zplug --self-manage"
-  zplug "zsh-users/zsh-completions"
-  zplug "zsh-users/zsh-autosuggestions"
-  zplug "zsh-users/zsh-syntax-highlighting", defer:2
-  zplug romkatv/powerlevel10k, as:theme, depth:1
-  # zplug "nojhan/liquidprompt"
-  zplug "okuramasafumi/zsh-sensible"
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+  zdharma-continuum/zinit-annex-as-monitor \
+  zdharma-continuum/zinit-annex-bin-gem-node \
+  zdharma-continuum/zinit-annex-patch-dl \
+  zdharma-continuum/zinit-annex-rust
 
-  zplug load
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit ice depth"1"
+zinit light romkatv/powerlevel10k
+zinit light okuramasafumi/zsh-sensible
 fi
+
+### End of Zinit's installer chunk
 
 for config ($ZSH_DIR/*.zsh) do source $config; done
 
