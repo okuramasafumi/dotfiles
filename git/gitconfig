@@ -6,7 +6,6 @@
 [hub]
 	protocol = https
 [core]
-	editor = vim
 	excludesfile = ~/.gitignore
 	pager = delta
 [color]
