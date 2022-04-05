@@ -1,6 +1,7 @@
 vim/bundle
 vim/plugins
 vim/undo
+vim/undo-nvim
 vim/swap
 vim/backup
 vim/.netrwhist
