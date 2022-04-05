@@ -5,7 +5,7 @@
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
-      \   'left': [ [ 'mode', 'readonly' ], [ 'fugitive', 'filename' ] ],
+      \   'left': [ [ 'mode', 'readonly' ], [ 'gitgutter'], [ 'filename' ] ],
       \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
@@ -13,6 +13,7 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
+      \   'gitgutter': 'MyGitGutter',
       \   'readonly': 'MyReadonly',
       \   'filename': 'MyFilename',
       \   'fileformat': 'MyFileformat',
@@ -30,6 +31,11 @@ endfunction
 
 function! MyReadonly()
   return &ft !~? 'help' && &readonly ? ' ' : ''
+endfunction
+
+function! MyGitGutter()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
 endfunction
 
 function! MyFilename()
