@@ -16,14 +16,14 @@ call plug#begin('~/.vim/plugins')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+" Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'slim-template/vim-slim'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
@@ -41,8 +41,6 @@ Plug 'fatih/vim-go'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'nelstrom/vim-visual-star-search'
-Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'tomasr/molokai'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
@@ -61,14 +59,13 @@ Plug 'w0rp/ale'
 Plug 'luochen1990/rainbow'
 
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'yuezk/vim-js'
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 Plug 'Shougo/deoplete-rct'
-Plug 'Shougo/neco-syntax'
 
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 Plug 'mbbill/undotree'
 Plug 'cohama/agit.vim'
 Plug 'thinca/vim-quickrun'
@@ -77,22 +74,58 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'jsfaint/gen_tags.vim' " CTags generation
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'godlygeek/tabular' " Required for vim-markdown
+Plug 'preservim/vim-markdown'
+
+Plug 'machakann/vim-sandwich' " Surround
 
 if has('nvim')
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'neovim/nvim-lspconfig' " Neovim native LSP
+
+  Plug 'b0o/schemastore.nvim' " JSON schema access
+
   Plug 'direnv/direnv.vim'
   Plug 'kassio/neoterm'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+  Plug 'rebelot/kanagawa.nvim'
+
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'petertriho/cmp-git'
+  Plug 'ray-x/cmp-treesitter'
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+  Plug 'quangnguyen30192/cmp-nvim-tags'
+  Plug 'hrsh7th/nvim-cmp'
+
+  Plug 'lewis6991/gitsigns.nvim'
+
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+
+  Plug 'folke/trouble.nvim'
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
+
+  Plug 'airblade/vim-gitgutter'
+  Plug 'itchyny/lightline.vim'
 endif
+
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'cohama/lexima.vim'
+
+Plug 'rhysd/git-messenger.vim'
+
+Plug 'zerowidth/vim-copy-as-rtf'
+
+Plug 'github/copilot.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -109,7 +142,7 @@ let mapleader = ' '
 " source ~/.vim/settings/neobundle.vim
 
 " % to bounce from do to end etc.
-runtime! macros/matchit.vim
+" runtime! macros/matchit.vim
 
 " Basic configuration, showing absolute line number of
 " current line and ruler
@@ -129,6 +162,9 @@ set showcmd
 
 " Don't beep
 set visualbell
+
+" Enable mouse
+" set mouse=a
 
 " Store command histories
 set history=1000
@@ -172,10 +208,14 @@ set directory=~/.vim/swap
 set backup
 set backupdir=~/.vim/backup
 
+" Support true color
+set termguicolors
+
 " Status bar
 set laststatus=2
 
-source ~/.vim/settings/bundle/lightline.vim
+" Japanese is not spell errors
+set spelllang=cjk
 
 " Auto commands
 if has('autocmd')
@@ -195,6 +235,8 @@ if has('autocmd')
 
   autocmd MyAutoCmd VimEnter *.txt,*.md,*.markdown setlocal spell
   autocmd MyAutoCmd FileType gitcommit setlocal spell
+
+  autocmd MyAutoCmd VimEnter *.gemfile set filetype=ruby
 
   autocmd MyAutoCmd FileType ruby setlocal iskeyword+=?
   autocmd MyAutoCmd FileType ruby setlocal iskeyword+=!
@@ -228,8 +270,15 @@ endif
 
 " Save undo history after quitting
 if has('persistent_undo')
+  if has('nvim-0.5')
+    " New format in https://github.com/neovim/neovim/pull/13973 (f42e932,
+    " 2021-04-13).
+    let s:target_path = expand('~/.vim/undo-nvim')
+  else
+    let s:target_path = expand('~/.vim/undo')
+  endif
+  let &undodir=s:target_path
   set undofile
-  set undodir=~/.vim/undo
 endif
 
 " Ref.vim
@@ -276,7 +325,6 @@ nnoremap <Leader>hi :<C-u>History<CR>
 nnoremap <Leader>d :<C-u>Dirvish<CR>
 
 source ~/.vim/settings/bundle/easy-align.vim
-source ~/.vim/settings/bundle/fugitive.vim
 source ~/.vim/settings/bundle/rails.vim
 " source ~/.vim/settings/bundle/syntastic.vim
 " source ~/.vim/settings/bundle/ycm.vim
@@ -286,14 +334,155 @@ hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NO
 
 set hidden
 
-if has('nvim')
-  let g:LanguageClient_serverCommands = {
-        \ 'ruby': ['solargraph', 'socket', '--port', '0'],
-        \ }
+" Fugitive key mappings
+" Fugitive prefix
+nnoremap [Fugitive] <Nop>
+nmap <Leader>g [Fugitive]
 
-  " Automatically start language servers.
-  let g:LanguageClient_autoStart = 1
+nnoremap [Fugitive]g :<C-u>Git<CR>
+nnoremap [Fugitive]d :<C-u>Git diff<CR>
+nnoremap [Fugitive]s :<C-u>Git status<CR>
+nnoremap [Fugitive]l :<C-u>Git log<CR>
+nnoremap [Fugitive]a :<C-u>Git add %<CR>
+nnoremap [Fugitive]c :<C-u>Git commit<CR>
+nnoremap [Fugitive]C :<C-u>Git commit --amend<CR>
+nnoremap [Fugitive]b :<C-u>Git blame<CR>
+
+if has('nvim')
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "ruby", "javascript", "typescript", "c" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+require('kanagawa').setup({
+  transparent = true,
+})
+
+-- Setup nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+snippet = {
+  -- REQUIRED - you must specify a snippet engine
+  expand = function(args)
+  -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+  -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+  -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+  vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+end,
+},
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+      }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+  sources = cmp.config.sources({
+  { name = 'nvim_lsp' },
+  -- { name = 'vsnip' }, -- For vsnip users.
+  -- { name = 'luasnip' }, -- For luasnip users.
+  { name = 'ultisnips' }, -- For ultisnips users.
+  -- { name = 'snippy' }, -- For snippy users.
+  }, {
+  { name = 'treesitter' },
+  }, {
+    {
+      name = 'buffer',
+      option = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end
+        }
+    },
+    { name = 'tags' }
+  })
+})
+
+  -- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+  { name = 'path' }
+  }, {
+  { name = 'cmdline' }
+  })
+})
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+require('lspconfig')['tsserver'].setup {
+  capabilities = capabilities
+}
+
+require('lspconfig').yamlls.setup {
+  settings = {
+    yaml = {
+      schemas = require('schemastore').json.schemas(),
+      -- schemas = {
+        -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+      -- },
+    },
+  }
+}
+
+local jsonls_capabilities = vim.lsp.protocol.make_client_capabilities()
+jsonls_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.jsonls.setup {
+  capabilities = jsonls_capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+    },
+  },
+}
+
+require'lspconfig'.typeprof.setup {
+  autostart = false,
+}
+
+require('gitsigns').setup()
+
+require('lualine').setup()
+
+require('trouble').setup()
+EOF
+colorscheme kanagawa
+if executable('typeprof')
+  autocmd MyAutoCmd filetype ruby LspStart typeprof
+end
 else
+  set pyx=3 " For deoplete to work
   if executable('language_server-ruby')
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'language_server-ruby',
@@ -302,30 +491,51 @@ else
           \ })
     autocmd FileType ruby setlocal omnifunc=lsp#complete
   endif
+
+  let g:deoplete#enable_at_startup = 1
+  call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
+  call deoplete#custom#source('LanguageClient',
+        \ 'min_pattern_length',
+        \ 2)
+  call deoplete#custom#option('sources', {
+        \ 'ruby': ['syntax', 'buffer', 'member', 'omni', 'LanguageClient', 'ultisnips', 'around'],
+        \})
+  autocmd CompleteDone * silent! pclose!
+
+  source ~/.vim/settings/bundle/lightline.vim
 endif
 
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
-call deoplete#custom#option('sources', {
-      \ 'ruby': ['syntax', 'buffer', 'member', 'omni', 'LanguageClient', 'ultisnips', 'around'],
-      \})
-autocmd CompleteDone * silent! pclose!
-
 let g:ale_fixers = {
-\   'javascript': ['prettier'],
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['prettier', 'eslint'],
+\   'javascriptreact': ['prettier', 'eslint'],
+\   'typescriptreact': ['prettier', 'eslint'],
 \   'ruby': ['rubocop'],
 \}
 let g:ale_enabled = 1
 let g:ale_fix_on_save = 1
+let g:ale_disable_lsp = 1
+" let g:ale_javascript_prettier_options = '--no-semi --single-quote --jsx-single-quote --trailing-comma none'
 let g:ale_ruby_rubocop_executable='bundle'
-
+let g:ale_floating_preview=1
+let g:ale_cursor_detail = 1
+let g:ale_hover_to_floating_preview=1 " With Neovim it shows hover info in floating window
+" let g:ale_set_balloons=1 " Shows information wit balloon window in Vim
+let g:ale_echo_cursor = 0
 let g:rainbow_active = 1
+
+let g:vim_jsx_pretty_colorful_config = 1
 
 nmap <Leader>q <Plug>(quickrun)
 vmap <Leader>q <Plug>(quickrun-op)
+
+let g:loaded_gentags#gtags = 1
+
+" This auto folding behavior is so annoying
+let g:vim_markdown_folding_disabled = 1
+
+" Enable surround.vim keymap for sandwich
+runtime macros/sandwich/keymap/surround.vim
 
 " External rc files
 " Include vimrc for mac
