@@ -79,6 +79,8 @@ Plug 'preservim/vim-markdown'
 
 Plug 'machakann/vim-sandwich' " Surround
 
+Plug 'rust-lang/rust.vim'
+
 if has('nvim')
   Plug 'neovim/nvim-lspconfig' " Neovim native LSP
 
@@ -106,6 +108,8 @@ if has('nvim')
   Plug 'kyazdani42/nvim-web-devicons'
 
   Plug 'folke/trouble.nvim'
+
+  Plug 'simrat39/rust-tools.nvim'
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
@@ -476,6 +480,8 @@ require('gitsigns').setup()
 require('lualine').setup()
 
 require('trouble').setup()
+
+require('rust-tools').setup({})
 EOF
 colorscheme kanagawa
 if executable('typeprof')
@@ -505,12 +511,17 @@ else
   source ~/.vim/settings/bundle/lightline.vim
 endif
 
+let g:ale_linters = {
+\   'ruby': ['rubocop'],
+\   'rust': ['rustfmt'],
+\}
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'typescript': ['prettier', 'eslint'],
 \   'javascriptreact': ['prettier', 'eslint'],
 \   'typescriptreact': ['prettier', 'eslint'],
 \   'ruby': ['rubocop'],
+\   'rust': ['rustfmt'],
 \}
 let g:ale_enabled = 1
 let g:ale_fix_on_save = 1
