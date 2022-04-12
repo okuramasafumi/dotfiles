@@ -215,7 +215,7 @@ set termguicolors
 set laststatus=2
 
 " Japanese is not spell errors
-set spelllang=cjk
+set spelllang=en,cjk
 
 " Auto commands
 if has('autocmd')
