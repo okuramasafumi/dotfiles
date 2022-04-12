@@ -89,6 +89,7 @@ if has('nvim')
   Plug 'direnv/direnv.vim'
   Plug 'kassio/neoterm'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'romgrk/nvim-treesitter-context' " Context
 
   Plug 'rebelot/kanagawa.nvim'
 
