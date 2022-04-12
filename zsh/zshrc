@@ -74,7 +74,6 @@ fi
 ### End of Zinit's installer chunk
 
 # Add some completions (we need this before compinit)
-[ -e /usr/local/share/zsh/functions ] && fpath=(/usr/local/share/zsh/functions $fpath)
 [ -e /usr/local/share/zsh/site-functions ] && fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 [ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
