@@ -85,6 +85,7 @@ for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
+zmodload -i zsh/complist
 
 for config ($ZSH_DIR/*.zsh) do source $config; done
 
