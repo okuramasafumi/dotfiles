@@ -512,6 +512,8 @@ require'lspconfig'.typeprof.setup {
   autostart = false,
 }
 
+require'lspconfig'.steep.setup{}
+
 require('gitsigns').setup()
 
 require('lualine').setup()
