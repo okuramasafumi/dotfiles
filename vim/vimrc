@@ -97,11 +97,13 @@ if has('nvim')
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
   Plug 'petertriho/cmp-git'
   Plug 'ray-x/cmp-treesitter'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'quangnguyen30192/cmp-nvim-tags'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'onsails/lspkind-nvim'
 
   Plug 'lewis6991/gitsigns.nvim'
 
@@ -417,6 +419,25 @@ end,
   })
 })
 
+cmp.setup.filetype('ruby', {
+  sources = cmp.config.sources({
+  {
+    name = 'buffer',
+    option = {
+      get_bufnrs = function()
+        return vim.api.nvim_list_bufs()
+      end
+      }
+  },
+  { name = 'nvim_lsp' },
+  { name = 'ultisnips' },
+  }, {
+  { name = 'treesitter' },
+  }, {
+    { name = 'tags' }
+  })
+})
+
   -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
@@ -441,6 +462,22 @@ cmp.setup.cmdline(':', {
   { name = 'cmdline' }
   })
 })
+
+local lspkind = require('lspkind')
+cmp.setup {
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+
+      -- The function below will be called before any actual modifications from lspkind
+      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    })
+  }
+}
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
