@@ -44,7 +44,6 @@ Plug 'nelstrom/vim-visual-star-search'
 Plug 'rizzatti/dash.vim'
 Plug 'tomasr/molokai'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
-Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'mattn/emmet-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -113,6 +112,9 @@ if has('nvim')
   Plug 'folke/trouble.nvim'
 
   Plug 'simrat39/rust-tools.nvim'
+
+  Plug 'vijaymarupudi/nvim-fzf'
+  Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
@@ -122,6 +124,8 @@ else
 
   Plug 'airblade/vim-gitgutter'
   Plug 'itchyny/lightline.vim'
+
+  Plug 'junegunn/fzf.vim'
 endif
 
 Plug 'ryanoasis/vim-devicons'
@@ -326,11 +330,6 @@ nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
-nnoremap <Leader>f :<C-u>Files<CR>
-nnoremap <Leader>b :<C-u>Buffers<CR>
-nnoremap <Leader>hi :<C-u>History<CR>
-nnoremap <Leader>d :<C-u>Dirvish<CR>
-
 source ~/.vim/settings/bundle/easy-align.vim
 source ~/.vim/settings/bundle/rails.vim
 " source ~/.vim/settings/bundle/syntastic.vim
@@ -525,6 +524,13 @@ colorscheme kanagawa
 if executable('typeprof')
   autocmd MyAutoCmd filetype ruby LspStart typeprof
 end
+
+" fzf key bindings with fzf-lua
+nnoremap <Leader>f <cmd>lua require('fzf-lua').files()<CR>
+nnoremap <Leader>b <cmd>lua require('fzf-lua').buffers()<CR>
+nnoremap <Leader>hi <cmd>lua require('fzf-lua').oldfiles()<CR>
+nnoremap <Leader>r <cmd>lua require('fzf-lua').grep()<CR>
+nnoremap <Leader>l <cmd>lua require('fzf-lua').live_grep()<CR>
 else
   set pyx=3 " For deoplete to work
   if executable('language_server-ruby')
@@ -545,6 +551,12 @@ else
         \ 'ruby': ['syntax', 'buffer', 'member', 'omni', 'LanguageClient', 'ultisnips', 'around'],
         \})
   autocmd CompleteDone * silent! pclose!
+
+  " fzf key bindings
+  nnoremap <Leader>f :<C-u>Files<CR>
+  nnoremap <Leader>b :<C-u>Buffers<CR>
+  nnoremap <Leader>hi :<C-u>History<CR>
+  nnoremap <Leader>d :<C-u>Dirvish<CR>
 
   source ~/.vim/settings/bundle/lightline.vim
 endif
