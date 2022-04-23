@@ -115,6 +115,10 @@ if has('nvim')
 
   Plug 'vijaymarupudi/nvim-fzf'
   Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'suketa/nvim-dap-ruby'
+  Plug 'rcarriga/nvim-dap-ui'
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
@@ -523,6 +527,10 @@ require('lualine').setup()
 require('trouble').setup()
 
 require('rust-tools').setup({})
+
+require('dap-ruby').setup()
+
+require("dapui").setup()
 EOF
 colorscheme kanagawa
 if executable('typeprof')
@@ -535,6 +543,20 @@ nnoremap <Leader>b <cmd>lua require('fzf-lua').buffers()<CR>
 nnoremap <Leader>hi <cmd>lua require('fzf-lua').oldfiles()<CR>
 nnoremap <Leader>r <cmd>lua require('fzf-lua').grep()<CR>
 nnoremap <Leader>l <cmd>lua require('fzf-lua').live_grep()<CR>
+
+" dap key bindings
+nnoremap [DAP] <Nop>
+nmap <Leader>d [DAP]
+nnoremap <silent> [DAP]c  <cmd>lua require'dap'.continue()<CR>
+nnoremap <silent> [DAP]sv <cmd>lua require'dap'.step_over()<CR>
+nnoremap <silent> [DAP]si <cmd>lua require'dap'.step_into()<CR>
+nnoremap <silent> [DAP]so <cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> [DAP]b  <cmd>lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> [DAP]B  <cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> [DAP]lp <cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> [DAP]r  <cmd>lua require'dap'.repl.open()<CR>
+nnoremap <silent> [DAP]l  <cmd>lua require'dap'.run_last()<CR>
+nnoremap <silent> [DAP]u  <cmd>lua require'dapui'.toggle()<CR>
 else
   set pyx=3 " For deoplete to work
   if executable('language_server-ruby')
