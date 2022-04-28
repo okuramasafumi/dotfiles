@@ -518,7 +518,9 @@ require'lspconfig'.typeprof.setup {
   autostart = false,
 }
 
-require'lspconfig'.steep.setup{}
+require'lspconfig'.steep.setup {
+  autostart = false,
+}
 
 require('gitsigns').setup()
 
@@ -535,6 +537,9 @@ EOF
 colorscheme kanagawa
 if executable('typeprof')
   autocmd MyAutoCmd filetype ruby LspStart typeprof
+end
+if executable('steep')
+  autocmd MyAutoCmd filetype ruby LspStart steep
 end
 
 " fzf key bindings with fzf-lua
