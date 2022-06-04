@@ -620,6 +620,12 @@ require('rust-tools').setup({})
 require('dap-ruby').setup()
 
 require("dapui").setup()
+
+require('fzf-lua').setup {
+  oldfiles = {
+    include_current_session = false,  -- include bufs from current session
+  },
+}
 EOF
 colorscheme kanagawa
 if executable('typeprof')
@@ -633,8 +639,12 @@ end
 nnoremap <Leader>f <cmd>lua require('fzf-lua').files()<CR>
 nnoremap <Leader>b <cmd>lua require('fzf-lua').buffers()<CR>
 nnoremap <Leader>hi <cmd>lua require('fzf-lua').oldfiles()<CR>
-nnoremap <Leader>r <cmd>lua require('fzf-lua').grep()<CR>
+nnoremap <Leader>r <cmd>lua require('fzf-lua').grep_cword()<CR>
+nnoremap <Leader>R <cmd>lua require('fzf-lua').grep_cWORD()<CR>
 nnoremap <Leader>l <cmd>lua require('fzf-lua').live_grep()<CR>
+
+" fzf-lua commands compatible with fzf.vim
+command! -nargs=1 Rg lua require('fzf-lua').grep_project({search="<args>"})
 
 " dap key bindings
 nnoremap [DAP] <Nop>
