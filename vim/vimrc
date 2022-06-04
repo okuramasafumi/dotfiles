@@ -13,21 +13,15 @@ call plug#begin('~/.vim/plugins')
 
 " Make sure you use single quotes
 
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-rhubarb'
-" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-" Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-projectionist'
-Plug 'slim-template/vim-slim'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
+Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim'
+Plug 'cohama/agit.vim'
+Plug 'rhysd/git-messenger.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'kana/vim-smartchr'
 Plug 'kana/vim-smartinput'
@@ -35,10 +29,6 @@ Plug 'kana/vim-textobj-user' | Plug 'rhysd/vim-textobj-ruby'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'vim-ruby/vim-ruby'
-Plug 'skwp/vim-rspec', { 'for': 'ruby' }
-Plug 'fatih/vim-go'
-" Plug 'scrooloose/syntastic'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'nelstrom/vim-visual-star-search'
@@ -46,40 +36,49 @@ Plug 'rizzatti/dash.vim'
 Plug 'tomasr/molokai'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
 Plug 'justinmk/vim-dirvish'
-Plug 'mattn/emmet-vim'
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'janko-m/vim-test'
-Plug 'othree/yajs.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'mhinz/vim-startify'
-Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
-Plug 'pearofducks/ansible-vim'
 Plug 'w0rp/ale'
 Plug 'luochen1990/rainbow'
+Plug 'machakann/vim-sandwich' " Surround
+Plug 'mbbill/undotree'
+Plug 'thinca/vim-quickrun'
+Plug 'vim-jp/vimdoc-ja'
+Plug 'jsfaint/gen_tags.vim' " CTags generation
+Plug 'ryanoasis/vim-devicons'
+Plug 'cohama/lexima.vim'
+Plug 'zerowidth/vim-copy-as-rtf'
+Plug 'github/copilot.vim'
 
+" Ruby/Rails
+Plug 'vim-ruby/vim-ruby'
+Plug 'skwp/vim-rspec', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'tpope/vim-rails'
+Plug 'slim-template/vim-slim'
+
+" JavaScript
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'yuezk/vim-js'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'othree/yajs.vim'
 
-Plug 'Shougo/deoplete-rct'
+" Other Languages
+Plug 'mattn/emmet-vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+Plug 'pearofducks/ansible-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go'
 
-" Plug 'mileszs/ack.vim'
-Plug 'mbbill/undotree'
-Plug 'cohama/agit.vim'
-Plug 'thinca/vim-quickrun'
-
-Plug 'vim-jp/vimdoc-ja'
-Plug 'jsfaint/gen_tags.vim' " CTags generation
-
+" Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'godlygeek/tabular' " Required for vim-markdown
 Plug 'preservim/vim-markdown'
-
-Plug 'machakann/vim-sandwich' " Surround
-
-Plug 'rust-lang/rust.vim'
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig' " Neovim native LSP
@@ -124,6 +123,7 @@ else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
   Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete-rct'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 
@@ -132,16 +132,6 @@ else
 
   Plug 'junegunn/fzf.vim'
 endif
-
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'cohama/lexima.vim'
-
-Plug 'rhysd/git-messenger.vim'
-
-Plug 'zerowidth/vim-copy-as-rtf'
-
-Plug 'github/copilot.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
