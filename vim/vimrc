@@ -23,8 +23,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 " Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
-" Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'tpope/vim-projectionist'
 Plug 'slim-template/vim-slim'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -334,10 +335,100 @@ nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
+if has("autocmd")
+  augroup Rails-vim
+    autocmd!
+  augroup END
+
+  autocmd Rails-vim User Rails UltiSnipsAddFiletypes rails.ruby
+
+  if has("mac")
+    autocmd Rails-vim User Rails DashKeywords rails rubygems ruby
+  endif
+endif
+
+" RSpec configurations
+let g:rspec_command = 'bin/rspec'
+let g:turbux_command_rspec = 'bin/rspec'
+
+" Rails.vim projections
+" Require vim-bundler
+let g:rails_gem_projections = {
+      \ "carrierwave": {
+      \   "app/uploaders/*_uploader.rb": {
+      \     "command": "uploader",
+      \     "template":
+      \       "class %SUploader < CarrierWave::Uploader::Base\nend",
+      \     "test": "spec/models/%s_uploader_spec.rb",
+      \     "related": "app/models/images/%s.rb",
+      \     "keywords": "process version"
+      \ }},
+      \ "shrine": {
+      \   "app/uploaders/*_uploader.rb": {
+      \     "command": "uploader",
+      \     "template":
+      \       "class %SUploader < Shrine\nend",
+      \     "test": "spec/models/%s_uploader_spec.rb",
+      \     "keywords": "process plugin"
+      \ }},
+      \ "paper_trail": {
+      \   "app/models/*.rb": {
+      \     "keywords": "has_paper_trail"}},
+      \ "squeel":{
+      \   "app/models/*.rb": {
+      \     "keywords": "sifter"}},
+      \ "sidekiq": {
+      \   "app/workers/*.rb": {
+      \     "command": "worker",
+      \     "template": "class %SWorker\n  include Sidekiq::Worker\nend",
+      \     "keywords": "sidekiq_options"}},
+      \ "active_model_serializers": {
+      \   "app/serializers/*_serializer.rb": {
+      \     "command": "serializer",
+      \     "template": "class %SSerializer < ActiveModel::Serializer\nend",
+      \     "keywords": "attribute attributes cache cache_key type"}},
+      \ "alba": {
+      \   "app/resource/*_resource.rb": {
+      \     "command": "resource",
+      \     "template": "class %SResource\n  include Alba::Resource\nend",
+      \     "keywords": "attribute attributes root_key one many"}},
+      \ "aasm": {
+      \   "app/models/*.rb": {
+      \     "keywords": "aasm state event transitions"}},
+      \ "friendly_id": {
+      \   "app/models/*.rb": {
+      \     "keywords": "friendly_id"}},
+      \ "interactor": {
+      \   "app/interactors/*.rb": {
+      \     "command": "interactor",
+      \     "template": ["class %S", "include Interactor", "end"],
+      \     "test": "spec/interactors/%s_spec.rb",
+      \     "keywords": "organize" }}
+      \ }
+
+let g:rails_projections = {
+      \ "app/errors/*_error.rb": {
+      \   "command": "error",
+      \   "template": "class %SError\nend",
+      \   "test": "spec/errors/%s_error_spec.rb" },
+      \ "app/forms/*_form.rb": {
+      \   "command": "form",
+      \   "template": "class %SForm\nend",
+      \   "test": "spec/forms/%s_form_spec.rb" },
+      \ "app/presenters/*_presenter.rb": {
+      \   "command": "presenter",
+      \   "template": "class %SPresenter\nend",
+      \   "test": "spec/presenters/%s_presenter_spec.rb"},
+      \ "app/services/*.rb": {
+      \   "command": "service",
+      \   "template": "class %SService\nend",
+      \   "test": "spec/services/%s_spec.rb" },
+      \ "app/queries/*.rb": {
+      \   "command": "query",
+      \   "template": "class %SQuery\nend",
+      \   "test": "spec/queries/%s_spec.rb" }
+      \ }
 source ~/.vim/settings/bundle/easy-align.vim
-source ~/.vim/settings/bundle/rails.vim
-" source ~/.vim/settings/bundle/syntastic.vim
-" source ~/.vim/settings/bundle/ycm.vim
 source ~/.vim/settings/bundle/ultisnips.vim
 
 hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
