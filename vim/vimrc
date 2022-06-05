@@ -319,7 +319,11 @@ let g:surround_no_insert_mappings = 1
 let g:go_dispatch_enabled = 1
 let g:go_metalinter_autosave = 1
 
-let test#strategy = "dispatch"
+if has('nvim')
+  let test#strategy = "neovim"
+else
+  let test#strategy = "vimterminal"
+endif
 
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
