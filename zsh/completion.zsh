@@ -18,3 +18,14 @@ if [ -n "$LSCOLORS" ]; then
 elif [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
+
+# The section for zsh-autocomplete
+
+zstyle ':autocomplete:*' insert-unambiguous yes
+# yes: Tab first inserts a substring common to all listed completions, if any.
+
+zstyle ':autocomplete:*' widget-style menu-select
+# menu-select:   Same as `menu-complete`, but updates selection in menu.
+
+zstyle ':autocomplete:*' fzf-completion yes
+# yes: Tab first tries Fzf's completion, then falls back to Zsh's.

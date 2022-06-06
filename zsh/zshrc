@@ -49,6 +49,7 @@ zinit light-mode for \
   zdharma-continuum/zinit-annex-patch-dl \
   zdharma-continuum/zinit-annex-rust
 
+zinit light marlonrichert/zsh-autocomplete # It needs to be here before compdef
 zinit ice as"completion"
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -56,7 +57,7 @@ zinit light zsh-users/zsh-apple-touchbar
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice depth"1"
 zinit light romkatv/powerlevel10k
-zinit light okuramasafumi/zsh-sensible
+# zinit light okuramasafumi/zsh-sensible
 zinit light vasyharan/zsh-brew-services
 zinit light scriptingosx/mac-zsh-completions
 
@@ -80,12 +81,12 @@ fi
 
 # The most important feature of zsh
 # It's so slow that we want to do it once a day
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
-zmodload -i zsh/complist
+# autoload -Uz compinit
+# for dump in ~/.zcompdump(N.mh+24); do
+#   compinit
+# done
+# compinit -C
+# zmodload -i zsh/complist
 
 for config ($ZSH_DIR/*.zsh) do source $config; done
 
