@@ -45,7 +45,6 @@ Plug 'machakann/vim-sandwich' " Surround
 Plug 'mbbill/undotree'
 Plug 'thinca/vim-quickrun'
 Plug 'vim-jp/vimdoc-ja'
-Plug 'jsfaint/gen_tags.vim' " CTags generation
 Plug 'ryanoasis/vim-devicons'
 Plug 'cohama/lexima.vim'
 Plug 'zerowidth/vim-copy-as-rtf'
@@ -298,6 +297,7 @@ endif
 " CTags
 set tags&
 set tags+=gems.tags
+set tags+=stdlibs.tags
 
 " Unimpaired configuration
 " Bubble single lines
@@ -711,8 +711,6 @@ let g:vim_jsx_pretty_colorful_config = 1
 
 nmap <Leader>q <Plug>(quickrun)
 vmap <Leader>q <Plug>(quickrun-op)
-
-let g:loaded_gentags#gtags = 1
 
 " This auto folding behavior is so annoying
 let g:vim_markdown_folding_disabled = 1
