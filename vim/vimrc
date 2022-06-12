@@ -597,6 +597,7 @@ require'lspconfig'.jsonls.setup {
 
 require'lspconfig'.typeprof.setup {
   autostart = false,
+  cmd = { 'bundle', 'exec', 'typeprof', '--lsp', '--stdio' },
 }
 
 require'lspconfig'.steep.setup {
