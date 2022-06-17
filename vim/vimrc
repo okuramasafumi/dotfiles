@@ -85,7 +85,6 @@ if has('nvim')
   Plug 'b0o/schemastore.nvim' " JSON schema access
 
   Plug 'direnv/direnv.vim'
-  Plug 'kassio/neoterm'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'romgrk/nvim-treesitter-context' " Context
 
