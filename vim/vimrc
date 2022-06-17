@@ -49,6 +49,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'cohama/lexima.vim'
 Plug 'zerowidth/vim-copy-as-rtf'
 Plug 'github/copilot.vim'
+Plug 'direnv/direnv.vim'
 
 " Ruby/Rails
 Plug 'vim-ruby/vim-ruby'
@@ -84,7 +85,6 @@ if has('nvim')
 
   Plug 'b0o/schemastore.nvim' " JSON schema access
 
-  Plug 'direnv/direnv.vim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'romgrk/nvim-treesitter-context' " Context
 
