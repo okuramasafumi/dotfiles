@@ -4,7 +4,6 @@ set encoding=utf-8
 
 scriptencoding utf-8
 
-"dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -143,8 +142,6 @@ augroup END
 nnoremap <Space> <Nop>
 let mapleader = ' '
 
-" source ~/.vim/settings/neobundle.vim
-
 " % to bounce from do to end etc.
 " runtime! macros/matchit.vim
 
@@ -255,9 +252,6 @@ if has('autocmd')
     autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | redraw
   endif
 endif
-
-" Easy help keymapping
-" nnoremap <Leader>h :<C-u>help<Space>
 
 " Edit vimrc keymappings
 nnoremap <silent> <Leader>ev  :<C-u>edit $MYVIMRC<CR>
@@ -468,9 +462,6 @@ cmp.setup({
 snippet = {
   -- REQUIRED - you must specify a snippet engine
   expand = function(args)
-  -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-  -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-  -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
   vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 end,
 },
@@ -483,10 +474,7 @@ end,
     }),
   sources = cmp.config.sources({
   { name = 'nvim_lsp' },
-  -- { name = 'vsnip' }, -- For vsnip users.
-  -- { name = 'luasnip' }, -- For luasnip users.
   { name = 'ultisnips' }, -- For ultisnips users.
-  -- { name = 'snippy' }, -- For snippy users.
   }, {
   { name = 'treesitter' },
   }, {
@@ -698,12 +686,10 @@ let g:ale_fixers = {
 let g:ale_enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_disable_lsp = 1
-" let g:ale_javascript_prettier_options = '--no-semi --single-quote --jsx-single-quote --trailing-comma none'
 let g:ale_ruby_rubocop_executable='bundle'
 let g:ale_floating_preview=1
 let g:ale_cursor_detail = 1
 let g:ale_hover_to_floating_preview=1 " With Neovim it shows hover info in floating window
-" let g:ale_set_balloons=1 " Shows information wit balloon window in Vim
 let g:ale_echo_cursor = 0
 let g:rainbow_active = 1
 
