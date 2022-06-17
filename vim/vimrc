@@ -415,7 +415,6 @@ let g:rails_projections = {
       \   "template": "class %SQuery\nend",
       \   "test": "spec/queries/%s_spec.rb" }
       \ }
-source ~/.vim/settings/bundle/easy-align.vim
 source ~/.vim/settings/bundle/ultisnips.vim
 
 hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
@@ -697,6 +696,12 @@ let g:vim_jsx_pretty_colorful_config = 1
 
 nmap <Leader>q <Plug>(quickrun)
 vmap <Leader>q <Plug>(quickrun-op)
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " This auto folding behavior is so annoying
 let g:vim_markdown_folding_disabled = 1
