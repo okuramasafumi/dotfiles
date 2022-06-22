@@ -552,13 +552,15 @@ cmp.setup {
 }
 
 -- Setup lspconfig.
+local lspconfig = require'lspconfig'
+
 local tsserver_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['tsserver'].setup {
+lspconfig['tsserver'].setup {
   capabilities = tsserver_capabilities
 }
 
-require('lspconfig').yamlls.setup {
+lspconfig.yamlls.setup {
   settings = {
     yaml = {
       schemas = require('schemastore').json.schemas(),
@@ -572,7 +574,7 @@ require('lspconfig').yamlls.setup {
 local jsonls_capabilities = vim.lsp.protocol.make_client_capabilities()
 jsonls_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.jsonls.setup {
+lspconfig.jsonls.setup {
   capabilities = jsonls_capabilities,
   settings = {
     json = {
@@ -581,12 +583,12 @@ require'lspconfig'.jsonls.setup {
   },
 }
 
-require'lspconfig'.typeprof.setup {
+lspconfig.typeprof.setup {
   autostart = false,
   cmd = { 'bundle', 'exec', 'typeprof', '--lsp', '--stdio' },
 }
 
-require'lspconfig'.steep.setup {
+lspconfig.steep.setup {
   autostart = false,
 }
 
