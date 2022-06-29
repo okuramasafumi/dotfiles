@@ -599,6 +599,7 @@ lspconfig.typeprof.setup {
 
 lspconfig.steep.setup {
   autostart = false,
+  cmd = { 'bundle', 'exec', 'steep', 'langserver' },
 }
 
 require('gitsigns').setup()
@@ -620,10 +621,10 @@ require('fzf-lua').setup {
 }
 EOF
 colorscheme kanagawa
-if executable('typeprof')
+if executable('bin/typeprof')
   autocmd MyAutoCmd filetype ruby LspStart typeprof
 end
-if executable('steep')
+if executable('bin/steep')
   autocmd MyAutoCmd filetype ruby LspStart steep
 end
 
