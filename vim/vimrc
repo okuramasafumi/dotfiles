@@ -616,7 +616,7 @@ require("dapui").setup()
 
 require('fzf-lua').setup {
   oldfiles = {
-    include_current_session = false,  -- include bufs from current session
+    include_current_session = true,  -- include bufs from current session
   },
 }
 EOF
