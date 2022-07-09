@@ -437,7 +437,7 @@ nnoremap [Fugitive]C :<C-u>Git commit --amend<CR>
 nnoremap [Fugitive]b :<C-u>Git blame<CR>
 
 if has('nvim')
-lua << EOF
+lua << LUA
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "ruby", "javascript", "typescript", "tsx", "vue", "html", "css", "scss", "lua", "c", "rust", "vim", "regex", "markdown", "markdown_inline", "json", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
@@ -619,7 +619,7 @@ require('fzf-lua').setup {
     include_current_session = true,  -- include bufs from current session
   },
 }
-EOF
+LUA
 colorscheme kanagawa
 if executable('bin/typeprof')
   autocmd MyAutoCmd filetype ruby LspStart typeprof
