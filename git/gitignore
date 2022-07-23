@@ -59,6 +59,8 @@ TAGS
 !TAGS/
 tags
 .tags
+gems.tags
+stdlibs.tags
 !tags/
 gtags.files
 GTAGS
