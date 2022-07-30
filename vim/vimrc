@@ -73,6 +73,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'pearofducks/ansible-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
+Plug 'jparise/vim-graphql'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
