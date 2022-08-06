@@ -100,6 +100,7 @@ if has('nvim')
   Plug 'ray-x/cmp-treesitter'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'quangnguyen30192/cmp-nvim-tags'
+  Plug 'dmitmel/cmp-cmdline-history'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'onsails/lspkind-nvim'
 
@@ -533,7 +534,8 @@ cmp.setup.filetype('gitcommit', {
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' }
+    { name = 'buffer' },
+    { name = 'cmdline_history' },
   }
 })
 
@@ -541,9 +543,10 @@ cmp.setup.cmdline('/', {
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-  { name = 'path' }
+    { name = 'path' }
   }, {
-  { name = 'cmdline' }
+    { name = 'cmdline' },
+    { name = 'cmdline_history' },
   })
 })
 
