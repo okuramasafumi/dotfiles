@@ -40,7 +40,6 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'mhinz/vim-startify'
 Plug 'w0rp/ale'
 Plug 'luochen1990/rainbow'
-Plug 'machakann/vim-sandwich' " Surround
 Plug 'mbbill/undotree'
 Plug 'thinca/vim-quickrun'
 Plug 'vim-jp/vimdoc-ja'
@@ -121,6 +120,8 @@ if has('nvim')
   Plug 'rcarriga/nvim-dap-ui'
 
   Plug 'antoinemadec/FixCursorHold.nvim' " Better CursorHold
+
+  Plug 'kylechui/nvim-surround'
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
@@ -133,6 +134,7 @@ else
   Plug 'itchyny/lightline.vim'
 
   Plug 'junegunn/fzf.vim'
+  Plug 'machakann/vim-sandwich' " Surround
 endif
 
 " Add plugins to &runtimepath
@@ -619,6 +621,8 @@ require('rust-tools').setup({})
 require('dap-ruby').setup()
 
 require("dapui").setup()
+
+require("nvim-surround").setup()
 
 require('fzf-lua').setup {
   oldfiles = {
