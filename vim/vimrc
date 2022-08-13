@@ -422,7 +422,12 @@ let g:rails_projections = {
       \   "template": "class %SQuery\nend",
       \   "test": "spec/queries/%s_spec.rb" }
       \ }
-source ~/.vim/settings/bundle/ultisnips.vim
+
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
 hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
 
