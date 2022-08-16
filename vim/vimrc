@@ -39,7 +39,6 @@ Plug 'janko-m/vim-test'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'mhinz/vim-startify'
 Plug 'w0rp/ale'
-Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
 Plug 'thinca/vim-quickrun'
 Plug 'vim-jp/vimdoc-ja'
@@ -87,6 +86,7 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-context' " Context
   Plug 'nvim-treesitter/nvim-treesitter-refactor'
+  Plug 'p00f/nvim-ts-rainbow'
 
   Plug 'rebelot/kanagawa.nvim'
 
@@ -135,6 +135,7 @@ else
 
   Plug 'junegunn/fzf.vim'
   Plug 'machakann/vim-sandwich' " Surround
+  Plug 'luochen1990/rainbow'
 endif
 
 " Add plugins to &runtimepath
@@ -469,6 +470,14 @@ require'nvim-treesitter.configs'.setup {
     },
      highlight_current_scope = { enable = true },
   },
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  }
 }
 require('kanagawa').setup({
   transparent = true,
@@ -698,6 +707,8 @@ else
   nnoremap <Leader>d :<C-u>Dirvish<CR>
 
   source ~/.vim/settings/bundle/lightline.vim
+
+  let g:rainbow_active = 1
 endif
 
 let g:ale_linters = {
@@ -720,7 +731,6 @@ let g:ale_floating_preview=1
 let g:ale_cursor_detail = 1
 let g:ale_hover_to_floating_preview=1 " With Neovim it shows hover info in floating window
 let g:ale_echo_cursor = 0
-let g:rainbow_active = 1
 
 let g:vim_jsx_pretty_colorful_config = 1
 
