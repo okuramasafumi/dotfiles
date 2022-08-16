@@ -54,7 +54,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'skwp/vim-rspec', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'slim-template/vim-slim'
 
 " JavaScript
