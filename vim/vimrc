@@ -679,6 +679,7 @@ nnoremap <silent> [DAP]u  <cmd>lua require'dapui'.toggle()<CR>
 
 let g:cursorhold_updatetime = 500
 autocmd CursorHold * lua vim.diagnostic.open_float()
+set shada='20,<50,s10 " Reduce shada so that it's faster to load
 else
   set pyx=3 " For deoplete to work
   if executable('language_server-ruby')
