@@ -433,8 +433,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
-hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
-
 set hidden
 
 " Fugitive key mappings
