@@ -29,7 +29,6 @@ Plug 'kana/vim-textobj-user' | Plug 'rhysd/vim-textobj-ruby'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'rizzatti/dash.vim'
@@ -56,6 +55,7 @@ Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'slim-template/vim-slim'
+Plug 'okuramasafumi/rspec-current.vim'
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
@@ -124,7 +124,7 @@ if has('nvim')
   Plug 'rcarriga/nvim-dap-ui'
 
   Plug 'antoinemadec/FixCursorHold.nvim' " Better CursorHold
-
+  Plug 'gpanders/editorconfig.nvim'
   Plug 'kylechui/nvim-surround'
 else
   Plug 'prabirshrestha/async.vim'
@@ -140,6 +140,7 @@ else
   Plug 'junegunn/fzf.vim'
   Plug 'machakann/vim-sandwich' " Surround
   Plug 'luochen1990/rainbow'
+  Plug 'editorconfig/editorconfig-vim'
 endif
 
 " Add plugins to &runtimepath
@@ -833,6 +834,70 @@ let g:vim_markdown_folding_disabled = 1
 
 " Enable surround.vim keymap for sandwich
 runtime macros/sandwich/keymap/surround.vim
+
+function! Print_current_subject()
+  ruby <<RUBY
+  using Module.new { # rubocop:disable Lint/AmbiguousBlockAssociation
+  refine RubyVM::AbstractSyntaxTree::Node do
+    def traverse(*types, &block)
+      children.each do |node|
+        yield(node) if node.respond_to?(:type) && (types.empty? || types.include?(node.type))
+        node.traverse(*types, &block) if node.respond_to?(:traverse)
+      end
+    end
+  end
+}
+
+def current_subject_lines(filename, line)
+
+ast = RubyVM::AbstractSyntaxTree.parse(File.read(filename))
+current_node = nil
+min_distance = 10000 # 10000 is MAX
+
+# Find the current node
+ast.traverse(:ITER) do |node|
+  distance = line - node.first_lineno
+  break if distance < 0
+
+  if distance < min_distance
+    min_distance = distance
+    current_node = node
+  end
+end
+
+subject_nodes = []
+
+ast.traverse(:FCALL) do |node|
+  if node.children[0] == :subject
+    subject_nodes << node
+  end
+end
+
+distances = subject_nodes.map do |node|
+  current_node.first_lineno - node.first_lineno
+end
+
+min_distance = distances.reject(&:negative?).min
+nearest_subject_node = subject_nodes[distances.index(min_distance)]
+
+nearest_subject_iter_node = nil
+
+ast.traverse(:ITER) do |node|
+  if node.children.map(&:node_id).include?(nearest_subject_node.node_id)
+    nearest_subject_iter_node = node
+  end
+end
+
+subject_start_line = nearest_subject_iter_node.first_lineno
+subject_end_line = nearest_subject_iter_node.last_lineno
+subject_string = File.readlines(filename)[(subject_start_line - 1)..(subject_end_line - 1)].map(&:strip).join("\n")
+end
+
+
+puts current_subject_lines(Vim::Buffer.current.name, Vim::Buffer.current.line_number)
+RUBY
+endfunction
+
 
 " External rc files
 " Include vimrc for mac
