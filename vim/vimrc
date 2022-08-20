@@ -129,8 +129,6 @@ if has('nvim')
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'Shougo/deoplete-rct'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 
@@ -766,26 +764,6 @@ let g:cursorhold_updatetime = 500
 autocmd CursorHold * lua vim.diagnostic.open_float()
 set shada='20,<50,s10 " Reduce shada so that it's faster to load
 else
-  set pyx=3 " For deoplete to work
-  if executable('language_server-ruby')
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'language_server-ruby',
-          \ 'cmd': {server_info->['language_server-ruby']},
-          \ 'whitelist': ['ruby'],
-          \ })
-    autocmd FileType ruby setlocal omnifunc=lsp#complete
-  endif
-
-  let g:deoplete#enable_at_startup = 1
-  call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-  call deoplete#custom#source('LanguageClient',
-        \ 'min_pattern_length',
-        \ 2)
-  call deoplete#custom#option('sources', {
-        \ 'ruby': ['syntax', 'buffer', 'member', 'omni', 'LanguageClient', 'ultisnips', 'around'],
-        \})
-  autocmd CompleteDone * silent! pclose!
-
   " fzf key bindings
   nnoremap <Leader>f :<C-u>Files<CR>
   nnoremap <Leader>b :<C-u>Buffers<CR>
