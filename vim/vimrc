@@ -811,6 +811,11 @@ let g:vim_markdown_folding_disabled = 1
 " Enable surround.vim keymap for sandwich
 runtime macros/sandwich/keymap/surround.vim
 
+tnoremap <C-h> <c-\><c-n><c-w>h
+tnoremap <C-j> <c-\><c-n><c-w>j
+tnoremap <C-k> <c-\><c-n><c-w>k
+tnoremap <C-l> <c-\><c-n><c-w>l
+
 " External rc files
 " Include vimrc for mac
 " Include user's local vim config
