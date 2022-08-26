@@ -615,6 +615,10 @@ lspconfig.jsonls.setup {
   },
 }
 
+lspconfig.solargraph.setup {
+  cmd = { 'bundle', 'exec', 'solargraph', 'stdio' }
+}
+
 lspconfig.typeprof.setup {
   autostart = false,
   cmd = { 'bundle', 'exec', 'typeprof', '--lsp', '--stdio' },
