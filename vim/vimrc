@@ -449,6 +449,19 @@ nnoremap [Fugitive]c :<C-u>Git commit<CR>
 nnoremap [Fugitive]C :<C-u>Git commit --amend<CR>
 nnoremap [Fugitive]b :<C-u>Git blame<CR>
 
+" A function to tell if specified gem is installed
+function! HasBundled(name)
+  let file = getcwd().'/Gemfile.lock'
+  if filereadable(file)
+    for line in readfile(file)
+      if line =~ a:name.' '
+        return 1
+      endif
+    endfor
+  endif
+  return 0
+endfunction
+
 if has('nvim')
 lua << LUA
 require'nvim-treesitter.configs'.setup {
@@ -616,6 +629,7 @@ lspconfig.jsonls.setup {
 }
 
 lspconfig.solargraph.setup {
+  autostart = false,
   cmd = { 'bundle', 'exec', 'solargraph', 'stdio' }
 }
 
@@ -730,10 +744,13 @@ require('fzf-lua').setup {
 }
 LUA
 colorscheme kanagawa
-if executable('bin/typeprof')
+if HasBundled('solargraph')
+  autocmd MyAutoCmd filetype ruby LspStart solargraph
+end
+if HasBundled('typeprof')
   autocmd MyAutoCmd filetype ruby LspStart typeprof
 end
-if executable('bin/steep')
+if HasBundled('steep')
   autocmd MyAutoCmd filetype ruby LspStart steep
 end
 
