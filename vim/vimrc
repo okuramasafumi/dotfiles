@@ -291,14 +291,6 @@ if has('persistent_undo')
   set undofile
 endif
 
-" Ref.vim
-let g:ref_use_vimproc = 1
-
-" dash.vim configuration
-if has('mac')
-  nmap <silent> <Leader>d <Plug>DashSearch
-endif
-
 " CTags
 set tags&
 set tags+=gems.tags
