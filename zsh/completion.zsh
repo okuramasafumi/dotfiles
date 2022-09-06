@@ -18,11 +18,3 @@ if [ -n "$LSCOLORS" ]; then
 elif [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
-
-# The section for zsh-autocomplete
-
-zstyle ':autocomplete:*' widget-style menu-complete
-# menu-complete: Press again to cycle to next (previous) completion.
-
-zstyle ':autocomplete:*' fzf-completion yes
-# yes: Tab first tries Fzf's completion, then falls back to Zsh's.
