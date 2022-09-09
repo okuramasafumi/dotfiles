@@ -82,6 +82,7 @@ Plug 'preservim/vim-markdown'
 if has('nvim')
   Plug 'nvim-lua/plenary.nvim' " Utility
   Plug 'neovim/nvim-lspconfig' " Neovim native LSP
+  Plug 'lukas-reineke/lsp-format.nvim'
 
   Plug 'b0o/schemastore.nvim' " JSON schema access
 
@@ -662,6 +663,9 @@ lspconfig.steep.setup {
   autostart = false,
   cmd = { 'bundle', 'exec', 'steep', 'langserver' },
 }
+
+require("lsp-format").setup {}
+lspconfig.gopls.setup { on_attach = require("lsp-format").on_attach }
 
 local neogit = require("neogit")
 
