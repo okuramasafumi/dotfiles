@@ -81,6 +81,8 @@ Plug 'preservim/vim-markdown'
 
 if has('nvim')
   Plug 'nvim-lua/plenary.nvim' " Utility
+  Plug 'MunifTanjim/nui.nvim' " UI library
+
   Plug 'neovim/nvim-lspconfig' " Neovim native LSP
   Plug 'lukas-reineke/lsp-format.nvim'
 
@@ -91,6 +93,8 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter-context' " Context
   Plug 'nvim-treesitter/nvim-treesitter-refactor'
   Plug 'p00f/nvim-ts-rainbow'
+
+  Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 
   Plug 'rebelot/kanagawa.nvim'
 
@@ -806,6 +810,8 @@ nnoremap <silent> [DAP]u  <cmd>lua require'dapui'.toggle()<CR>
 let g:cursorhold_updatetime = 500
 autocmd CursorHold * lua vim.diagnostic.open_float()
 set shada='20,<50,s10 " Reduce shada so that it's faster to load
+
+let g:neo_tree_remove_legacy_commands = 1
 else
   " fzf key bindings
   nnoremap <Leader>f :<C-u>Files<CR>
