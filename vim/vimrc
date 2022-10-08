@@ -92,6 +92,7 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'nvim-treesitter/nvim-treesitter-context' " Context
   Plug 'nvim-treesitter/nvim-treesitter-refactor'
+  Plug 'RRethy/nvim-treesitter-endwise'
   Plug 'p00f/nvim-ts-rainbow'
 
   Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
@@ -516,7 +517,10 @@ require'nvim-treesitter.configs'.setup {
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
-  }
+  },
+  endwise = {
+    enable = true,
+  },
 }
 require('kanagawa').setup({
   transparent = true,
