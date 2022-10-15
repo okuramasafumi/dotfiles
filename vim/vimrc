@@ -115,6 +115,7 @@ if has('nvim')
   Plug 'TimUntersberger/neogit'
   Plug 'sindrets/diffview.nvim'
   Plug 'lewis6991/gitsigns.nvim'
+  Plug 'ruifm/gitlinker.nvim'
 
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
@@ -774,6 +775,8 @@ require('fzf-lua').setup {
     include_current_session = true,  -- include bufs from current session
   },
 }
+
+require("gitlinker").setup()
 LUA
 colorscheme kanagawa
 if HasBundled('solargraph')
