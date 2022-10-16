@@ -673,6 +673,10 @@ lspconfig.steep.setup {
   cmd = { 'bundle', 'exec', 'steep', 'langserver' },
 }
 
+lspconfig.ruby_ls.setup {
+  autostart = false,
+}
+
 require("lsp-format").setup {}
 lspconfig.gopls.setup { on_attach = require("lsp-format").on_attach }
 
@@ -787,6 +791,9 @@ if HasBundled('typeprof')
 end
 if HasBundled('steep')
   autocmd MyAutoCmd filetype ruby LspStart steep
+end
+if HasBundled('ruby-lsp')
+  autocmd MyAutoCmd filetype ruby LspStart ruby_ls
 end
 
 " fzf key bindings with fzf-lua
