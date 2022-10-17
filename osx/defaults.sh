@@ -28,6 +28,9 @@ defaults write com.apple.dock wvous-bl-corner -int 4
 
 killall Dock
 
+# Power ON sound
+defaults write com.apple.PowerChime ChimeOnNoHardware -bool true
+killall PowerChime
 
 # Gestures
 defaults write com.apple.dock showMissionControlGestureEnabled -bool true
