@@ -1,5 +1,6 @@
 vim/bundle
 vim/plugins
+vim/plugged
 vim/undo
 vim/undo-nvim
 vim/swap

@@ -8,7 +8,7 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-call plug#begin('~/.vim/plugins')
+call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
