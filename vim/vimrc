@@ -134,6 +134,7 @@ if has('nvim')
   Plug 'antoinemadec/FixCursorHold.nvim' " Better CursorHold
   Plug 'gpanders/editorconfig.nvim'
   Plug 'kylechui/nvim-surround'
+  Plug 'nvim-zh/colorful-winsep.nvim'
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
@@ -781,6 +782,8 @@ require('fzf-lua').setup {
 }
 
 require("gitlinker").setup()
+
+require('colorful-winsep').setup()
 LUA
 colorscheme kanagawa
 if HasBundled('solargraph')
