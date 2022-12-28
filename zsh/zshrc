@@ -59,6 +59,7 @@ zinit light romkatv/powerlevel10k
 zinit light okuramasafumi/zsh-sensible
 zinit light vasyharan/zsh-brew-services
 zinit light scriptingosx/mac-zsh-completions
+zinit light wfxr/forgit
 
 # For git and fzf
 zinit snippet https://gist.githubusercontent.com/okuramasafumi/9b5eb54850fc4a15813a1d4f87ff85fb/raw/addd40ccd9eabda9c678533daf9fa73adac41b7c/fzf-git.zsh
