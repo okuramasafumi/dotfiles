@@ -93,6 +93,7 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter-context' " Context
   Plug 'nvim-treesitter/nvim-treesitter-refactor'
   Plug 'RRethy/nvim-treesitter-endwise'
+  Plug 'RRethy/nvim-treesitter-textsubjects'
   Plug 'p00f/nvim-ts-rainbow'
 
   Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
@@ -492,6 +493,15 @@ require'nvim-treesitter.configs'.setup {
       -- `ap`.
       include_surrounding_whitespace = true,
     },
+  },
+  textsubjects = {
+      enable = true,
+      prev_selection = ',', -- (Optional) keymap to select the previous selection
+      keymaps = {
+          ['.'] = 'textsubjects-smart',
+          [';'] = 'textsubjects-container-outer',
+          ['i;'] = 'textsubjects-container-inner',
+      },
   },
   ensure_installed = { "ruby", "javascript", "typescript", "tsx", "vue", "html", "css", "scss", "lua", "c", "rust", "vim", "regex", "markdown", "markdown_inline", "json", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
