@@ -92,6 +92,7 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'nvim-treesitter/nvim-treesitter-context' " Context
   Plug 'nvim-treesitter/nvim-treesitter-refactor'
+  Plug 'CKolkey/ts-node-action'
   Plug 'RRethy/nvim-treesitter-endwise'
   Plug 'RRethy/nvim-treesitter-textsubjects'
   Plug 'p00f/nvim-ts-rainbow'
@@ -534,6 +535,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+vim.keymap.set({ "n" }, "K", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
 require('kanagawa').setup({
   transparent = true,
 })
