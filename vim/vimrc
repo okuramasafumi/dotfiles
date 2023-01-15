@@ -56,6 +56,7 @@ Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'slim-template/vim-slim'
 Plug 'okuramasafumi/rspec-current.vim'
+Plug 'pocke/rbs.vim'
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
