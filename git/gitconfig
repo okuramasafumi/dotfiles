@@ -27,11 +27,9 @@
   hash = rev-parse HEAD
   hist-search = "!f() { git grep $1 $(git rev-list --all); }; f"
 [merge]
-	tool = vimdiff
+	tool = nvimdiff2
 [mergetool]
-  prompt = true
-[mergetool "vimdiff"]
-	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  no-prompt = true
 [difftool]
   prompt = false
 [diff]
