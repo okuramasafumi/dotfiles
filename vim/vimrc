@@ -124,6 +124,7 @@ if has('nvim')
   Plug 'kyazdani42/nvim-web-devicons'
 
   Plug 'folke/trouble.nvim'
+  Plug 'folke/which-key.nvim'
 
   Plug 'simrat39/rust-tools.nvim'
 
