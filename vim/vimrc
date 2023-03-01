@@ -139,6 +139,7 @@ if has('nvim')
   Plug 'gpanders/editorconfig.nvim'
   Plug 'kylechui/nvim-surround'
   Plug 'nvim-zh/colorful-winsep.nvim'
+  Plug 'stevearc/oil.nvim'
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
@@ -798,6 +799,8 @@ require('fzf-lua').setup {
 require("gitlinker").setup()
 
 require('colorful-winsep').setup()
+
+require("oil").setup()
 LUA
 colorscheme kanagawa
 if HasBundled('solargraph')
