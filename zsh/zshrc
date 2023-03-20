@@ -90,9 +90,6 @@ zmodload -i zsh/complist
 
 for config ($ZSH_DIR/*.zsh) do source $config; done
 
-# bindkey -M emacs '^P' history-substring-search-up
-# bindkey -M emacs '^N' history-substring-search-down
-
 bindkey -e
 
 [ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
