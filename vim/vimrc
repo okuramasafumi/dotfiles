@@ -140,6 +140,7 @@ if has('nvim')
   Plug 'kylechui/nvim-surround'
   Plug 'nvim-zh/colorful-winsep.nvim'
   Plug 'stevearc/oil.nvim'
+  Plug 'simrat39/symbols-outline.nvim'
 else
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
@@ -801,6 +802,8 @@ require("gitlinker").setup()
 require('colorful-winsep').setup()
 
 require("oil").setup()
+
+require("symbols-outline").setup()
 LUA
 colorscheme kanagawa
 if HasBundled('solargraph')
