@@ -904,6 +904,9 @@ tnoremap <C-j> <c-\><c-n><c-w>j
 tnoremap <C-k> <c-\><c-n><c-w>k
 tnoremap <C-l> <c-\><c-n><c-w>l
 
+" Presentation command, make screen clean
+command! StartPresentation :tabdo :windo :set laststatus=0 | :set showtabline=0 | :set nonumber | :execute "sign define piet text=>> texthl=Search" | sign place 2 line=23 name=piet
+
 " External rc files
 " Include vimrc for mac
 " Include user's local vim config
