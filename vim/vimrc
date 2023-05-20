@@ -778,7 +778,9 @@ neogit.setup {
 
 require('gitsigns').setup()
 
-require('lualine').setup()
+require('lualine').setup({
+  sections = { lualine_c = {'filename', 'RSpecCurrentContext', 'RSpecCurrentSubject'} }
+})
 
 require('trouble').setup()
 
