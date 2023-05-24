@@ -12,7 +12,32 @@
 
 [plugins]
 
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.zsh-apple-touchbar]
+github = "zsh-users/zsh-apple-touchbar"
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma/fast-syntax-highlighting"
+
+[plugins.zsh-sensible]
+github = "okuramasafumi/zsh-sensible"
+
+[plugins.mac-zsh-completions]
+github = "scriptingosx/mac-zsh-completions"
+
+[plugins.forgit]
+github = "wfxr/forgit"
+
+[plugins.zsh-you-should-use]
+github = "MichaelAquilina/zsh-you-should-use"
+
+[plugins.git-and-fzf]
+gist = "9b5eb54850fc4a15813a1d4f87ff85fb"
+
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"

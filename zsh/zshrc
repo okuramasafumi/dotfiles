@@ -35,44 +35,7 @@ if is-at-least 4.3.11; then
   zstyle ":completion:*" recent-dirs-insert always
 fi
 
-### Added by Zinit's installer
-if [[ -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-  source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-  autoload -Uz _zinit
-  (( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-  zdharma-continuum/zinit-annex-as-monitor \
-  zdharma-continuum/zinit-annex-bin-gem-node \
-  zdharma-continuum/zinit-annex-patch-dl \
-  zdharma-continuum/zinit-annex-rust
-
-zinit ice as"completion"
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-apple-touchbar
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit ice depth"1"
-zinit light romkatv/powerlevel10k
-zinit light okuramasafumi/zsh-sensible
-zinit light vasyharan/zsh-brew-services
-zinit light scriptingosx/mac-zsh-completions
-zinit light wfxr/forgit
-
-# For git and fzf
-zinit snippet https://gist.githubusercontent.com/okuramasafumi/9b5eb54850fc4a15813a1d4f87ff85fb/raw/addd40ccd9eabda9c678533daf9fa73adac41b7c/fzf-git.zsh
-
-zinit ice as"program" pick"bin/git-fuzzy"
-zinit light bigH/git-fuzzy
-
-zinit light MichaelAquilina/zsh-you-should-use
-
-[ -e /usr/local/share/zsh/site-functions ] && zinit creinstall -Q /usr/local/share/zsh/site-functions
-fi
-
-### End of Zinit's installer chunk
+eval "$(sheldon source)"
 
 # Add some completions (we need this before compinit)
 [ -e /usr/local/share/zsh/site-functions ] && fpath=(/usr/local/share/zsh/site-functions $fpath)
