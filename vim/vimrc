@@ -85,6 +85,8 @@ if has('nvim')
 
   Plug 'neovim/nvim-lspconfig' " Neovim native LSP
   Plug 'lukas-reineke/lsp-format.nvim'
+  Plug 'SmiteshP/nvim-navic'
+  Plug 'utilyre/barbecue.nvim'
 
   Plug 'b0o/schemastore.nvim' " JSON schema access
 
@@ -805,6 +807,8 @@ require('colorful-winsep').setup()
 require("oil").setup()
 
 require("symbols-outline").setup()
+
+require("barbecue").setup()
 LUA
 colorscheme kanagawa
 if HasBundled('solargraph')
