@@ -1,5 +1,4 @@
 tap "heroku/brew" # Heroku CLI
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
 
@@ -11,6 +10,7 @@ brew "curl" # HTTP client
 brew "direnv" # Environment variable management
 brew "exercism" # Practice programming
 brew "fd" # Find files
+brew "gcc"
 brew "gh" # GitHub CLI
 brew "git" # VCS
 brew "gitui" # TUI for Git
@@ -63,7 +63,7 @@ cask "messenger" # Communication
 cask "microsoft-teams" # Communication
 cask "ngrok" # Proxy
 cask "obsidian" # Markdown editor
-cask "postgres" # RDBMS
+cask "postgres-unofficial" # RDBMS
 cask "postico" # Postgres client
 cask "raindropio" # Bookmark management
 cask "raycast" # Launcher
@@ -73,5 +73,3 @@ cask "thorium" # EPUB reader
 cask "ticktick" # TODO management
 cask "timing" # Time management
 cask "visual-studio-code" # Editor
-
-mas
