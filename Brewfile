@@ -40,6 +40,7 @@ brew "zsh" # Shell
 
 cask "1password" # Password manager
 cask "1password-cli" # Password manager
+cask "bartender" # Menu bar management
 cask "brave-browser" # Browser
 cask "dash" # Document viewer
 cask "discord" # Communication
@@ -73,3 +74,4 @@ cask "thorium" # EPUB reader
 cask "ticktick" # TODO management
 cask "timing" # Time management
 cask "visual-studio-code" # Editor
+cask "zoom" # Communication
