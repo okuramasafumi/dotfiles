@@ -22,6 +22,8 @@ mkdir "$HOME/.config/nvim"
 ln -s "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
 ln -s "$HOME/.vimrc" "$HOME/.config/nvim/init.nvim"
 
+brew bundle --file="$DOTFILES_PATH/Brewfile"
+
 sudo "$DOTFILES_PATH/macos/defaults.sh"
 
 printf "dotfiles installed\n"
