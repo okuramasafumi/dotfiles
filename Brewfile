@@ -1,5 +1,6 @@
 tap "heroku/brew" # Heroku CLI
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/services"
 
 brew "aichat" # ChatGPT
