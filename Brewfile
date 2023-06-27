@@ -58,7 +58,7 @@ cask "google-drive" # File sharing
 cask "iina" # Movie player
 cask "iterm2" # Terminal
 cask "jetbrains-toolbox" # Jetbrain tool management
-cask "carabiner-elements" # Keyboard modifier
+cask "karabiner-elements" # Keyboard modifier
 cask "lulu" # Firewall
 cask "messenger" # Communication
 cask "microsoft-teams" # Communication
