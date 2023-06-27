@@ -18,7 +18,7 @@ ln -fhs "$HOME/.zsh/zshrc" "$HOME/.zshrc"
 mkdir -p "$HOME/.config"
 ln -fhs "$DOTFILES_PATH/karabiner" "$HOME/.config/karabiner"
 mkdir -p "$HOME/.config/sheldon"
-ln -fhs "$DOTFILES_PATH/zsh/plugin.toml" "$HOME/.config/sheldon/plugin.toml"
+ln -fhs "$DOTFILES_PATH/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 mkdir -p "$HOME/.config/nvim"
 # Temporary solution, I'm goint to migrate to init.lua
 ln -fhs "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
