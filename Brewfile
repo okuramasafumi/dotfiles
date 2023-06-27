@@ -11,6 +11,7 @@ brew "curl" # HTTP client
 brew "direnv" # Environment variable management
 brew "exercism" # Practice programming
 brew "fd" # Find files
+brew "fnm" # Node.js version manager
 brew "gcc"
 brew "gh" # GitHub CLI
 brew "git" # VCS
