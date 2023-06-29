@@ -7,6 +7,7 @@ brew "aichat" # ChatGPT
 brew "bash" # Shell
 brew "bat" # Display file content
 brew "circleci" # local CI
+brew "cloc" # Count Lines Of Code
 brew "curl" # HTTP client
 brew "direnv" # Environment variable management
 brew "exercism" # Practice programming
