@@ -55,6 +55,10 @@ for config ($ZSH_DIR/*.zsh) do source $config; done
 
 bindkey -e
 
+if type rbenv > /dev/null 2>&1; then
+  eval "$(rbenv init - zsh)"
+fi
+
 [ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
 [ -f /usr/local/share/chruby/auto.sh ] && source /usr/local/share/chruby/auto.sh
 
