@@ -45,7 +45,3 @@ defaults write com.apple.ActivityMonitor IconType -int 5
 # Ask for password after 60 seconds
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 60
-
-# Do not write RAM backup during sleep
-# See: https://aotamasaki.hatenablog.com/entry/intelmac_crash_during_sleep
-pmset hibernatemode 0
