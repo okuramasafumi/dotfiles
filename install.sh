@@ -20,9 +20,7 @@ ln -fhs "$DOTFILES_PATH/karabiner" "$HOME/.config/karabiner"
 mkdir -p "$HOME/.config/sheldon"
 ln -fhs "$DOTFILES_PATH/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 mkdir -p "$HOME/.config/nvim"
-# Temporary solution, I'm goint to migrate to init.lua
-ln -fhs "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
-ln -fhs "$HOME/.vimrc" "$HOME/.config/nvim/init.nvim"
+ln -fhs "$DOTFILES_PATH/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 
 brew bundle --file="$DOTFILES_PATH/Brewfile"
 
