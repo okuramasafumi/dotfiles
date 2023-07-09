@@ -544,10 +544,11 @@ vim.opt.undofile = true -- Persistent undo
 local wk = require("which-key")
 wk.register({
   ["]<space>"] = {":<C-u>call append(expand('.'), '')<Cr>j", "Add one empty line to below"},
-  ["<leader>g"] = {
+  ["<leader>g"] = { -- Git related
     name = "+git",
     a = {":<C-u>!git add %<Cr>", "Add current file"},
-    c = {":<C-u>!git commit<Cr>", "Git commit"},
+    c = {":<C-u>Neogit commit<Cr>", "Git commit"},
+    g = {":Neogit<Cr>", "Open Neogit"},
   }
 })
 
