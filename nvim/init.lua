@@ -120,6 +120,16 @@ require("lazy").setup({
   -- LSP section
   "neovim/nvim-lspconfig",
   'lukas-reineke/lsp-format.nvim', -- Async formatting
+  {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+      require('lspsaga').setup({})
+    end,
+    dependenices = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    }
+  },
   -- Editing support
   {
     "jose-elias-alvarez/null-ls.nvim",
