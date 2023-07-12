@@ -503,12 +503,10 @@ require("lazy").setup({
       local ss = require("smart-splits")
       local wk = require("which-key")
       wk.register({
-        ["CTRL"] = {
-          h = { ss.move_cursor_left, "Move cursor left" },
-          j = { ss.move_cursor_down, "Move cursor down" },
-          k = { ss.move_cursor_up, "Move cursor up" },
-          l = { ss.move_cursor_right, "Move cursor right" },
-        }
+        ["<C-h>"] = { ss.move_cursor_left, "Move cursor left" },
+        ["<C-j>"] = { ss.move_cursor_down, "Move cursor down" },
+        ["<C-k>"] = { ss.move_cursor_up, "Move cursor up" },
+        ["<C-l>"] = { ss.move_cursor_right, "Move cursor right" },
       })
     end
   },
