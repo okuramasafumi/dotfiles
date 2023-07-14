@@ -532,6 +532,7 @@ require("lazy").setup({
       {'nvim-lua/plenary.nvim'},
     }
   },
+  "ethanholz/nvim-lastplace", -- Restore last cursor position
   "direnv/direnv.vim" -- direnv integration
 })
 
