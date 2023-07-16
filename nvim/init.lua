@@ -88,14 +88,6 @@ require("lazy").setup({
           },
           highlight_current_scope = { enable = true },
         },
-        rainbow = {
-          enable = true,
-          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-          max_file_lines = nil, -- Do not enable for files with more than n lines, int
-          -- colors = {}, -- table of hex strings
-          -- termcolors = {} -- table of colour name strings
-        },
         endwise = {
           enable = true,
         },
@@ -113,8 +105,8 @@ require("lazy").setup({
       'nvim-treesitter/nvim-treesitter-context', -- Code context
       'nvim-treesitter/nvim-treesitter-refactor', -- Refactoring support
       'RRethy/nvim-treesitter-endwise', -- Complete end
-      'HiPhish/nvim-ts-rainbow2', -- Parenthesis rainbow
       'windwp/nvim-ts-autotag', -- Auto close tags
+      'HiPhish/rainbow-delimiters.nvim' -- Rainbow delimiters
     }
   },
   -- LSP section
@@ -125,6 +117,9 @@ require("lazy").setup({
     config = function()
       require('lspsaga').setup({})
     end,
+    keys = {
+      { "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump to next diagnostic with Lspsaga" }
+    },
     dependenices = {
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
