@@ -403,6 +403,14 @@ require("lazy").setup({
     config = true,
     event = { "WinNew" },
   },
+  {
+    'rmagatti/goto-preview',
+    config = function()
+      require('goto-preview').setup {
+        default_mappings = true
+      }
+    end
+  },
   -- Debugging
   {
     "mfussenegger/nvim-dap",
