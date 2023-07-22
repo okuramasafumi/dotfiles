@@ -471,6 +471,7 @@ require("lazy").setup({
   "pocke/rbs.vim", -- Including filetype detector
   "slim-template/vim-slim", -- Slim template
   -- JavaScript/TypeScript
+  "MaxMEllon/vim-jsx-pretty",
   -- Git
   {
     'NeogitOrg/neogit', -- Git interface
