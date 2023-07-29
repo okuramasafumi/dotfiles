@@ -473,7 +473,13 @@ require("lazy").setup({
       }
     }
   },
-  "lewis6991/gitsigns.nvim", -- Sign with Git status
+  {
+    "lewis6991/gitsigns.nvim", -- Sign with Git status
+    lazy = true,
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
   {
     'akinsho/git-conflict.nvim', -- Fancy conflict viewer
     version = "*",
