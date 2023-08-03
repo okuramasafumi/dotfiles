@@ -559,6 +559,7 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.spelllang = "en,cjk" -- Spellcheck language
 vim.opt.undofile = true -- Persistent undo
+vim.opt.laststatus = 3 -- always and ONLY the last window
 
 -- Key mappings
 local wk = require("which-key")
