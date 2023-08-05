@@ -137,12 +137,6 @@ require("lazy").setup({
         sources = {
           null_ls.builtins.diagnostics.eslint_d,
           null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.diagnostics.rubocop.with{
-            prefer_local = "bin"
-          },
-          null_ls.builtins.formatting.rubocop.with{
-            prefer_local = "bin"
-          },
           null_ls.builtins.diagnostics.tsc,
         },
       })
@@ -620,4 +614,40 @@ lspconfig.steep.setup {
   cmd = { 'bundle', 'exec', 'steep', 'langserver' },
 }
 
-lspconfig.ruby_ls.setup {}
+-- The config is from https://github.com/neovim/nvim-lspconfig/pull/2498
+lspconfig.ruby_ls.setup {
+  on_attach = function(client, buffer)
+    -- in the case you have an existing `on_attach` function
+    -- with mappings you share with other lsp clients configs
+    pcall(on_attach, client, buffer)
+    local diagnostic_handler = function ()
+      local params = vim.lsp.util.make_text_document_params(buffer)
+      client.request(
+      'textDocument/diagnostic',
+      {textDocument = params},
+      function(err, result)
+        if err then
+          local err_msg = string.format("ruby-lsp - diagnostics error - %s", vim.inspect(err))
+          vim.lsp.log.error(err_msg)
+        end
+        if not result then return end
+        vim.lsp.diagnostic.on_publish_diagnostics(
+        nil,
+        vim.tbl_extend('keep', params, { diagnostics = result.items }),
+        { client_id = client.id }
+        )
+      end
+      )
+    end
+    diagnostic_handler() -- to request diagnostics when attaching the client to the buffer
+    local ruby_group = vim.api.nvim_create_augroup('ruby_ls', {clear = false})
+    vim.api.nvim_create_autocmd(
+    {'BufEnter', 'BufWritePre', 'InsertLeave', 'TextChanged'},
+    {
+      buffer = buffer,
+      callback = diagnostic_handler,
+      group = ruby_group,
+    }
+    )
+  end
+}
