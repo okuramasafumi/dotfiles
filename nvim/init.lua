@@ -567,16 +567,6 @@ wk.register({
   }
 })
 
-local diagnostic_hover_augroup_name = "lspconfig-diagnostic"
-local function on_cursor_hold()
-  if vim.lsp.buf.server_ready() then
-    vim.diagnostic.open_float()
-  end
-end
-vim.api.nvim_set_option('updatetime', 500)
-vim.api.nvim_create_augroup(diagnostic_hover_augroup_name, { clear = true })
-vim.api.nvim_create_autocmd({ "CursorHold" }, { group = diagnostic_hover_augroup_name, callback = on_cursor_hold })
-
 -- LSP
 -- Setup lspconfig.
 local lspconfig = require'lspconfig'
