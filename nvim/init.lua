@@ -538,6 +538,16 @@ require("lazy").setup({
       require("nvim-lastplace").setup{}
     end
   },
+  {
+    'stevearc/overseer.nvim', -- Task management
+    config = function()
+      require('overseer').setup()
+    end
+  },
+  {
+    'michaelb/sniprun',
+    build = 'sh ./install.sh'
+  },
   "direnv/direnv.vim" -- direnv integration
 })
 
@@ -554,6 +564,15 @@ vim.opt.shiftwidth = 2
 vim.opt.spelllang = "en,cjk" -- Spellcheck language
 vim.opt.undofile = true -- Persistent undo
 vim.opt.laststatus = 3 -- always and ONLY the last window
+
+-- autocmd
+local spell_group = vim.api.nvim_create_augroup('spell', {clear = false})
+vim.api.nvim_create_autocmd({'BufEnter'}, {
+  pattern = {'*.txt','*.md','*.markdown','COMMIT_EDITMSG'},
+  group = spell_group,
+  command = 'setlocal spell',
+  desc = 'Set spell for text files'
+})
 
 -- Key mappings
 local wk = require("which-key")
@@ -597,10 +616,12 @@ lspconfig.jsonls.setup {
 }
 
 lspconfig.typeprof.setup {
+  autostart = false,
   cmd = { 'bundle', 'exec', 'typeprof', '--lsp', '--stdio' },
 }
 
 lspconfig.steep.setup {
+  autostart = false,
   cmd = { 'bundle', 'exec', 'steep', 'langserver' },
 }
 
