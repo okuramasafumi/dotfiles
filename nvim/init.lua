@@ -332,8 +332,11 @@ require("lazy").setup({
             f = { builtin.find_files, "Find File" },
             o = { builtin.oldfiles, "Find File from history" },
           },
-          r = { builtin.grep_string, "Grep string" },
-          l = { builtin.live_grep, "Live grep" },
+          r = {
+            name = "+grep",
+            s = { builtin.grep_string, "Grep string under cursor" },
+            l = { builtin.live_grep, "Live grep" },
+          }
           g = {
             name = "git",
             c = { builtin.git_commits, "Git commits" },
@@ -656,3 +659,45 @@ lspconfig.ruby_ls.setup {
     )
   end
 }
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+wk.register({
+  ['<space>e'] = { vim.diagnostic.open_float, 'Open diagnostic float' },
+  ['[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic' },
+  [']d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic' },
+  ['<space>q'] = { vim.diagnostic.setloclist, 'Set loclist' },
+})
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    wk.register({
+      ['gD'] = { { vim.lsp.buf.declaration, 'Go to declaration' }, opts },
+      ['gd'] = { { vim.lsp.buf.definition, 'Go to definition' }, opts },
+      ['K'] = { { vim.lsp.buf.hover, 'Hover' }, opts },
+      ['gi'] = { { vim.lsp.buf.implementation, 'Go to implementation' }, opts },
+      ['<C-k>'] = { { vim.lsp.buf.signature_help, 'Show signature help' }, opts },
+      -- ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, opts },
+      -- ['<space>wr'] = { vim.lsp.buf.remove_workspace_folder, opts },
+      -- ['<space>wl'] = { function()
+      --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      -- end, opts },
+      ['<space>D'] = { { vim.lsp.buf.type_definition, 'Go to type definition' }, opts },
+      ['<space>rn'] = { { vim.lsp.buf.rename, 'Rename' }, opts },
+      ['<space>ca'] = { { vim.lsp.buf.code_action, 'Code action' }, opts },
+      ['gr'] = { { vim.lsp.buf.references, 'Go to references' }, opts },
+      ['<space>f'] = { { function()
+        vim.lsp.buf.format { async = true }
+      end, 'Format' }, opts },
+    })
+  end,
+})
