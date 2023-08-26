@@ -336,7 +336,7 @@ require("lazy").setup({
             name = "+grep",
             s = { builtin.grep_string, "Grep string under cursor" },
             l = { builtin.live_grep, "Live grep" },
-          }
+          },
           g = {
             name = "git",
             c = { builtin.git_commits, "Git commits" },
