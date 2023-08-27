@@ -547,10 +547,6 @@ require("lazy").setup({
       require('overseer').setup()
     end
   },
-  {
-    'michaelb/sniprun',
-    build = 'sh ./install.sh'
-  },
   "direnv/direnv.vim" -- direnv integration
 })
 
