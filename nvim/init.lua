@@ -485,6 +485,9 @@ require("lazy").setup({
   {
     'ruifm/gitlinker.nvim', -- Permalink to GitHub and others
     dependencies = 'nvim-lua/plenary.nvim',
+    config = function()
+      require("gitlinker").setup()
+    end
   },
   -- Misc section
   {
