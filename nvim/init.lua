@@ -344,6 +344,7 @@ require("lazy").setup({
             s = { builtin.git_status, "Git status" },
           },
           tb = { builtin.builtin, "List builtin commands" },
+          qf = { builtin.quickfix, "Quickfix" },
           u = { "<cmd>Telescope undo<cr>", "List undos"}
         },
       })
