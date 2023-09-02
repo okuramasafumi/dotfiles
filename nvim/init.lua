@@ -620,7 +620,7 @@ lspconfig.jsonls.setup {
 
 -- lspconfig.typeprof.setup {}
 
-lspconfig.steep.setup {}
+-- lspconfig.steep.setup {}
 
 -- The config is from https://github.com/neovim/nvim-lspconfig/pull/2498
 lspconfig.ruby_ls.setup {
