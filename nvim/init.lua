@@ -334,7 +334,7 @@ require("lazy").setup({
           },
           r = {
             name = "+grep",
-            s = { builtin.grep_string, "Grep string under cursor" },
+            r = { builtin.grep_string, "Grep string under cursor" },
             l = { builtin.live_grep, "Live grep" },
           },
           g = {
