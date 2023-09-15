@@ -112,19 +112,6 @@ require("lazy").setup({
   -- LSP section
   "neovim/nvim-lspconfig",
   'lukas-reineke/lsp-format.nvim', -- Async formatting
-  {
-    'nvimdev/lspsaga.nvim',
-    config = function()
-      require('lspsaga').setup({})
-    end,
-    keys = {
-      { "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump to next diagnostic with Lspsaga" }
-    },
-    dependenices = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    }
-  },
   -- Editing support
   {
     "jose-elias-alvarez/null-ls.nvim",
