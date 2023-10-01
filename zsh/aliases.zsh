@@ -1,4 +1,7 @@
+# Vim
 alias vi='vim -N -u NONE -U NONE --noplugin --cmd "filetype indent on"'
+alias nv='nvim'
+
 alias sed='gsed'
 alias ss='ssh'
 alias bu='bundle'
