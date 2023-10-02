@@ -7,8 +7,6 @@ alias ss='ssh'
 alias bu='bundle'
 alias be='bundle exec'
 alias bi='bundle install'
-alias va='vagrant'
-alias vsh='vagrant ssh'
 alias reload='source ~/.zshrc'
 
 # ls
