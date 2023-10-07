@@ -316,7 +316,7 @@ require("lazy").setup({
         ["<leader>"] = {
           f = {
             name = "+file",
-            f = { builtin.find_files, "Find File" },
+            f = { builtin.git_files, "Find File" },
             o = { builtin.oldfiles, "Find File from history" },
           },
           r = {
