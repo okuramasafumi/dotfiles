@@ -326,7 +326,7 @@ require("lazy").setup({
           },
           g = {
             name = "git",
-            c = { builtin.git_commits, "Git commits" },
+            lc = { builtin.git_commits, "Git commits" },
             b = { builtin.git_branches, "Git branches" },
             s = { builtin.git_status, "Git status" },
           },
@@ -581,7 +581,7 @@ wk.register({
   ["<leader>g"] = { -- Git related
     name = "+git",
     a = {":<C-u>!git add %<Cr>", "Add current file"},
-    c = {":<C-u>Neogit commit<Cr>", "Git commit"},
+    cc = {":<C-u>Neogit commit<Cr>", "Git commit"},
     g = {":Neogit<Cr>", "Open Neogit"},
   }
 })
