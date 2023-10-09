@@ -682,7 +682,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       ['gd'] = { { vim.lsp.buf.definition, 'Go to definition' }, opts },
       ['K'] = { { vim.lsp.buf.hover, 'Hover' }, opts },
       ['gi'] = { { vim.lsp.buf.implementation, 'Go to implementation' }, opts },
-      ['<C-k>'] = { { vim.lsp.buf.signature_help, 'Show signature help' }, opts },
+      ['<C-S-k>'] = { { vim.lsp.buf.signature_help, 'Show signature help' }, opts },
       -- ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, opts },
       -- ['<space>wr'] = { vim.lsp.buf.remove_workspace_folder, opts },
       -- ['<space>wl'] = { function()
