@@ -398,6 +398,12 @@ require("lazy").setup({
       require('spectre').setup()
     end,
   },
+  {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require('scrollbar').setup()
+    end,
+  },
   -- Debugging
   {
     "mfussenegger/nvim-dap",
@@ -466,9 +472,9 @@ require("lazy").setup({
   },
   {
     "lewis6991/gitsigns.nvim", -- Sign with Git status
-    lazy = true,
     config = function()
       require("gitsigns").setup()
+      require("scrollbar.handlers.gitsigns").setup()
     end,
   },
   {
