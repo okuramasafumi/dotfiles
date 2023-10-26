@@ -392,6 +392,12 @@ require("lazy").setup({
       }
     end
   },
+  {
+    'nvim-pack/nvim-spectre',
+    config = function()
+      require('spectre').setup()
+    end,
+  },
   -- Debugging
   {
     "mfussenegger/nvim-dap",
