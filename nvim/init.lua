@@ -516,7 +516,21 @@ require("lazy").setup({
       })
     end
   },
-  "github/copilot.vim", -- Copilot
+  {
+    "zbirenbaum/copilot.lua", -- copilot
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = "<Tab>"
+          }
+        }
+      })
+    end,
+  },
   "wsdjeg/vim-fetch", -- Line number and column number
   "gpanders/editorconfig.nvim", -- Editorconfig
   'jghauser/mkdir.nvim', -- Create directory when it's missing
