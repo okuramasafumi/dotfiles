@@ -15,8 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
-	"nvim-lua/plenary.nvim", -- Utility
-	"MunifTanjim/nui.nvim", -- UI
+  "nvim-lua/plenary.nvim", -- Utility
+  "MunifTanjim/nui.nvim", -- UI
   'b0o/schemastore.nvim', -- JSON schema access
   {
     "folke/tokyonight.nvim",
