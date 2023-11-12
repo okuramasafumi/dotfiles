@@ -424,7 +424,6 @@ require("lazy").setup({
   -- Testing
   {
     'nvim-neotest/neotest',
-    lazy = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -433,17 +432,10 @@ require("lazy").setup({
       'zidhuss/neotest-minitest',
     },
     config = function()
-      local neotest = require('neotest').setup({
+      require('neotest').setup({
         adapters = {
           require("neotest-rspec"),
           require('neotest-minitest'),
-        }
-      })
-      local wk = require("which-key")
-      wk.register({
-        ["<leader>"] = {
-          t = { neotest.run.run(), "Run nearest test" },
-          T = { neotest.run.run(vim.fn.expand("%")), "Run file test" },
         }
       })
     end
@@ -695,8 +687,11 @@ wk.register({
   ['[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic' },
   [']d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic' },
   ['<space>q'] = { vim.diagnostic.setloclist, 'Set loclist' },
+  ["<leader>"] = {
+    t = { "<cmd>Neotest run<cr>", "Run nearest test" },
+    T = { "<cmd>Neotest run file<cr>", "Run file test" },
+  },
 })
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
