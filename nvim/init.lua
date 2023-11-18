@@ -370,7 +370,13 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim', -- statusline
     dependencies = {
       "nvim-tree/nvim-web-devicons", -- optional dependency
-    }
+      "okuramasafumi/rspec-current.vim",
+    },
+    config = function()
+      require("lualine").setup{
+        sections = {lualine_c = {'RSpecCurrentSubject'}}
+      }
+    end
   },
   {
     "luukvbaal/statuscol.nvim", -- statuscolumn
