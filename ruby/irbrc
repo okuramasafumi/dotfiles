@@ -10,6 +10,8 @@ IRB.conf[:PROMPT][:MY_PROMPT] = {
   :RETURN => "%s\n"   # メソッドから戻る時のプロンプト
 }
 
+IRB.conf[:COMPLETOR] = :type
+
 IRB.conf[:PROMPT_MODE] = :MY_PROMPT
 
 begin
