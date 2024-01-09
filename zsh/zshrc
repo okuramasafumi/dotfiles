@@ -42,12 +42,7 @@ eval "$(sheldon source)"
 
 [ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
 
-# The most important feature of zsh
-# It's so slow that we want to do it once a day
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
 compinit -C
 zmodload -i zsh/complist
 
