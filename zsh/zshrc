@@ -38,7 +38,7 @@ fi
 eval "$(sheldon source)"
 
 # Add some completions (we need this before compinit)
-[ -e /usr/local/share/zsh/site-functions ] && fpath=(/usr/local/share/zsh/site-functions $fpath)
+[ -e $(brew --prefix)/share/zsh/site-functions ] && fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
 [ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
 
@@ -54,8 +54,8 @@ if type rbenv > /dev/null 2>&1; then
   eval "$(rbenv init - zsh)"
 fi
 
-[ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
-[ -f /usr/local/share/chruby/auto.sh ] && source /usr/local/share/chruby/auto.sh
+[ -f $(brew --prefix)/share/chruby/chruby.sh ] && source $(brew --prefix)/share/chruby/chruby.sh
+[ -f $(brew --prefix)/share/chruby/auto.sh ] && source $(brew --prefix)/share/chruby/auto.sh
 
 # fnm setup for Node.js version switch
 eval "$(fnm env --use-on-cd --log-level quiet)"
