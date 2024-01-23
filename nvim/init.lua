@@ -592,6 +592,12 @@ require("lazy").setup({
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {}
   },
+  {
+    'stevearc/oil.nvim', -- File explorer
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
   "direnv/direnv.vim" -- direnv integration
 })
 
