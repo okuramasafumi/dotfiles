@@ -134,6 +134,28 @@ require("lazy").setup({
     end,
   },
   {
+    'stevearc/conform.nvim',
+    config = function()
+      require('conform').setup({
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+        formatters_by_ft = {
+          ruby = function(bufnr)
+            if vim.fn.filereadable(".standard.yml") == 1 then
+              return { "standardrb" }
+            elseif vim.fn.filereadable(".rubocop.yml") == 1 then
+              return { "rubocop" }
+            else
+              return { }
+            end
+          end,
+        }
+      })
+    end,
+  },
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
@@ -364,7 +386,10 @@ require("lazy").setup({
     dependencies = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons", -- optional dependency
-    }
+    },
+    opts = {
+      theme = 'tokyonight',
+    },
   },
   {
     'nvim-lualine/lualine.nvim', -- statusline
@@ -374,7 +399,10 @@ require("lazy").setup({
     },
     config = function()
       require("lualine").setup{
-        sections = {lualine_c = {'RSpecCurrentSubject'}}
+        sections = {lualine_c = {'RSpecCurrentSubject'}},
+        options = {
+          theme = 'tokyonight',
+        }
       }
     end
   },
