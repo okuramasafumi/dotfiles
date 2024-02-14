@@ -626,7 +626,16 @@ require("lazy").setup({
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-  "direnv/direnv.vim" -- direnv integration
+  "direnv/direnv.vim", -- direnv integration
+  {
+    "uga-rosa/ccc.nvim", -- Color utility
+    opts = {
+      highlighter = {
+        auto_enable = true,
+        lsp = true,
+      },
+    }
+  }
 })
 
 -- Misc
