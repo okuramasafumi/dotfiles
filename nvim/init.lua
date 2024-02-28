@@ -118,17 +118,17 @@ require("lazy").setup({
   'lukas-reineke/lsp-format.nvim', -- Async formatting
   -- Editing support
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     dependencies = {
+      "nvimtools/none-ls-extras.nvim",
       "nvim-lua/plenary.nvim"
     },
     config = function()
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
-          null_ls.builtins.diagnostics.eslint_d,
-          null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.diagnostics.tsc,
+          require("none-ls.diagnostics.eslint_d"),
+          require("none-ls.formatting.eslint_d"),
         },
       })
     end,
