@@ -370,7 +370,7 @@ require("lazy").setup({
     opts = {},
   },
   {
-    "nvim-tree/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua", -- Tree UI
     version = "*",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
@@ -431,7 +431,7 @@ require("lazy").setup({
     end
   },
   {
-    'nvim-pack/nvim-spectre',
+    'nvim-pack/nvim-spectre', -- Search and replace
     config = function()
       require('spectre').setup()
     end,
