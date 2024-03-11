@@ -495,6 +495,7 @@ require("lazy").setup({
   },
   -- JavaScript/TypeScript
   "MaxMEllon/vim-jsx-pretty",
+  { 'dmmulroy/ts-error-translator.nvim' }, -- Better TypeScript error message
   -- Git
   {
     'NeogitOrg/neogit', -- Git interface
