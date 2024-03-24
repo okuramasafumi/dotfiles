@@ -116,6 +116,14 @@ require("lazy").setup({
   -- LSP section
   "neovim/nvim-lspconfig",
   'lukas-reineke/lsp-format.nvim', -- Async formatting
+  {
+    "zeioth/garbage-day.nvim", -- GC for LSP
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    opts = {
+      -- your options here
+    }
+  },
   -- Editing support
   {
     "nvimtools/none-ls.nvim",
@@ -132,6 +140,9 @@ require("lazy").setup({
         },
       })
     end,
+  },
+  {
+    'mfussenegger/nvim-lint' -- Linter
   },
   {
     'stevearc/conform.nvim',
@@ -636,6 +647,11 @@ require("lazy").setup({
         lsp = true,
       },
     }
+  },
+  {
+    'Sam-programs/cmdline-hl.nvim', -- Highlight cmdline
+    event = 'VimEnter',
+    opts = {}
   }
 })
 
@@ -787,5 +803,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.lsp.buf.format { async = true }
       end, 'Format' }, opts },
     })
+  end,
+})
+
+-- Editing support
+
+local ruby_linter = nil
+if vim.fn.filereadable(".standard.yml") == 1 then
+  ruby_linter = "standardrb"
+elseif vim.fn.filereadable(".rubocop.yml") == 1 then
+  ruby_linter = "rubocop"
+end
+require('lint').linters_by_ft = {
+  ruby = {ruby_linter}
+}
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
   end,
 })
