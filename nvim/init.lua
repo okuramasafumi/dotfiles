@@ -126,22 +126,6 @@ require("lazy").setup({
   },
   -- Editing support
   {
-    "nvimtools/none-ls.nvim",
-    dependencies = {
-      "nvimtools/none-ls-extras.nvim",
-      "nvim-lua/plenary.nvim"
-    },
-    config = function()
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          require("none-ls.diagnostics.eslint_d"),
-          require("none-ls.formatting.eslint_d"),
-        },
-      })
-    end,
-  },
-  {
     'mfussenegger/nvim-lint' -- Linter
   },
   {
@@ -816,10 +800,13 @@ elseif vim.fn.filereadable(".rubocop.yml") == 1 then
   ruby_linter = "rubocop"
 end
 require('lint').linters_by_ft = {
-  ruby = {ruby_linter}
+  ruby = {ruby_linter},
+  javascript = {"eslint"},
+  typescript = {"eslint"},
+  typescriptreact = {"eslint"},
 }
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
   callback = function()
     require("lint").try_lint()
   end,
