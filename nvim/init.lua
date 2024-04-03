@@ -811,3 +811,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
     require("lint").try_lint()
   end,
 })
+
+-- Misc
+
+-- More Neovim-ish name
+vim.api.nvim_create_user_command('BlameEnable', 'EnableBlame', {})
+vim.api.nvim_create_user_command('BlameDisable', 'DisableBlame', {})
