@@ -442,6 +442,10 @@ require("lazy").setup({
       require('scrollbar').setup()
     end,
   },
+  {
+    'kevinhwang91/nvim-bqf',
+    ft = { "qf" },
+  },
   -- Debugging
   {
     "mfussenegger/nvim-dap",
