@@ -35,7 +35,7 @@
 [diff]
   tool = vimdiff
 [push]
-	default = simple
+  default = current
 [fetch]
   prune = true
 [filter "media"]
