@@ -755,6 +755,8 @@ lspconfig.ruby_ls.setup {
   end
 }
 
+require'lspconfig'.jdtls.setup{}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 wk.register({
