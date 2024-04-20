@@ -662,6 +662,8 @@ vim.opt.shiftwidth = 2
 vim.opt.spelllang = "en,cjk" -- Spellcheck language
 vim.opt.undofile = true -- Persistent undo
 vim.opt.laststatus = 3 -- always and ONLY the last window
+vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep for grep
+vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- autocmd
 local spell_group = vim.api.nvim_create_augroup('spell', {clear = false})
