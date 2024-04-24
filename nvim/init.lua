@@ -720,7 +720,7 @@ lspconfig.jsonls.setup {
 -- lspconfig.steep.setup {}
 
 -- The config is from https://github.com/neovim/nvim-lspconfig/pull/2498
-lspconfig.ruby_ls.setup {
+lspconfig.ruby_lsp.setup {
   on_attach = function(client, buffer)
     -- in the case you have an existing `on_attach` function
     -- with mappings you share with other lsp clients configs
@@ -745,7 +745,7 @@ lspconfig.ruby_ls.setup {
       )
     end
     diagnostic_handler() -- to request diagnostics when attaching the client to the buffer
-    local ruby_group = vim.api.nvim_create_augroup('ruby_ls', {clear = false})
+    local ruby_group = vim.api.nvim_create_augroup('ruby_lsp', {clear = false})
     vim.api.nvim_create_autocmd(
     {'BufEnter', 'BufWritePre', 'InsertLeave', 'TextChanged'},
     {
