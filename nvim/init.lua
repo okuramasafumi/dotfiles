@@ -391,13 +391,12 @@ require("lazy").setup({
     dependencies = {
       "nvim-tree/nvim-web-devicons", -- optional dependency
       "okuramasafumi/rspec-current.vim",
-      'arkav/lualine-lsp-progress',
       'AndreM222/copilot-lualine',
     },
     config = function()
       require("lualine").setup{
         sections = {
-          lualine_c = {'RSpecCurrentSubject', 'lsp_progress'},
+          lualine_c = {'RSpecCurrentSubject'},
           lualine_x = { { 'copilot', show_colors = true } , 'filetype' },
         },
         options = {
