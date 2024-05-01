@@ -366,6 +366,7 @@ require("lazy").setup({
   },
   {
     "nvim-tree/nvim-tree.lua", -- Tree UI
+    event = "VeryLazy",
     version = "*",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
