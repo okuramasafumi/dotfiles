@@ -1,6 +1,8 @@
 stty stop undef
 stty start undef
 
+source_safe() { [[ -f $1 ]] && source $1 }
+
 # direnv export here so that it doesn't print warnings about p10k instant prompt
 if type direnv > /dev/null 2>&1; then
   emulate zsh -c "$(direnv export zsh)"
@@ -9,9 +11,7 @@ fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+source_safe "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
 # zshrc
 
@@ -60,9 +60,7 @@ fi
 # fnm setup for Node.js version switch
 eval "$(fnm env --use-on-cd --log-level quiet)"
 
-if [[ -a ~/.zshrc.local ]]; then
-  source ~/.zshrc.local
-fi
+source_safe ~/.zshrc.local
 
 # direnv
 if type direnv > /dev/null 2>&1; then
@@ -74,9 +72,9 @@ if type thefuck > /dev/null 2>&1; then
   eval "$(thefuck --alias)"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source_safe ~/.fzf.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+source_safe "${HOME}/.iterm2_shell_integration.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source_safe ~/.p10k.zsh
