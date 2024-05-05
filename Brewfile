@@ -38,6 +38,7 @@ brew "thefuck" # Command correction
 brew "tree" # `tree` command
 brew "vim" # Editor
 brew "wget" # HTTP client
+brew "yaml-language-server" # A Language Server for YAML
 brew "yarn" # Package manager for Node.js
 brew "zsh" # Shell
 
@@ -65,6 +66,7 @@ cask "karabiner-elements" # Keyboard modifier
 cask "lulu" # Firewall
 cask "messenger" # Communication
 cask "microsoft-teams" # Communication
+cask "netnewswire" # RSS Reader
 cask "ngrok" # Proxy
 cask "obsidian" # Markdown editor
 cask "postgres-unofficial" # RDBMS
