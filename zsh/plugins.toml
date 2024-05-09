@@ -36,8 +36,8 @@ github = "wfxr/forgit"
 [plugins.zsh-you-should-use]
 github = "MichaelAquilina/zsh-you-should-use"
 
-[plugins.git-and-fzf]
-gist = "9b5eb54850fc4a15813a1d4f87ff85fb"
+# [plugins.git-and-fzf]
+# gist = "9b5eb54850fc4a15813a1d4f87ff85fb"
 
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
