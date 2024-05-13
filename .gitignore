@@ -9,3 +9,4 @@ vim/.netrwhist
 vim/autoload/plug.vim
 
 Brewfile.lock.json
+karabiner/automatic_backups
