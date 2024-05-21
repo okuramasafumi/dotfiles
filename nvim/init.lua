@@ -498,6 +498,7 @@ require("lazy").setup({
       'stevearc/dressing.nvim'
     },
   },
+  "hallison/vim-rdoc", -- RDoc syntax highlighting
   -- JavaScript/TypeScript
   "MaxMEllon/vim-jsx-pretty",
   { 'dmmulroy/ts-error-translator.nvim' }, -- Better TypeScript error message
