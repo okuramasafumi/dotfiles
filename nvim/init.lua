@@ -650,7 +650,11 @@ require("lazy").setup({
     'Sam-programs/cmdline-hl.nvim', -- Highlight cmdline
     event = 'VimEnter',
     opts = {}
-  }
+  },
+  {
+    "CRAG666/code_runner.nvim",
+    config = true
+  },
 })
 
 -- Misc
