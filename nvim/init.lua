@@ -655,6 +655,10 @@ require("lazy").setup({
     "CRAG666/code_runner.nvim",
     config = true
   },
+  {
+    "mistricky/codesnap.nvim", -- Take screenshots
+    build = "make"
+  },
 })
 
 -- Misc
