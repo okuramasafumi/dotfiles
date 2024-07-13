@@ -657,7 +657,12 @@ require("lazy").setup({
   },
   {
     "mistricky/codesnap.nvim", -- Take screenshots
-    build = "make"
+    build = "make",
+    opts = {
+      bg_x_padding = 64,
+      bg_y_padding = 32,
+      save_path = "~/codesnap/"
+    }
   },
 })
 
