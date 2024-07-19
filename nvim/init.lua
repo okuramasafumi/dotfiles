@@ -326,6 +326,9 @@ require("lazy").setup({
         },
         pickers = {
           find_files = {
+            find_command = function()
+              return {"rg", "--files", "--hidden", "--glob", "!.git"}
+            end
           }
         },
       }
