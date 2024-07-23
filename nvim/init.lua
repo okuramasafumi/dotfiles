@@ -333,31 +333,6 @@ require("lazy").setup({
         },
       }
       require("telescope").load_extension("undo")
-      local builtin = require('telescope.builtin')
-      local wk = require("which-key")
-      wk.register({
-        ["<leader>"] = {
-          f = {
-            name = "+file",
-            f = { builtin.git_files, "Find File" },
-            o = { builtin.oldfiles, "Find File from history" },
-          },
-          r = {
-            name = "+grep",
-            r = { builtin.grep_string, "Grep string under cursor" },
-            l = { builtin.live_grep, "Live grep" },
-          },
-          g = {
-            name = "git",
-            lc = { builtin.git_commits, "Git commits" },
-            b = { builtin.git_branches, "Git branches" },
-            s = { builtin.git_status, "Git status" },
-          },
-          tb = { builtin.builtin, "List builtin commands" },
-          qf = { builtin.quickfix, "Quickfix" },
-          u = { "<cmd>Telescope undo<cr>", "List undos"}
-        },
-      })
       require('telescope').load_extension('fzf')
     end
   },
@@ -561,11 +536,11 @@ require("lazy").setup({
     config = function()
       local ss = require("smart-splits")
       local wk = require("which-key")
-      wk.register({
-        ["<C-h>"] = { ss.move_cursor_left, "Move cursor left" },
-        ["<C-j>"] = { ss.move_cursor_down, "Move cursor down" },
-        ["<C-k>"] = { ss.move_cursor_up, "Move cursor up" },
-        ["<C-l>"] = { ss.move_cursor_right, "Move cursor right" },
+      wk.add({
+        { "<C-h>", ss.move_cursor_left, desc = "Move cursor left" },
+        { "<C-j>", ss.move_cursor_down, desc = "Move cursor down" },
+        { "<C-k>", ss.move_cursor_up, desc = "Move cursor up" },
+        { "<C-l>", ss.move_cursor_right, desc = "Move cursor right" },
       })
     end
   },
@@ -695,13 +670,29 @@ vim.api.nvim_create_autocmd({'BufEnter'}, {
 
 -- Key mappings
 local wk = require("which-key")
-wk.register({
-  ["]<space>"] = {":<C-u>call append(expand('.'), '')<Cr>j", "Add one empty line to below"},
-  ["<leader>g"] = { -- Git related
-    name = "+git",
-    a = {":<C-u>!git add %<Cr>", "Add current file"},
-    cc = {":<C-u>Neogit commit<Cr>", "Git commit"},
-    g = {":Neogit<Cr>", "Open Neogit"},
+local builtin = require('telescope.builtin')
+wk.add({
+  {
+    {"]<space>", ":<C-u>call append(expand('.'), '')<Cr>j", desc = "Add one empty line to below"},
+    { "<leader>g", group = "git" },
+    { "<leader>ga", ":<C-u>!git add %<Cr>", desc = "Add current file" },
+    { "<leader>gcc", ":<C-u>Neogit commit<Cr>", desc = "Git commit" },
+    { "<leader>gg", ":Neogit<Cr>", desc = "Open Neogit" },
+    { "]<space>", ":<C-u>call append(expand('.'), '')<Cr>j", desc = "Add one empty line to below" },
+    { "<leader>f", group = "+file" },
+    { "<leader>ff", builtin.find_files, desc = "Find Files" },
+    { "<leader>fo", builtin.oldfiles, desc = "Find File from history" },
+    { "<leader>fh", builtin.help_tags, desc = "Help items" },
+    { "<leader>r", group = "+grep" },
+    { "<leader>rr", builtin.grep_string, desc = "Grep string under cursor" },
+    { "<leader>rl", builtin.live_grep, desc = "Live grep" },
+    { "<leader>glc", builtin.git_commits, desc = "Git commits" },
+    { "<leader>gb", builtin.git_branches, desc = "Git branches" },
+    { "<leader>gs", builtin.git_status, desc = "Git status" },
+    { "<leader>tb", builtin.builtin, desc = "List builtin commands" },
+    { "<leader>qf", builtin.quickfix, desc = "Quickfix" },
+    { "<leader>ts", builtin.treesitter, desc = "treesitter" },
+    { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Undos" },
   }
 })
 
@@ -744,15 +735,13 @@ require'lspconfig'.jdtls.setup{}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-wk.register({
-  ['<space>e'] = { vim.diagnostic.open_float, 'Open diagnostic float' },
-  ['[d'] = { vim.diagnostic.goto_prev, 'Go to previous diagnostic' },
-  [']d'] = { vim.diagnostic.goto_next, 'Go to next diagnostic' },
-  ['<space>q'] = { vim.diagnostic.setloclist, 'Set loclist' },
-  ["<leader>"] = {
-    t = { "<cmd>Neotest run<cr>", "Run nearest test" },
-    T = { "<cmd>Neotest run file<cr>", "Run file test" },
-  },
+wk.add({
+  { "<leader>T", "<cmd>Neotest run file<cr>", desc = "Run file test" },
+  { "<leader>t", "<cmd>Neotest run<cr>", desc = "Run nearest test" },
+  { "<space>e", vim.diagnostic.open_float, desc = "Open diagnostic float" },
+  { "<space>q", vim.diagnostic.setloclist, desc = "Set loclist" },
+  { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic" },
+  { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
 })
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -765,24 +754,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
-    wk.register({
-      ['gD'] = { { vim.lsp.buf.declaration, 'Go to declaration' }, opts },
-      ['gd'] = { { vim.lsp.buf.definition, 'Go to definition' }, opts },
-      ['K'] = { { vim.lsp.buf.hover, 'Hover' }, opts },
-      ['gi'] = { { vim.lsp.buf.implementation, 'Go to implementation' }, opts },
-      ['<C-S-k>'] = { { vim.lsp.buf.signature_help, 'Show signature help' }, opts },
+    wk.add({
+      { { "gD", vim.lsp.buf.declaration, desc = 'Go to declaration' }, opts },
+      { { "gd", vim.lsp.buf.definition, desc = 'Go to definition' }, opts },
+      { { "K", vim.lsp.buf.hover, desc = 'Hover' }, opts },
+      { { "gi", vim.lsp.buf.implementation, desc = 'Go to implementation' }, opts },
+      { { "<leader>k", vim.lsp.buf.signature_help, desc = 'Show signature help' }, opts },
       -- ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, opts },
       -- ['<space>wr'] = { vim.lsp.buf.remove_workspace_folder, opts },
       -- ['<space>wl'] = { function()
       --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       -- end, opts },
-      ['<space>D'] = { { vim.lsp.buf.type_definition, 'Go to type definition' }, opts },
-      ['<space>rn'] = { { vim.lsp.buf.rename, 'Rename' }, opts },
-      ['<space>ca'] = { { vim.lsp.buf.code_action, 'Code action' }, opts },
-      ['gr'] = { { vim.lsp.buf.references, 'Go to references' }, opts },
-      ['<space>f'] = { { function()
-        vim.lsp.buf.format { async = true }
-      end, 'Format' }, opts },
+      { { "TD", vim.lsp.buf.type_definition, desc = 'Go to type definition' }, opts },
+      { { "rn", vim.lsp.buf.rename, desc = 'Rename' }, opts },
+      { { "<leader>ca", vim.lsp.buf.code_action, desc = 'Code action' }, opts },
+      { { "gr", vim.lsp.buf.references, desc = 'Go to references' }, opts },
+      -- ['<space>f'] = { { function()
+      --   vim.lsp.buf.format { async = true }
+      -- end, 'Format' }, opts },
     })
   end,
 })
