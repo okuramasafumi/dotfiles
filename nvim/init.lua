@@ -132,9 +132,9 @@ require("lazy").setup({
     'stevearc/conform.nvim',
     config = function()
       require('conform').setup({
-        format_on_save = {
+        format_after_save = {
           timeout_ms = 500,
-          lsp_fallback = true,
+          lsp_format = "first"
         },
         formatters_by_ft = {
           ruby = function(bufnr)
