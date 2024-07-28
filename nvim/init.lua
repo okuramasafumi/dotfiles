@@ -115,7 +115,6 @@ require("lazy").setup({
   },
   -- LSP section
   "neovim/nvim-lspconfig",
-  'lukas-reineke/lsp-format.nvim', -- Async formatting
   -- {
   --   "zeioth/garbage-day.nvim", -- GC for LSP
   --   dependencies = "neovim/nvim-lspconfig",
