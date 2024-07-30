@@ -297,6 +297,49 @@ require("lazy").setup({
       require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
+  {
+    'kevinhwang91/nvim-ufo', -- Folding
+    dependencies = { 'kevinhwang91/promise-async' },
+    config = function()
+      -- Copied from its README
+      local handler = function(virtText, lnum, endLnum, width, truncate)
+        local newVirtText = {}
+        local suffix = (' 󰁂 %d '):format(endLnum - lnum)
+        local sufWidth = vim.fn.strdisplaywidth(suffix)
+        local targetWidth = width - sufWidth
+        local curWidth = 0
+        for _, chunk in ipairs(virtText) do
+          local chunkText = chunk[1]
+          local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+          if targetWidth > curWidth + chunkWidth then
+            table.insert(newVirtText, chunk)
+          else
+            chunkText = truncate(chunkText, targetWidth - curWidth)
+            local hlGroup = chunk[2]
+            table.insert(newVirtText, {chunkText, hlGroup})
+            chunkWidth = vim.fn.strdisplaywidth(chunkText)
+            -- str width returned from truncate() may less than 2nd argument, need padding
+            if curWidth + chunkWidth < targetWidth then
+              suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+            end
+            break
+          end
+          curWidth = curWidth + chunkWidth
+        end
+        table.insert(newVirtText, {suffix, 'MoreMsg'})
+        return newVirtText
+      end
+      require('ufo').setup{
+        provider_selector = function(bufnr, filetype, buftype)
+          return {'treesitter', 'indent'}
+        end,
+        fold_virt_text_handler = handler,
+        close_fold_kinds_for_ft = {
+          default = { 'comment', 'imports' }
+        }
+      }
+    end
+  },
   -- Telescope
   {
     'nvim-telescope/telescope-fzf-native.nvim', -- Faster sort
@@ -647,7 +690,8 @@ vim.opt.termguicolors = true -- True color
 vim.opt.relativenumber = true -- Setting relativenumber is slow but Apple Sillicon make it work!
 vim.opt.number = true -- Current line has 0 relative number so showing absolute number
 vim.opt.foldenable = true
-vim.opt.foldmethod = "syntax" -- Fold with syntax
+vim.opt.foldlevel = 99 -- For ufo
+vim.opt.foldlevelstart = 99 -- For ufo
 vim.opt.expandtab = true -- Insert whitespaces with tabb key
 vim.opt.tabstop = 2 -- Tab is 2 whitespaces
 vim.opt.softtabstop = 2
