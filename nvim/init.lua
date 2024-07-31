@@ -705,7 +705,7 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 -- autocmd
 local spell_group = vim.api.nvim_create_augroup('spell', {clear = false})
 vim.api.nvim_create_autocmd({'BufEnter'}, {
-  pattern = {'*.txt','*.md','*.markdown','COMMIT_EDITMSG'},
+  pattern = {'*.txt','*.md','*.markdown','NeogitCommitMessage'},
   group = spell_group,
   command = 'setlocal spell',
   desc = 'Set spell for text files'
