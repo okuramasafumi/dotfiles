@@ -35,7 +35,11 @@ if is-at-least 4.3.11; then
   zstyle ":completion:*" recent-dirs-insert always
 fi
 
-eval "$(sheldon source)"
+if type sheldon > /dev/null 2>&1; then
+  eval "$(sheldon source)"
+else
+  echo "sheldon not found"
+fi
 
 # Add some completions (we need this before compinit)
 [ -e $(brew --prefix)/share/zsh/site-functions ] && fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
