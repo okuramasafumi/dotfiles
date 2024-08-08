@@ -186,7 +186,7 @@ require("lazy").setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
           expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
           end
         },
         mapping = cmp.mapping.preset.insert({
@@ -353,7 +353,8 @@ require("lazy").setup({
       "debugloop/telescope-undo.nvim"
     },
     config = function()
-      require('telescope').setup{
+      local telescope = require('telescope')
+      telescope.setup{
         extensions = {
           fzf = {
             fuzzy = true,                    -- false will only do exact matching
@@ -374,8 +375,8 @@ require("lazy").setup({
           }
         },
       }
-      require("telescope").load_extension("undo")
-      require('telescope').load_extension('fzf')
+      telescope.load_extension("undo")
+      telescope.load_extension('fzf')
     end
   },
   -- UI section
@@ -742,13 +743,14 @@ wk.add({
 -- LSP
 -- Setup lspconfig.
 local lspconfig = require'lspconfig'
+local json_schemas = require('schemastore').json.schemas()
 
 lspconfig.tsserver.setup {}
 
 lspconfig.yamlls.setup {
   settings = {
     yaml = {
-      schemas = require('schemastore').json.schemas(),
+      schemas = json_schemas,
       -- schemas = {
         -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
       -- },
@@ -763,7 +765,7 @@ lspconfig.jsonls.setup {
   capabilities = jsonls_capabilities,
   settings = {
     json = {
-      schemas = require('schemastore').json.schemas(),
+      schemas = json_schemas,
     },
   },
 }
@@ -774,7 +776,7 @@ lspconfig.jsonls.setup {
 
 lspconfig.ruby_lsp.setup {}
 
-require'lspconfig'.jdtls.setup{}
+lspconfig.jdtls.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -827,7 +829,8 @@ if vim.fn.filereadable(".standard.yml") == 1 then
 elseif vim.fn.filereadable(".rubocop.yml") == 1 then
   ruby_linter = "rubocop"
 end
-require('lint').linters_by_ft = {
+local lint = require('lint')
+lint.linters_by_ft = {
   ruby = {ruby_linter},
   javascript = {"eslint"},
   typescript = {"eslint"},
@@ -836,6 +839,6 @@ require('lint').linters_by_ft = {
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
   callback = function()
-    require("lint").try_lint()
+    lint.try_lint()
   end,
 })
