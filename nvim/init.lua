@@ -115,6 +115,17 @@ require("lazy").setup({
   },
   -- LSP section
   "neovim/nvim-lspconfig",
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      {"nvim-lua/plenary.nvim"},
+      {"nvim-telescope/telescope.nvim"},
+    },
+    event = "LspAttach",
+    config = function()
+      require('tiny-code-action').setup()
+    end
+  },
   -- {
   --   "zeioth/garbage-day.nvim", -- GC for LSP
   --   dependencies = "neovim/nvim-lspconfig",
