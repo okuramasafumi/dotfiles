@@ -61,8 +61,10 @@ fi
 [ -f $(brew --prefix)/share/chruby/chruby.sh ] && source $(brew --prefix)/share/chruby/chruby.sh
 [ -f $(brew --prefix)/share/chruby/auto.sh ] && source $(brew --prefix)/share/chruby/auto.sh
 
-# fnm setup for Node.js version switch
-eval "$(fnm env --use-on-cd --log-level quiet)"
+if type fnm > /dev/null 2>&1; then
+  # fnm setup for Node.js version switch
+  eval "$(fnm env --use-on-cd --log-level quiet)"
+fi
 
 source_safe ~/.zshrc.local
 
