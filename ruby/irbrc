@@ -20,3 +20,9 @@ begin
 rescue LoadError
   puts 'Could not load awesome_print'
 end
+
+begin
+  require 'irbtools'
+rescue LoadError
+  puts 'Could not load irbtools'
+end
