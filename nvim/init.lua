@@ -463,8 +463,15 @@ require("lazy").setup({
   },
   {
     'nvim-pack/nvim-spectre', -- Search and replace
+    build = "build.sh",
     config = function()
-      require('spectre').setup()
+      require('spectre').setup({
+        default = {
+          replace = {
+            cmd = "oxi"
+          }
+        }
+      })
     end,
   },
   {
