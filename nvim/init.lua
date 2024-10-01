@@ -763,7 +763,7 @@ wk.add({
 local lspconfig = require'lspconfig'
 local json_schemas = require('schemastore').json.schemas()
 
-lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup {}
 
 lspconfig.yamlls.setup {
   settings = {
