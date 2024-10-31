@@ -138,28 +138,28 @@ require("lazy").setup({
   {
     'mfussenegger/nvim-lint' -- Linter
   },
-  -- {
-  --   'stevearc/conform.nvim',
-  --   config = function()
-  --     require('conform').setup({
-  --       format_after_save = {
-  --         timeout_ms = 500,
-  --         lsp_format = "first"
-  --       },
-  --       formatters_by_ft = {
-  --         ruby = function(bufnr)
-  --           if vim.fn.filereadable(".standard.yml") == 1 then
-  --             return { "standardrb" }
-  --           elseif vim.fn.filereadable(".rubocop.yml") == 1 then
-  --             return { "rubocop" }
-  --           else
-  --             return { }
-  --           end
-  --         end,
-  --       }
-  --     })
-  --   end,
-  -- },
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require('conform').setup({
+        format_after_save = {
+          timeout_ms = 500,
+          lsp_format = "first"
+        },
+        formatters_by_ft = {
+          ruby = function(bufnr)
+            if vim.fn.filereadable(".standard.yml") == 1 then
+              return { "standardrb" }
+            elseif vim.fn.filereadable(".rubocop.yml") == 1 then
+              return { "rubocop" }
+            else
+              return { }
+            end
+          end,
+        }
+      })
+    end,
+  },
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
@@ -855,14 +855,8 @@ lint.linters_by_ft = {
   typescriptreact = {"eslint"},
 }
 
--- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
---   callback = function()
---     lint.try_lint()
---   end,
--- })
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
   callback = function()
-    vim.lsp.buf.code_action()
+    lint.try_lint()
   end,
 })
