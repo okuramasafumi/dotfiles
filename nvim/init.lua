@@ -140,25 +140,25 @@ require("lazy").setup({
   },
   {
     'stevearc/conform.nvim',
-    config = function()
-      require('conform').setup({
-        format_after_save = {
-          timeout_ms = 500,
-          lsp_format = "first"
-        },
-        formatters_by_ft = {
-          ruby = function(bufnr)
-            if vim.fn.filereadable(".standard.yml") == 1 then
-              return { "standardrb" }
-            elseif vim.fn.filereadable(".rubocop.yml") == 1 then
-              return { "rubocop" }
-            else
-              return { }
-            end
-          end,
-        }
-      })
-    end,
+    -- config = function()
+    --   require('conform').setup({
+    --     format_after_save = {
+    --       timeout_ms = 500,
+    --       lsp_format = "first"
+    --     },
+    --     formatters_by_ft = {
+    --       ruby = function(bufnr)
+    --         if vim.fn.filereadable(".standard.yml") == 1 then
+    --           return { "standardrb" }
+    --         elseif vim.fn.filereadable(".rubocop.yml") == 1 then
+    --           return { "rubocop" }
+    --         else
+    --           return { }
+    --         end
+    --       end,
+    --     }
+    --   })
+    -- end,
   },
   {
     'windwp/nvim-autopairs',
@@ -841,22 +841,39 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Editing support
 
-local ruby_linter = nil
-if vim.fn.filereadable(".standard.yml") == 1 then
-  ruby_linter = "standardrb"
-elseif vim.fn.filereadable(".rubocop.yml") == 1 then
-  ruby_linter = "rubocop"
-end
-local lint = require('lint')
-lint.linters_by_ft = {
-  ruby = {ruby_linter},
-  javascript = {"eslint"},
-  typescript = {"eslint"},
-  typescriptreact = {"eslint"},
-}
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "ruby",
   callback = function()
-    lint.try_lint()
+    vim.lsp.start {
+      name = "rubocop",
+      cmd = { "bundle", "exec", "rubocop", "--lsp" },
+    }
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.rb",
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
+-- local ruby_linter = nil
+-- if vim.fn.filereadable(".standard.yml") == 1 then
+--   ruby_linter = "standardrb"
+-- elseif vim.fn.filereadable(".rubocop.yml") == 1 then
+--   ruby_linter = "rubocop"
+-- end
+-- local lint = require('lint')
+-- lint.linters_by_ft = {
+--   ruby = {ruby_linter},
+--   javascript = {"eslint"},
+--   typescript = {"eslint"},
+--   typescriptreact = {"eslint"},
+-- }
+--
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+--   callback = function()
+--     lint.try_lint()
+--   end,
+-- })
