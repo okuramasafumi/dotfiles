@@ -792,7 +792,23 @@ lspconfig.jsonls.setup {
 
 -- lspconfig.steep.setup {}
 
-lspconfig.ruby_lsp.setup {}
+local ruby_lsp_type = ""
+if vim.fn.filereadable(".standard.yml") == 1 then
+  ruby_lsp_type = "standard"
+elseif vim.fn.filereadable(".rubocop.yml") == 1 then
+  ruby_lsp_type = "rubocop"
+end
+if ruby_lsp_type ~= "" then
+  lspconfig.ruby_lsp.setup({
+    before_init = function(params, config)
+      -- TODO: Move params confiiguration here
+    end,
+    init_options = {
+      formatter = ruby_lsp_type,
+      linters = { ruby_lsp_type },
+    }
+  })
+end
 
 lspconfig.jdtls.setup {}
 
@@ -811,6 +827,8 @@ wk.add({
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
@@ -836,27 +854,31 @@ vim.api.nvim_create_autocmd('LspAttach', {
       --   vim.lsp.buf.format { async = true }
       -- end, 'Format' }, opts },
     })
+
+    -- Auto formatting with LSP
+    if client.supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        -- pattern = "*.rb",
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
+    end
   end,
 })
 
 -- Editing support
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "ruby",
-  callback = function()
-    vim.lsp.start {
-      name = "rubocop",
-      cmd = { "bundle", "exec", "rubocop", "--lsp" },
-    }
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.rb",
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "ruby",
+--   callback = function()
+--     vim.lsp.start {
+--       name = "rubocop",
+--       cmd = { "bundle", "exec", "rubocop", "--lsp" },
+--     }
+--   end,
+-- })
+--
 
 -- local ruby_linter = nil
 -- if vim.fn.filereadable(".standard.yml") == 1 then
