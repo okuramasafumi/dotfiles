@@ -126,39 +126,12 @@ require("lazy").setup({
       require('tiny-code-action').setup()
     end
   },
-  -- {
-  --   "zeioth/garbage-day.nvim", -- GC for LSP
-  --   dependencies = "neovim/nvim-lspconfig",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     -- your options here
-  --   }
-  -- },
   -- Editing support
   {
     'mfussenegger/nvim-lint' -- Linter
   },
   {
     'stevearc/conform.nvim',
-    -- config = function()
-    --   require('conform').setup({
-    --     format_after_save = {
-    --       timeout_ms = 500,
-    --       lsp_format = "first"
-    --     },
-    --     formatters_by_ft = {
-    --       ruby = function(bufnr)
-    --         if vim.fn.filereadable(".standard.yml") == 1 then
-    --           return { "standardrb" }
-    --         elseif vim.fn.filereadable(".rubocop.yml") == 1 then
-    --           return { "rubocop" }
-    --         else
-    --           return { }
-    --         end
-    --       end,
-    --     }
-    --   })
-    -- end,
   },
   {
     'windwp/nvim-autopairs',
@@ -264,7 +237,6 @@ require("lazy").setup({
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = 'buffer' },
-          { name = 'cmdline_history' },
         }
       })
 
@@ -275,7 +247,6 @@ require("lazy").setup({
           { name = 'path' }
         }, {
           { name = 'cmdline' },
-          { name = 'cmdline_history' },
         })
       })
 
