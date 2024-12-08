@@ -748,6 +748,12 @@ vim.api.nvim_create_autocmd({'BufEnter'}, {
   desc = 'Set spell for text files'
 })
 
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*rdoc_options",
+  command = "set filetype=yaml",
+  desc  = ".rdoc_options is YAML"
+})
+
 -- Key mappings
 local wk = require("which-key")
 local builtin = require('telescope.builtin')
