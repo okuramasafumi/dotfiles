@@ -591,7 +591,7 @@ require("lazy").setup({
     end
   },
   {
-    "FabijanZulj/blame.nvim",
+    "FabijanZulj/blame.nvim", -- Git blame, sidebar style
     config = function()
       require("blame").setup()
     end
