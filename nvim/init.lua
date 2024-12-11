@@ -519,6 +519,11 @@ require("lazy").setup({
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" }
   },
+  {
+    "andrewferrier/debugprint.nvim",
+    opts = {},
+    version = "*", -- Remove if you DON'T want to use the stable version
+  },
   -- Testing
   {
     'nvim-neotest/neotest',
