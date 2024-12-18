@@ -689,7 +689,9 @@ require("lazy").setup({
   {
     "m4xshen/hardtime.nvim", -- Good habits
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {}
+    opts = {
+      disabled_filetypes = { 'Avante' },
+    }
   },
   {
     'stevearc/oil.nvim', -- File explorer
