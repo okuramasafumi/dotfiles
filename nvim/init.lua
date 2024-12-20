@@ -379,7 +379,13 @@ require("lazy").setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'LukasPietzschmann/telescope-tabs',
-      "debugloop/telescope-undo.nvim"
+      "debugloop/telescope-undo.nvim",
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim" ,
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = "^1.0.0",
+      },
     },
     config = function()
       local telescope = require('telescope')
@@ -406,6 +412,7 @@ require("lazy").setup({
       }
       telescope.load_extension("undo")
       telescope.load_extension('fzf')
+      telescope.load_extension("live_grep_args")
     end
   },
   -- UI section
@@ -778,7 +785,7 @@ wk.add({
     { "<leader>fh", builtin.help_tags, desc = "Help items" },
     { "<leader>r", group = "+grep" },
     { "<leader>rr", builtin.grep_string, desc = "Grep string under cursor" },
-    { "<leader>rl", builtin.live_grep, desc = "Live grep" },
+    { "<leader>rl", require('telescope').extensions.live_grep_args.live_grep_args, desc = "Live grep" },
     { "<leader>glc", builtin.git_commits, desc = "Git commits" },
     { "<leader>gb", builtin.git_branches, desc = "Git branches" },
     { "<leader>gs", builtin.git_status, desc = "Git status" },
