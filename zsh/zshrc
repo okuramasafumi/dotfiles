@@ -53,6 +53,7 @@ zmodload -i zsh/complist
 for config ($ZSH_DIR/*.zsh) do source $config; done
 
 bindkey -e
+bindkey \^U backward-kill-line
 
 if type rbenv > /dev/null 2>&1; then
   eval "$(rbenv init - zsh)"
