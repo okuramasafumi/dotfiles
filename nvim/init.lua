@@ -905,36 +905,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
-
--- Editing support
-
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "ruby",
---   callback = function()
---     vim.lsp.start {
---       name = "rubocop",
---       cmd = { "bundle", "exec", "rubocop", "--lsp" },
---     }
---   end,
--- })
---
-
--- local ruby_linter = nil
--- if vim.fn.filereadable(".standard.yml") == 1 then
---   ruby_linter = "standardrb"
--- elseif vim.fn.filereadable(".rubocop.yml") == 1 then
---   ruby_linter = "rubocop"
--- end
--- local lint = require('lint')
--- lint.linters_by_ft = {
---   ruby = {ruby_linter},
---   javascript = {"eslint"},
---   typescript = {"eslint"},
---   typescriptreact = {"eslint"},
--- }
---
--- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
---   callback = function()
---     lint.try_lint()
---   end,
--- })
