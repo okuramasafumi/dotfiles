@@ -190,6 +190,7 @@
                     },
                     {
                         "description": "Emacs key bindings [control+keys] (rev 11)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -861,6 +862,7 @@
                     },
                     {
                         "description": "Emacs key bindings [option+keys] (rev 5)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
