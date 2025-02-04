@@ -724,7 +724,14 @@ require("lazy").setup({
   },
   {
     "CRAG666/code_runner.nvim",
-    config = true
+    config = function()
+      require("code_runner").setup{}
+      local wk = require("which-key")
+      wk.add({
+        { '<leader>rr', ':RunCode<CR>', desc = "Runs based on file type, first checking if belongs to project, then if filetype mapping exists" },
+        { '<leader>rf', ':RunFile<CR>', desc = "Run the current file (optionally you can select an opening mode)." },
+      })
+    end
   },
   {
     "mistricky/codesnap.nvim", -- Take screenshots
