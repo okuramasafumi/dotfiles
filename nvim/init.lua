@@ -776,6 +776,14 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   desc  = ".rdoc_options is YAML"
 })
 
+-- Easy quittng
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'qf', 'healthcheck', 'help', 'crunner' },
+  callback = function()
+    vim.keymap.set('n', 'q', '<cmd>bd<cr>', { silent = true, buffer = true })
+  end,
+})
+
 -- Key mappings
 local wk = require("which-key")
 local builtin = require('telescope.builtin')
