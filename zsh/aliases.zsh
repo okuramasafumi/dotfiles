@@ -30,6 +30,9 @@ alias gstp='git stash pop'
 alias grpo='git remote prune origin'
 alias grm='git rebase master'
 
+# Fallback to Git
+alias log='git log'
+
 # Rails
 alias ra='rails'
 alias rdm='rake db:migrate'
