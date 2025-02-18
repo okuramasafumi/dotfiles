@@ -202,7 +202,8 @@ require("lazy").setup({
               end
             }
           },
-          { name = 'tags' }
+          { name = 'tags' },
+          { name = 'lazydev', group_index = 0 }
         })
       })
       cmp.setup.filetype('ruby', {
