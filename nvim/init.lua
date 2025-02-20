@@ -151,17 +151,18 @@ require("lazy").setup({
     -- these dependencies will only be loaded when cmp loads
     -- dependencies are always lazy-loaded unless specified otherwise
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp', -- LSP completaion
-      'hrsh7th/cmp-buffer', -- Buffer completion
-      'hrsh7th/cmp-path', -- Path completion
-      'hrsh7th/cmp-cmdline', -- Command line completion
+      'hrsh7th/cmp-nvim-lsp',                -- LSP completaion
+      'hrsh7th/cmp-buffer',                  -- Buffer completion
+      'hrsh7th/cmp-path',                    -- Path completion
+      'hrsh7th/cmp-cmdline',                 -- Command line completion
       'hrsh7th/cmp-nvim-lsp-signature-help', --  Function signatures
-      'petertriho/cmp-git', -- Git completion
-      "L3MON4D3/LuaSnip", -- Snippet engine
-      'saadparwaiz1/cmp_luasnip', -- Snippets completion
-      'ray-x/cmp-treesitter', -- TreeSitter completion
-      'quangnguyen30192/cmp-nvim-tags', -- ctags completion
-      'onsails/lspkind-nvim', -- Show pictograms
+      'petertriho/cmp-git',                  -- Git completion
+      "L3MON4D3/LuaSnip",                    -- Snippet engine
+      'saadparwaiz1/cmp_luasnip',            -- Snippets completion
+      'ray-x/cmp-treesitter',                -- TreeSitter completion
+      'quangnguyen30192/cmp-nvim-tags',      -- ctags completion
+      'onsails/lspkind.nvim',                -- Show pictograms
+      "xzbdmw/colorful-menu.nvim",           -- Colorful menu
     },
     config = function()
       local cmp = require("cmp")
@@ -252,19 +253,28 @@ require("lazy").setup({
         })
       })
 
-      local lspkind = require('lspkind')
       cmp.setup {
         formatting = {
-          format = lspkind.cmp_format({
-            mode = 'symbol', -- show only symbol annotations
-            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+          fields = { "kind", "abbr", "menu" },
 
-            -- The function below will be called before any actual modifications from lspkind
-            -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-            before = function (entry, vim_item)
-              return vim_item
+          format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({
+              mode = "symbol_text",
+            })(entry, vim.deepcopy(vim_item))
+            local highlights_info = require("colorful-menu").cmp_highlights(entry)
+
+            -- if highlight_info==nil, which means missing ts parser, let's fallback to use default `vim_item.abbr`.
+            -- What this plugin offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
+            if highlights_info ~= nil then
+              vim_item.abbr_hl_group = highlights_info.highlights
+              vim_item.abbr = highlights_info.text
             end
-          })
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            vim_item.kind = " " .. (strings[1] or "") .. " "
+            vim_item.menu = ""
+
+            return vim_item
+          end,
         }
       }
     end
