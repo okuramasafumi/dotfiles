@@ -16,11 +16,11 @@ vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappin
 
 require("lazy").setup({
   "nvim-lua/plenary.nvim", -- Utility
-  "MunifTanjim/nui.nvim", -- UI
-  'b0o/schemastore.nvim', -- JSON schema access
+  "MunifTanjim/nui.nvim",  -- UI
+  'b0o/schemastore.nvim',  -- JSON schema access
   {
     "folke/tokyonight.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
@@ -50,7 +50,7 @@ require("lazy").setup({
             -- You can choose the select mode (default is charwise 'v')
             selection_modes = {
               ['@parameter.outer'] = 'v', -- charwise
-              ['@function.outer'] = 'V', -- linewise
+              ['@function.outer'] = 'V',  -- linewise
               ['@class.outer'] = '<c-v>', -- blockwise
             },
             -- If you set this to `true` (default is `false`) then any textobject is
@@ -70,10 +70,10 @@ require("lazy").setup({
           },
         },
         ensure_installed = { "ruby", "javascript", "typescript", "tsx", "vue", "html", "css", "scss", "lua", "c", "rust", "vim", "regex", "markdown", "markdown_inline", "json", "yaml", "vimdoc" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-        ignore_install = {}, -- List of parsers to ignore installing
+        ignore_install = {},                                                                                                                                                                         -- List of parsers to ignore installing
         highlight = {
-          enable = true,              -- false will disable the whole extension
-          disable = { "c", "rust" },  -- list of language that will be disabled
+          enable = true,                                                                                                                                                                             -- false will disable the whole extension
+          disable = { "c", "rust" },                                                                                                                                                                 -- list of language that will be disabled
           -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
           -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
           -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -92,7 +92,7 @@ require("lazy").setup({
           enable = true,
         },
         matchup = {
-          enable = true,              -- mandatory, false will disable the whole extension
+          enable = true, -- mandatory, false will disable the whole extension
         },
         autotag = {
           enable = true,
@@ -104,13 +104,13 @@ require("lazy").setup({
       }
     end,
     dependencies = {
-      "andymass/vim-matchup", -- matchit replacement
+      "andymass/vim-matchup",                        -- matchit replacement
       'nvim-treesitter/nvim-treesitter-textobjects', -- Syntax aware text objects
-      'nvim-treesitter/nvim-treesitter-context', -- Code context
-      'nvim-treesitter/nvim-treesitter-refactor', -- Refactoring support
-      'RRethy/nvim-treesitter-endwise', -- Complete end
-      'windwp/nvim-ts-autotag', -- Auto close tags
-      'HiPhish/rainbow-delimiters.nvim' -- Rainbow delimiters
+      'nvim-treesitter/nvim-treesitter-context',     -- Code context
+      'nvim-treesitter/nvim-treesitter-refactor',    -- Refactoring support
+      'RRethy/nvim-treesitter-endwise',              -- Complete end
+      'windwp/nvim-ts-autotag',                      -- Auto close tags
+      'HiPhish/rainbow-delimiters.nvim'              -- Rainbow delimiters
     }
   },
   -- LSP section
@@ -118,8 +118,8 @@ require("lazy").setup({
   {
     "rachartier/tiny-code-action.nvim",
     dependencies = {
-      {"nvim-lua/plenary.nvim"},
-      {"nvim-telescope/telescope.nvim"},
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
     },
     event = "LspAttach",
     config = function()
@@ -287,7 +287,7 @@ require("lazy").setup({
     build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
-      require('luasnip').filetype_extend("ruby", {"rails"})
+      require('luasnip').filetype_extend("ruby", { "rails" })
       require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
@@ -310,7 +310,7 @@ require("lazy").setup({
           else
             chunkText = truncate(chunkText, targetWidth - curWidth)
             local hlGroup = chunk[2]
-            table.insert(newVirtText, {chunkText, hlGroup})
+            table.insert(newVirtText, { chunkText, hlGroup })
             chunkWidth = vim.fn.strdisplaywidth(chunkText)
             -- str width returned from truncate() may less than 2nd argument, need padding
             if curWidth + chunkWidth < targetWidth then
@@ -320,12 +320,12 @@ require("lazy").setup({
           end
           curWidth = curWidth + chunkWidth
         end
-        table.insert(newVirtText, {suffix, 'MoreMsg'})
+        table.insert(newVirtText, { suffix, 'MoreMsg' })
         return newVirtText
       end
-      require('ufo').setup{
+      require('ufo').setup {
         provider_selector = function(bufnr, filetype, buftype)
-          return {'treesitter', 'indent'}
+          return { 'treesitter', 'indent' }
         end,
         fold_virt_text_handler = handler,
         close_fold_kinds_for_ft = {
@@ -351,9 +351,9 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "zbirenbaum/copilot.lua",      -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -392,29 +392,29 @@ require("lazy").setup({
       local set = vim.keymap.set
 
       -- Add or skip cursor above/below the main cursor.
-      set({"n", "x"}, "<up>",
-      function() mc.lineAddCursor(-1) end)
-      set({"n", "x"}, "<down>",
-      function() mc.lineAddCursor(1) end)
-      set({"n", "x"}, "<leader><up>",
-      function() mc.lineSkipCursor(-1) end)
-      set({"n", "x"}, "<leader><down>",
-      function() mc.lineSkipCursor(1) end)
+      set({ "n", "x" }, "<up>",
+        function() mc.lineAddCursor(-1) end)
+      set({ "n", "x" }, "<down>",
+        function() mc.lineAddCursor(1) end)
+      set({ "n", "x" }, "<leader><up>",
+        function() mc.lineSkipCursor(-1) end)
+      set({ "n", "x" }, "<leader><down>",
+        function() mc.lineSkipCursor(1) end)
 
       -- Add or skip adding a new cursor by matching word/selection
-      set({"n", "x"}, "<leader>n",
-      function() mc.matchAddCursor(1) end)
-      set({"n", "x"}, "<leader>s",
-      function() mc.matchSkipCursor(1) end)
-      set({"n", "x"}, "<leader>N",
-      function() mc.matchAddCursor(-1) end)
-      set({"n", "x"}, "<leader>S",
-      function() mc.matchSkipCursor(-1) end)
+      set({ "n", "x" }, "<leader>n",
+        function() mc.matchAddCursor(1) end)
+      set({ "n", "x" }, "<leader>s",
+        function() mc.matchSkipCursor(1) end)
+      set({ "n", "x" }, "<leader>N",
+        function() mc.matchAddCursor(-1) end)
+      set({ "n", "x" }, "<leader>S",
+        function() mc.matchSkipCursor(-1) end)
 
       -- In normal/visual mode, press `mwap` will create a cursor in every match of
       -- the word captured by `iw` (or visually selected range) inside the bigger
       -- range specified by `ap`. Useful to replace a word inside a function, e.g. mwif.
-      set({"n", "x"}, "mw", function()
+      set({ "n", "x" }, "mw", function()
         mc.operator({ motion = "iw", visual = true })
         -- Or you can pass a pattern, press `mwi{` will select every \w,
         -- basically every char in a `{ a, b, c, d }`.
@@ -425,93 +425,94 @@ require("lazy").setup({
       set("n", "mW", mc.operator)
 
       -- Add all matches in the document
-      set({"n", "x"}, "<leader>A", mc.matchAllAddCursors)
+      set({ "n", "x" }, "<leader>A", mc.matchAllAddCursors)
 
       -- You can also add cursors with any motion you prefer:
       -- set("n", "<right>", function()
-        --     mc.addCursor("w")
-        -- end)
-        -- set("n", "<leader><right>", function()
-          --     mc.skipCursor("w")
-          -- end)
+      --     mc.addCursor("w")
+      -- end)
+      -- set("n", "<leader><right>", function()
+      --     mc.skipCursor("w")
+      -- end)
 
-          -- Rotate the main cursor.
-          set({"n", "x"}, "<left>", mc.nextCursor)
-          set({"n", "x"}, "<right>", mc.prevCursor)
+      -- Rotate the main cursor.
+      set({ "n", "x" }, "<left>", mc.nextCursor)
+      set({ "n", "x" }, "<right>", mc.prevCursor)
 
-          -- Delete the main cursor.
-          set({"n", "x"}, "<leader>x", mc.deleteCursor)
+      -- Delete the main cursor.
+      set({ "n", "x" }, "<leader>x", mc.deleteCursor)
 
-          -- Add and remove cursors with control + left click.
-          set("n", "<c-leftmouse>", mc.handleMouse)
-          set("n", "<c-leftdrag>", mc.handleMouseDrag)
+      -- Add and remove cursors with control + left click.
+      set("n", "<c-leftmouse>", mc.handleMouse)
+      set("n", "<c-leftdrag>", mc.handleMouseDrag)
 
-          -- Easy way to add and remove cursors using the main cursor.
-          set({"n", "x"}, "<c-q>", mc.toggleCursor)
+      -- Easy way to add and remove cursors using the main cursor.
+      set({ "n", "x" }, "<c-q>", mc.toggleCursor)
 
-          -- Clone every cursor and disable the originals.
-          set({"n", "x"}, "<leader><c-q>", mc.duplicateCursors)
+      -- Clone every cursor and disable the originals.
+      set({ "n", "x" }, "<leader><c-q>", mc.duplicateCursors)
 
-          set("n", "<esc>", function()
-            if not mc.cursorsEnabled() then
-              mc.enableCursors()
-            elseif mc.hasCursors() then
-              mc.clearCursors()
-            else
-              -- Default <esc> handler.
-            end
-          end)
-
-          -- bring back cursors if you accidentally clear them
-          set("n", "<leader>gv", mc.restoreCursors)
-
-          -- Align cursor columns.
-          set("n", "<leader>a", mc.alignCursors)
-
-          -- Split visual selections by regex.
-          set("x", "S", mc.splitCursors)
-
-          -- Append/insert for each line of visual selections.
-          set("x", "I", mc.insertVisual)
-          set("x", "A", mc.appendVisual)
-
-          -- match new cursors within visual selections by regex.
-          set("x", "M", mc.matchCursors)
-
-          -- Rotate visual selection contents.
-          set("x", "<leader>t",
-          function() mc.transposeCursors(1) end)
-          set("x", "<leader>T",
-          function() mc.transposeCursors(-1) end)
-
-          -- Jumplist support
-          set({"x", "n"}, "<c-i>", mc.jumpForward)
-          set({"x", "n"}, "<c-o>", mc.jumpBackward)
-
-          -- Customize how cursors look.
-          local hl = vim.api.nvim_set_hl
-          hl(0, "MultiCursorCursor", { link = "Cursor" })
-          hl(0, "MultiCursorVisual", { link = "Visual" })
-          hl(0, "MultiCursorSign", { link = "SignColumn"})
-          hl(0, "MultiCursorMatchPreview", { link = "Search" })
-          hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
-          hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
-          hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
+      set("n", "<esc>", function()
+        if not mc.cursorsEnabled() then
+          mc.enableCursors()
+        elseif mc.hasCursors() then
+          mc.clearCursors()
+        else
+          -- Default <esc> handler.
         end
-      },
-      -- Telescope
+      end)
+
+      -- bring back cursors if you accidentally clear them
+      set("n", "<leader>gv", mc.restoreCursors)
+
+      -- Align cursor columns.
+      set("n", "<leader>a", mc.alignCursors)
+
+      -- Split visual selections by regex.
+      set("x", "S", mc.splitCursors)
+
+      -- Append/insert for each line of visual selections.
+      set("x", "I", mc.insertVisual)
+      set("x", "A", mc.appendVisual)
+
+      -- match new cursors within visual selections by regex.
+      set("x", "M", mc.matchCursors)
+
+      -- Rotate visual selection contents.
+      set("x", "<leader>t",
+        function() mc.transposeCursors(1) end)
+      set("x", "<leader>T",
+        function() mc.transposeCursors(-1) end)
+
+      -- Jumplist support
+      set({ "x", "n" }, "<c-i>", mc.jumpForward)
+      set({ "x", "n" }, "<c-o>", mc.jumpBackward)
+
+      -- Customize how cursors look.
+      local hl = vim.api.nvim_set_hl
+      hl(0, "MultiCursorCursor", { link = "Cursor" })
+      hl(0, "MultiCursorVisual", { link = "Visual" })
+      hl(0, "MultiCursorSign", { link = "SignColumn" })
+      hl(0, "MultiCursorMatchPreview", { link = "Search" })
+      hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
+      hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
+      hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
+    end
+  },
+  -- Telescope
   {
     'nvim-telescope/telescope-fzf-native.nvim', -- Faster sort
     build = 'make'
   },
   {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'LukasPietzschmann/telescope-tabs',
       "debugloop/telescope-undo.nvim",
       {
-        "nvim-telescope/telescope-live-grep-args.nvim" ,
+        "nvim-telescope/telescope-live-grep-args.nvim",
         -- This will not install any breaking changes.
         -- For major updates, this must be adjusted manually.
         version = "^1.0.0",
@@ -519,13 +520,13 @@ require("lazy").setup({
     },
     config = function()
       local telescope = require('telescope')
-      telescope.setup{
+      telescope.setup {
         extensions = {
           fzf = {
-            fuzzy = true,                    -- false will only do exact matching
-            override_generic_sorter = true,  -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+            fuzzy = true,                   -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
           undo = {
@@ -535,7 +536,7 @@ require("lazy").setup({
         pickers = {
           find_files = {
             find_command = function()
-              return {"rg", "--files", "--hidden", "--glob", "!.git"}
+              return { "rg", "--files", "--hidden", "--glob", "!.git" }
             end
           }
         },
@@ -574,17 +575,17 @@ require("lazy").setup({
     },
   },
   {
-    'nvim-lualine/lualine.nvim', -- statusline
+    'nvim-lualine/lualine.nvim',     -- statusline
     dependencies = {
       "nvim-tree/nvim-web-devicons", -- optional dependency
       "okuramasafumi/rspec-current.vim",
       'AndreM222/copilot-lualine',
     },
     config = function()
-      require("lualine").setup{
+      require("lualine").setup {
         sections = {
-          lualine_c = {'RSpecCurrentSubject'},
-          lualine_x = { { 'copilot', show_colors = true } , 'filetype' },
+          lualine_c = { 'RSpecCurrentSubject' },
+          lualine_x = { { 'copilot', show_colors = true }, 'filetype' },
         },
         options = {
           theme = 'tokyonight',
@@ -686,10 +687,10 @@ require("lazy").setup({
     "okuramasafumi/rspec-current.vim",
     ft = "ruby"
   },
-  "pocke/rbs.vim", -- Including filetype detector
+  "pocke/rbs.vim",          -- Including filetype detector
   "slim-template/vim-slim", -- Slim template
   {
-    'weizheheng/ror.nvim', -- Rails development support
+    'weizheheng/ror.nvim',  -- Rails development support
     dependencies = {
       'nvim-telescope/telescope.nvim',
       'rcarriga/nvim-notify',
@@ -758,9 +759,9 @@ require("lazy").setup({
       local ss = require("smart-splits")
       local wk = require("which-key")
       wk.add({
-        { "<C-h>", ss.move_cursor_left, desc = "Move cursor left" },
-        { "<C-j>", ss.move_cursor_down, desc = "Move cursor down" },
-        { "<C-k>", ss.move_cursor_up, desc = "Move cursor up" },
+        { "<C-h>", ss.move_cursor_left,  desc = "Move cursor left" },
+        { "<C-j>", ss.move_cursor_down,  desc = "Move cursor down" },
+        { "<C-k>", ss.move_cursor_up,    desc = "Move cursor up" },
         { "<C-l>", ss.move_cursor_right, desc = "Move cursor right" },
       })
     end
@@ -780,9 +781,9 @@ require("lazy").setup({
       })
     end,
   },
-  "wsdjeg/vim-fetch", -- Line number and column number
+  "wsdjeg/vim-fetch",           -- Line number and column number
   "gpanders/editorconfig.nvim", -- Editorconfig
-  'jghauser/mkdir.nvim', -- Create directory when it's missing
+  'jghauser/mkdir.nvim',        -- Create directory when it's missing
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -796,15 +797,15 @@ require("lazy").setup({
   {
     'sudormrfbin/cheatsheet.nvim',
     dependencies = {
-      {'nvim-telescope/telescope.nvim'},
-      {'nvim-lua/popup.nvim'},
-      {'nvim-lua/plenary.nvim'},
+      { 'nvim-telescope/telescope.nvim' },
+      { 'nvim-lua/popup.nvim' },
+      { 'nvim-lua/plenary.nvim' },
     }
   },
   {
     "ethanholz/nvim-lastplace", -- Restore last cursor position
     config = function()
-      require("nvim-lastplace").setup{}
+      require("nvim-lastplace").setup {}
     end
   },
   {
@@ -821,7 +822,7 @@ require("lazy").setup({
         -- config
       }
     end,
-    dependencies = { {'nvim-tree/nvim-web-devicons'} }
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
   },
   {
     "m4xshen/hardtime.nvim", -- Good habits
@@ -834,7 +835,7 @@ require("lazy").setup({
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-  "direnv/direnv.vim", -- direnv integration
+  "direnv/direnv.vim",   -- direnv integration
   {
     "uga-rosa/ccc.nvim", -- Color utility
     opts = {
@@ -852,7 +853,7 @@ require("lazy").setup({
   {
     "CRAG666/code_runner.nvim",
     config = function()
-      require("code_runner").setup{}
+      require("code_runner").setup {}
       local wk = require("which-key")
       wk.add({
         { '<leader>rr', ':RunCode<CR>', desc = "Runs based on file type, first checking if belongs to project, then if filetype mapping exists" },
@@ -883,35 +884,35 @@ require("lazy").setup({
 })
 
 -- Misc
-vim.opt.termguicolors = true -- True color
+vim.opt.termguicolors = true  -- True color
 vim.opt.relativenumber = true -- Setting relativenumber is slow but Apple Sillicon make it work!
-vim.opt.number = true -- Current line has 0 relative number so showing absolute number
+vim.opt.number = true         -- Current line has 0 relative number so showing absolute number
 vim.opt.foldenable = true
-vim.opt.foldlevel = 99 -- For ufo
-vim.opt.foldlevelstart = 99 -- For ufo
-vim.opt.expandtab = true -- Insert whitespaces with tabb key
-vim.opt.tabstop = 2 -- Tab is 2 whitespaces
+vim.opt.foldlevel = 99        -- For ufo
+vim.opt.foldlevelstart = 99   -- For ufo
+vim.opt.expandtab = true      -- Insert whitespaces with tabb key
+vim.opt.tabstop = 2           -- Tab is 2 whitespaces
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.spelllang = "en,cjk" -- Spellcheck language
-vim.opt.undofile = true -- Persistent undo
-vim.opt.laststatus = 3 -- always and ONLY the last window
+vim.opt.spelllang = "en,cjk"     -- Spellcheck language
+vim.opt.undofile = true          -- Persistent undo
+vim.opt.laststatus = 3           -- always and ONLY the last window
 vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep for grep
 vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- autocmd
-local spell_group = vim.api.nvim_create_augroup('spell', {clear = false})
-vim.api.nvim_create_autocmd({'BufEnter'}, {
-  pattern = {'*.txt','*.md','*.markdown','NeogitCommitMessage'},
+local spell_group = vim.api.nvim_create_augroup('spell', { clear = false })
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  pattern = { '*.txt', '*.md', '*.markdown', 'NeogitCommitMessage' },
   group = spell_group,
   command = 'setlocal spell',
   desc = 'Set spell for text files'
 })
 
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*rdoc_options",
   command = "set filetype=yaml",
-  desc  = ".rdoc_options is YAML"
+  desc    = ".rdoc_options is YAML"
 })
 
 -- Easy quittng
@@ -927,33 +928,33 @@ local wk = require("which-key")
 local builtin = require('telescope.builtin')
 wk.add({
   {
-    {"]<space>", ":<C-u>call append(expand('.'), '')<Cr>j", desc = "Add one empty line to below"},
-    { "<leader>g", group = "git" },
-    { "<leader>ga", ":<C-u>!git add %<Cr>", desc = "Add current file" },
-    { "<leader>gcc", ":<C-u>Neogit commit<Cr>", desc = "Git commit" },
-    { "<leader>gg", ":Neogit<Cr>", desc = "Open Neogit" },
-    { "]<space>", ":<C-u>call append(expand('.'), '')<Cr>j", desc = "Add one empty line to below" },
-    { "<leader>f", group = "+file" },
-    { "<leader>ff", builtin.find_files, desc = "Find Files" },
-    { "<leader>fo", builtin.oldfiles, desc = "Find File from history" },
-    { "<leader>fh", builtin.help_tags, desc = "Help items" },
-    { "<leader>r", group = "+grep" },
-    { "<leader>rr", require("telescope-live-grep-args.shortcuts").grep_word_under_cursor, desc = "Grep string under cursor", mode = "n" },
-    { "<leader>rr", require("telescope-live-grep-args.shortcuts").grep_visual_selection, desc = "Grep string with visual selection", mode = "v" },
-    { "<leader>rl", require('telescope').extensions.live_grep_args.live_grep_args, desc = "Live grep" },
-    { "<leader>glc", builtin.git_commits, desc = "Git commits" },
-    { "<leader>gb", builtin.git_branches, desc = "Git branches" },
-    { "<leader>gs", builtin.git_status, desc = "Git status" },
-    { "<leader>tb", builtin.builtin, desc = "List builtin commands" },
-    { "<leader>qf", builtin.quickfix, desc = "Quickfix" },
-    { "<leader>ts", builtin.treesitter, desc = "treesitter" },
-    { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Undos" },
+    { "]<space>",    ":<C-u>call append(expand('.'), '')<Cr>j",                            desc = "Add one empty line to below" },
+    { "<leader>g",   group = "git" },
+    { "<leader>ga",  ":<C-u>!git add %<Cr>",                                               desc = "Add current file" },
+    { "<leader>gcc", ":<C-u>Neogit commit<Cr>",                                            desc = "Git commit" },
+    { "<leader>gg",  ":Neogit<Cr>",                                                        desc = "Open Neogit" },
+    { "]<space>",    ":<C-u>call append(expand('.'), '')<Cr>j",                            desc = "Add one empty line to below" },
+    { "<leader>f",   group = "+file" },
+    { "<leader>ff",  builtin.find_files,                                                   desc = "Find Files" },
+    { "<leader>fo",  builtin.oldfiles,                                                     desc = "Find File from history" },
+    { "<leader>fh",  builtin.help_tags,                                                    desc = "Help items" },
+    { "<leader>r",   group = "+grep" },
+    { "<leader>rr",  require("telescope-live-grep-args.shortcuts").grep_word_under_cursor, desc = "Grep string under cursor",          mode = "n" },
+    { "<leader>rr",  require("telescope-live-grep-args.shortcuts").grep_visual_selection,  desc = "Grep string with visual selection", mode = "v" },
+    { "<leader>rl",  require('telescope').extensions.live_grep_args.live_grep_args,        desc = "Live grep" },
+    { "<leader>glc", builtin.git_commits,                                                  desc = "Git commits" },
+    { "<leader>gb",  builtin.git_branches,                                                 desc = "Git branches" },
+    { "<leader>gs",  builtin.git_status,                                                   desc = "Git status" },
+    { "<leader>tb",  builtin.builtin,                                                      desc = "List builtin commands" },
+    { "<leader>qf",  builtin.quickfix,                                                     desc = "Quickfix" },
+    { "<leader>ts",  builtin.treesitter,                                                   desc = "treesitter" },
+    { "<leader>u",   "<cmd>Telescope undo<cr>",                                            desc = "Undos" },
   }
 })
 
 -- LSP
 -- Setup lspconfig.
-local lspconfig = require'lspconfig'
+local lspconfig = require 'lspconfig'
 local json_schemas = require('schemastore').json.schemas()
 
 lspconfig.ts_ls.setup {}
@@ -963,7 +964,7 @@ lspconfig.yamlls.setup {
     yaml = {
       schemas = json_schemas,
       -- schemas = {
-        -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+      -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
       -- },
     },
   }
@@ -1005,15 +1006,17 @@ end
 
 lspconfig.jdtls.setup {}
 
+lspconfig.lua_ls.setup {}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 wk.add({
   { "<leader>T", "<cmd>Neotest run file<cr>", desc = "Run file test" },
-  { "<leader>t", "<cmd>Neotest run<cr>", desc = "Run nearest test" },
-  { "<space>e", vim.diagnostic.open_float, desc = "Open diagnostic float" },
-  { "<space>q", vim.diagnostic.setloclist, desc = "Set loclist" },
-  { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic" },
-  { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
+  { "<leader>t", "<cmd>Neotest run<cr>",      desc = "Run nearest test" },
+  { "<space>e",  vim.diagnostic.open_float,   desc = "Open diagnostic float" },
+  { "<space>q",  vim.diagnostic.setloclist,   desc = "Set loclist" },
+  { "[d",        vim.diagnostic.goto_prev,    desc = "Go to previous diagnostic" },
+  { "]d",        vim.diagnostic.goto_next,    desc = "Go to next diagnostic" },
 })
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -1029,20 +1032,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
     wk.add({
-      { { "gD", vim.lsp.buf.declaration, desc = 'Go to declaration' }, opts },
-      { { "gd", vim.lsp.buf.definition, desc = 'Go to definition' }, opts },
-      { { "K", vim.lsp.buf.hover, desc = 'Hover' }, opts },
-      { { "gi", vim.lsp.buf.implementation, desc = 'Go to implementation' }, opts },
-      { { "<leader>k", vim.lsp.buf.signature_help, desc = 'Show signature help' }, opts },
+      { { "gD", vim.lsp.buf.declaration, desc = 'Go to declaration' },                        opts },
+      { { "gd", vim.lsp.buf.definition, desc = 'Go to definition' },                          opts },
+      { { "K", vim.lsp.buf.hover, desc = 'Hover' },                                           opts },
+      { { "gi", vim.lsp.buf.implementation, desc = 'Go to implementation' },                  opts },
+      { { "<leader>k", vim.lsp.buf.signature_help, desc = 'Show signature help' },            opts },
       -- ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, opts },
       -- ['<space>wr'] = { vim.lsp.buf.remove_workspace_folder, opts },
       -- ['<space>wl'] = { function()
       --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       -- end, opts },
-      { { "TD", vim.lsp.buf.type_definition, desc = 'Go to type definition' }, opts },
-      { { "rn", vim.lsp.buf.rename, desc = 'Rename' }, opts },
+      { { "TD", vim.lsp.buf.type_definition, desc = 'Go to type definition' },                opts },
+      { { "rn", vim.lsp.buf.rename, desc = 'Rename' },                                        opts },
       { { "<leader>ca", vim.lsp.buf.code_action, desc = 'Code action', mode = { 'n', 'v' } }, opts },
-      { { "gr", vim.lsp.buf.references, desc = 'Go to references' }, opts },
+      { { "gr", vim.lsp.buf.references, desc = 'Go to references' },                          opts },
       -- ['<space>f'] = { { function()
       --   vim.lsp.buf.format { async = true }
       -- end, 'Format' }, opts },
