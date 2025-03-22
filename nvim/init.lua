@@ -1046,3 +1046,30 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+-- Rails specific settings
+
+local function is_rails_project()
+  local current_dir = vim.fn.expand('%:p:h')
+  while current_dir ~= "/" do
+    if vim.fn.filereadable(current_dir .. "/config/application.rb") == 1 then
+      return true
+    end
+    current_dir = vim.fn.fnamemodify(current_dir, ":h")
+  end
+  return false
+end
+
+
+local rails_group = vim.api.nvim_create_augroup('rails', { clear = false })
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*.rb",
+  callback = function()
+    if is_rails_project() then
+      vim.opt.path:append("app/models")
+      vim.opt.suffixesadd:append(".rb")
+    end
+  end,
+  group = rails_group,
+})
