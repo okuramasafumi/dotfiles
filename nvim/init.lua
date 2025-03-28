@@ -36,17 +36,21 @@ require("lazy").setup({
       bigfile = { enabled = true },
       dashboard = { enabled = true },
       explorer = { enabled = true },
+      image = { enabled = true },
       indent = { enabled = true },
       input = { enabled = true },
       notifier = {
         enabled = true,
         timeout = 3000,
       },
+      notify = { enabled = true },
       picker = { enabled = false },
+      profiler = { enabled = true },
       quickfile = { enabled = true },
       scope = { enabled = true },
-      scroll = { enabled = true },
+      scroll = { enabled = false },
       statuscolumn = { enabled = true },
+      terminal = { enabled = true },
       words = { enabled = true },
       styles = {
         notification = {
