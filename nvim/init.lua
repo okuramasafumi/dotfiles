@@ -177,6 +177,11 @@ require("lazy").setup({
     end
   },
   {
+    'echasnovski/mini.ai',
+    version = false,
+    opts = {},
+  },
+  {
     "hrsh7th/nvim-cmp",
     -- load cmp on InsertEnter
     event = { "InsertEnter", "CmdlineEnter" },
