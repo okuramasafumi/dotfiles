@@ -836,16 +836,6 @@ require("lazy").setup({
     end
   },
   {
-    'glepnir/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        -- config
-      }
-    end,
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
-  },
-  {
     "m4xshen/hardtime.nvim", -- Good habits
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
