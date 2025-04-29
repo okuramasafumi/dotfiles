@@ -1031,8 +1031,8 @@ wk.add({
   { "<leader>t", "<cmd>Neotest run<cr>",      desc = "Run nearest test" },
   { "<space>e",  vim.diagnostic.open_float,   desc = "Open diagnostic float" },
   { "<space>q",  vim.diagnostic.setloclist,   desc = "Set loclist" },
-  { "[d",        vim.diagnostic.goto_prev,    desc = "Go to previous diagnostic" },
-  { "]d",        vim.diagnostic.goto_next,    desc = "Go to next diagnostic" },
+  { "[d",        vim.diagnostic.get_prev,     desc = "Go to previous diagnostic" },
+  { "]d",        vim.diagnostic.get_next,     desc = "Go to next diagnostic" },
 })
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
