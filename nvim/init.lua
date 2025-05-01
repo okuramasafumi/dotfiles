@@ -816,14 +816,6 @@ require("lazy").setup({
     end
   },
   {
-    'sudormrfbin/cheatsheet.nvim',
-    dependencies = {
-      { 'nvim-telescope/telescope.nvim' },
-      { 'nvim-lua/popup.nvim' },
-      { 'nvim-lua/plenary.nvim' },
-    }
-  },
-  {
     "ethanholz/nvim-lastplace", -- Restore last cursor position
     config = function()
       require("nvim-lastplace").setup {}
