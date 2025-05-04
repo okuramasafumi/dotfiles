@@ -142,7 +142,6 @@ require("lazy").setup({
       'nvim-treesitter/nvim-treesitter-refactor',    -- Refactoring support
       'RRethy/nvim-treesitter-endwise',              -- Complete end
       'windwp/nvim-ts-autotag',                      -- Auto close tags
-      'HiPhish/rainbow-delimiters.nvim'              -- Rainbow delimiters
     }
   },
   -- LSP section
