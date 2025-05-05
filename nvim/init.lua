@@ -372,6 +372,8 @@ require("lazy").setup({
   },
   {
     "olimorris/codecompanion.nvim",
+    lazy = true,
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -685,6 +687,8 @@ require("lazy").setup({
   -- Testing
   {
     'nvim-neotest/neotest',
+    lazy = true,
+    event = "VeryLazy",
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
@@ -724,6 +728,8 @@ require("lazy").setup({
   -- Git
   {
     'NeogitOrg/neogit', -- Git interface
+    lazy = true,
+    event = "VeryLazy",
     dependencies = {
       'nvim-lua/plenary.nvim',
       "sindrets/diffview.nvim"
@@ -822,6 +828,8 @@ require("lazy").setup({
   },
   {
     'stevearc/overseer.nvim', -- Task management
+    lazy = true,
+    event = "VeryLazy",
     config = function()
       require('overseer').setup()
     end
