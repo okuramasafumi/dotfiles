@@ -896,7 +896,11 @@ require("lazy").setup({
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {}
-  }
+  },
+  {
+    "OXY2DEV/helpview.nvim", -- Nicer help
+    lazy = false
+  },
 })
 
 -- Misc
