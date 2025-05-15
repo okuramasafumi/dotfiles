@@ -1072,7 +1072,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     })
 
     -- Auto formatting with LSP
-    if client.supports_method('textDocument/formatting') then
+    if client and client:supports_method('textDocument/formatting') then
       vim.api.nvim_create_autocmd("BufWritePre", {
         -- pattern = "*.rb",
         callback = function()
