@@ -1031,12 +1031,12 @@ lspconfig.lua_ls.setup {}
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 wk.add({
-  { "<leader>T", "<cmd>Neotest run file<cr>",                                                    desc = "Run file test" },
-  { "<leader>t", "<cmd>Neotest run<cr>",                                                         desc = "Run nearest test" },
-  { "<leader>e", vim.diagnostic.open_float,                                                      desc = "Open diagnostic float" },
-  { "<leader>q", vim.diagnostic.setloclist,                                                      desc = "Set loclist" },
-  { "[d",        function() vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_prev() }) end, desc = "Go to previous diagnostic" },
-  { "]d",        function() vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() }) end, desc = "Go to next diagnostic" },
+  { "<leader>T", "<cmd>Neotest run file<cr>",                                      desc = "Run file test" },
+  { "<leader>t", "<cmd>Neotest run<cr>",                                           desc = "Run nearest test" },
+  { "<leader>e", vim.diagnostic.open_float,                                        desc = "Open diagnostic float" },
+  { "<leader>q", vim.diagnostic.setloclist,                                        desc = "Set loclist" },
+  { "[d",        function() vim.diagnostic.jump({ count = -1, float = true }) end, desc = "Go to previous diagnostic" },
+  { "]d",        function() vim.diagnostic.jump({ count = 1, float = true }) end,  desc = "Go to next diagnostic" },
 })
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
