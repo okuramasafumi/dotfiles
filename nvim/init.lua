@@ -642,6 +642,8 @@ require("lazy").setup({
   {
     'nvim-pack/nvim-spectre', -- Search and replace
     build = "build.sh",
+    lazy = true,
+    cmd = "Spectre",
     config = function()
       require('spectre').setup({
         default = {
