@@ -62,6 +62,7 @@ require("lazy").setup({
   -- TreeSitter section
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = 'master', -- `master` branch is just for backward compatibility and `main` branch will be the default, so stay `master` for a while
     build = ":TSUpdate",
     config = function()
       require('nvim-treesitter.configs').setup {
