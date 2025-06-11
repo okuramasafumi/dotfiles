@@ -20,9 +20,6 @@ github = "zsh-users/zsh-completions"
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 
-[plugins.zsh-apple-touchbar]
-github = "zsh-users/zsh-apple-touchbar"
-
 [plugins.fast-syntax-highlighting]
 github = "zdharma/fast-syntax-highlighting"
 
