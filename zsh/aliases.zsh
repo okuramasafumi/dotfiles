@@ -39,6 +39,9 @@ alias rdm='rake db:migrate'
 alias rdmr='rake db:migrate:reset'
 alias rdr='rake db:rollback'
 
+# AI
+alias c='claude'
+
 function _rails_command () {
   if [ -e "bin/rails" ]; then
     bin/rails $@
