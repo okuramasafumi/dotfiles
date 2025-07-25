@@ -4,7 +4,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon[]
+Icon\[\]
 
 # Thumbnails
 ._*
@@ -225,4 +225,4 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # Personal TODO file
-# .TODO
+.TODO
