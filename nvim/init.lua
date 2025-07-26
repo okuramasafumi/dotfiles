@@ -1124,7 +1124,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       -- end, opts },
       { { "TD", vim.lsp.buf.type_definition, desc = 'Go to type definition' },                opts },
-      { { "rn", vim.lsp.buf.rename, desc = 'Rename' },                                        opts },
+      { { "<leader>rn", vim.lsp.buf.rename, desc = 'Rename' },                                opts },
       { { "<leader>ca", vim.lsp.buf.code_action, desc = 'Code action', mode = { 'n', 'v' } }, opts },
       { { "gr", vim.lsp.buf.references, desc = 'Go to references' },                          opts },
       -- ['<space>f'] = { { function()
