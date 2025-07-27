@@ -42,6 +42,9 @@ alias rdr='rake db:rollback'
 # AI
 alias c='claude'
 
+# Obsidian
+alias ob='nvim ~/Obsidian/iCloudVault/README.md'
+
 function _rails_command () {
   if [ -e "bin/rails" ]; then
     bin/rails $@
