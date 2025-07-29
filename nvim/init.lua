@@ -62,88 +62,8 @@ require("lazy").setup({
   -- TreeSitter section
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = 'master', -- `master` branch is just for backward compatibility and `main` branch will be the default, so stay `master` for a while
+    branch = 'main', -- Using the main branch
     build = ":TSUpdate",
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        textobjects = {
-          select = {
-            enable = true,
-
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-            -- You can choose the select mode (default is charwise 'v')
-            selection_modes = {
-              ['@parameter.outer'] = 'v', -- charwise
-              ['@function.outer'] = 'V',  -- linewise
-              ['@class.outer'] = '<c-v>', -- blockwise
-            },
-            -- If you set this to `true` (default is `false`) then any textobject is
-            -- extended to include preceding xor succeeding whitespace. Succeeding
-            -- whitespace has priority in order to act similarly to eg the built-in
-            -- `ap`.
-            include_surrounding_whitespace = true,
-          },
-        },
-        textsubjects = {
-          enable = true,
-          prev_selection = ',', -- (Optional) keymap to select the previous selection
-          keymaps = {
-            ['.'] = 'textsubjects-smart',
-            [';'] = 'textsubjects-container-outer',
-            ['i;'] = 'textsubjects-container-inner',
-          },
-        },
-        ensure_installed = { "ruby", "javascript", "typescript", "tsx", "vue", "html", "css", "scss", "lua", "c", "rust", "vim", "regex", "markdown", "markdown_inline", "json", "yaml", "vimdoc" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-        ignore_install = {},                                                                                                                                                                         -- List of parsers to ignore installing
-        highlight = {
-          enable = true,                                                                                                                                                                             -- false will disable the whole extension
-          disable = { "c", "rust" },                                                                                                                                                                 -- list of language that will be disabled
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = { "ruby", "vim" },
-        },
-        refactor = {
-          highlight_definitions = {
-            enable = true,
-            -- Set to false if you have an `updatetime` of ~100.
-            clear_on_cursor_move = true,
-          },
-          highlight_current_scope = { enable = true },
-        },
-        endwise = {
-          enable = true,
-        },
-        matchup = {
-          enable = true, -- mandatory, false will disable the whole extension
-        },
-        autotag = {
-          enable = true,
-        },
-        context = {
-          enable = false,
-          max_lines = 5,
-        }
-      }
-    end,
-    dependencies = {
-      "andymass/vim-matchup",                        -- matchit replacement
-      'nvim-treesitter/nvim-treesitter-textobjects', -- Syntax aware text objects
-      'nvim-treesitter/nvim-treesitter-context',     -- Code context
-      'nvim-treesitter/nvim-treesitter-refactor',    -- Refactoring support
-      'RRethy/nvim-treesitter-endwise',              -- Complete end
-      'windwp/nvim-ts-autotag',                      -- Auto close tags
-    }
   },
   -- LSP section
   "neovim/nvim-lspconfig",
@@ -973,6 +893,19 @@ vim.opt.undofile = true          -- Persistent undo
 vim.opt.laststatus = 3           -- always and ONLY the last window
 vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep for grep
 vim.opt.grepformat = "%f:%l:%c:%m"
+
+-- Treesitter
+local filetypes = { "ruby", "javascript", "typescript", "tsx", "vue", "html", "css", "scss", "lua", "c", "rust", "vim",
+  "regex", "markdown", "markdown_inline", "json", "yaml", "vimdoc" }
+require 'nvim-treesitter'.install(filetypes)
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = filetypes,
+  callback = function() vim.treesitter.start() end,
+})
+
+-- Editor
+local npairs = require('nvim-autopairs')
+npairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
 
 -- autocmd
 local spell_group = vim.api.nvim_create_augroup('spell', { clear = false })
