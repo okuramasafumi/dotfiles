@@ -940,6 +940,19 @@ vim.api.nvim_create_autocmd('FileType', {
   desc = "Set conceallevel 2 for Markdown"
 })
 
+-- Set conceallevel=0 when entering insert mode in markdown, restore to 2 when leaving
+vim.api.nvim_create_autocmd('InsertEnter', {
+  pattern = { '*.md', '*.markdown' },
+  command = "set conceallevel=0",
+  desc = "Set conceallevel 0 when entering insert mode in Markdown"
+})
+
+vim.api.nvim_create_autocmd('InsertLeave', {
+  pattern = { '*.md', '*.markdown' },
+  command = "set conceallevel=2",
+  desc = "Restore conceallevel 2 when leaving insert mode in Markdown"
+})
+
 -- Key mappings
 local wk = require("which-key")
 local builtin = require('telescope.builtin')
