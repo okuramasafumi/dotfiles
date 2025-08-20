@@ -40,7 +40,8 @@ alias rdmr='rake db:migrate:reset'
 alias rdr='rake db:rollback'
 
 # AI
-alias c='claude'
+# happy is a wrapper for the happy-cli, and eventually Claude Code
+alias c='happy'
 
 # Obsidian
 alias ob='nvim ~/Obsidian/iCloudVault/README.md'
