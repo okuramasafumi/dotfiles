@@ -785,9 +785,8 @@ require("lazy").setup({
       })
     end,
   },
-  "wsdjeg/vim-fetch",           -- Line number and column number
-  "gpanders/editorconfig.nvim", -- Editorconfig
-  'jghauser/mkdir.nvim',        -- Create directory when it's missing
+  "wsdjeg/vim-fetch",    -- Line number and column number
+  'jghauser/mkdir.nvim', -- Create directory when it's missing
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
