@@ -295,39 +295,6 @@ require("lazy").setup({
     end
   },
   {
-    "olimorris/codecompanion.nvim",
-    lazy = true,
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    opts = {
-      adapters = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            schema = {
-              model = {
-                default = "claude-3.7-sonnet",
-              },
-              max_tokens = {
-                default = 65536,
-              },
-            },
-          })
-        end,
-      },
-      strategies = {
-        chat = {
-          adapter = "copilot",
-        },
-        inline = {
-          adapter = "copilot",
-        },
-      },
-    },
-  },
-  {
     "jake-stewart/multicursor.nvim",
     branch = "1.0",
     config = function()
