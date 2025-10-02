@@ -44,8 +44,6 @@ brew "zsh" # Shell
 
 cask "1password" # Password manager
 cask "1password-cli" # Password manager
-cask "bartender" # Menu bar management
-cask "brave-browser" # Browser
 cask "dash" # Document viewer
 cask "discord" # Communication
 cask "docker" # Container
@@ -53,7 +51,6 @@ cask "dropbox" # File sharing
 cask "element" # Communication
 cask "fing" # Network utilities
 cask "firefox" # Browser
-cask "firefox-developer-edition" # Browser
 cask "font-hackgen" # Font
 cask "font-hackgen-nerd" # Font
 cask "github" # GitHub GUI
@@ -67,16 +64,11 @@ cask "lulu" # Firewall
 cask "messenger" # Communication
 cask "microsoft-teams" # Communication
 cask "netnewswire" # RSS Reader
-cask "ngrok" # Proxy
 cask "obsidian" # Markdown editor
 cask "postgres-unofficial" # RDBMS
 cask "postico" # Postgres client
 cask "raindropio" # Bookmark management
-cask "raycast" # Launcher
-cask "scrivener" # Writing tool
 cask "spotify" # Music
 cask "thorium" # EPUB reader
-cask "ticktick" # TODO management
-cask "timing" # Time management
 cask "visual-studio-code" # Editor
 cask "zoom" # Communication
