@@ -835,26 +835,23 @@ wk.add({
 
 -- LSP
 -- Setup lspconfig.
-local lspconfig = require 'lspconfig'
 local json_schemas = require('schemastore').json.schemas()
 
-lspconfig.ts_ls.setup {}
+vim.lsp.enable('ts_ls', 'luals')
 
-lspconfig.yamlls.setup {
-  settings = {
-    yaml = {
-      schemas = json_schemas,
-      -- schemas = {
-      -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
-      -- },
-    },
-  }
+vim.lsp.config.yamlls = {
+  yaml = {
+    schemas = json_schemas,
+    -- schemas = {
+    -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+    -- },
+  },
 }
 
 local jsonls_capabilities = vim.lsp.protocol.make_client_capabilities()
 jsonls_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.jsonls.setup {
+vim.lsp.config.jsonls = {
   capabilities = jsonls_capabilities,
   settings = {
     json = {
@@ -874,7 +871,7 @@ elseif vim.fn.filereadable(".rubocop.yml") == 1 then
   ruby_lsp_type = "rubocop"
 end
 if ruby_lsp_type ~= "" then
-  lspconfig.ruby_lsp.setup({
+  vim.lsp.config.ruby_lsp = {
     before_init = function(params, config)
       -- TODO: Move params confiiguration here
     end,
@@ -882,12 +879,8 @@ if ruby_lsp_type ~= "" then
       formatter = ruby_lsp_type,
       linters = { ruby_lsp_type },
     }
-  })
+  }
 end
-
-lspconfig.jdtls.setup {}
-
-lspconfig.lua_ls.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
