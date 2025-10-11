@@ -746,6 +746,10 @@ vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep for grep
 vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- Treesitter
+
+-- Ruby workaround
+vim.cmd('autocmd FileType ruby setlocal indentkeys-=.')
+
 local filetypes = { "ruby", "javascript", "typescript", "tsx", "vue", "html", "css", "scss", "lua", "c", "rust", "vim",
   "regex", "markdown", "markdown_inline", "json", "yaml", "vimdoc" }
 require 'nvim-treesitter'.install(filetypes)
