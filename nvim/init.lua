@@ -889,6 +889,7 @@ if ruby_lsp_type ~= "" then
     }
   }
 end
+vim.lsp.enable('ruby_lsp')
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
