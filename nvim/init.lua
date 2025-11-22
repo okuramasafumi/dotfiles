@@ -404,11 +404,6 @@ require("lazy").setup({
     dependencies = 'nvim-tree/nvim-web-devicons'
   },
   {
-    "nvim-zh/colorful-winsep.nvim", -- Colorful window separator
-    config = true,
-    event = { "WinNew" },
-  },
-  {
     'rmagatti/goto-preview',
     config = function()
       require('goto-preview').setup {
