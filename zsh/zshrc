@@ -55,6 +55,9 @@ for config ($ZSH_DIR/*.zsh) do source $config; done
 bindkey -e
 bindkey \^U backward-kill-line
 
+# Heroku CLI autocomplete
+HEROKU_AC_ZSH_SETUP_PATH=/Users/okuramasafumi/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
+
 if type rbenv > /dev/null 2>&1; then
   eval "$(rbenv init - zsh)"
 fi
