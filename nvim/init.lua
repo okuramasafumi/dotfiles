@@ -725,6 +725,9 @@ require("lazy").setup({
     "OXY2DEV/helpview.nvim", -- Nicer help
     lazy = false
   },
+  {
+    'google/vim-jsonnet', -- Jsonnet support
+  }
 })
 
 -- Misc
