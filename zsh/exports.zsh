@@ -3,8 +3,7 @@ export GOPATH=~/.go
 export EDITOR=nvim
 export DISABLE_AUTO_TITLE=true
 export TERM="xterm-256color"
-export PATH="~/bin:$PATH:$GOPATH/bin"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$HOME/bin:$GOPATH/bin:/usr/local/opt/python/libexec/bin:$PATH"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export MANPAGER='nvim +Man! --clean' # Use nvim as a man pager
 
