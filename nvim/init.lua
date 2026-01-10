@@ -173,6 +173,11 @@ require("lazy").setup({
       })
       cmp.setup.filetype('ruby', {
         sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        }, {
+          { name = 'treesitter' },
+        }, {
           {
             name = 'buffer',
             option = {
@@ -181,12 +186,7 @@ require("lazy").setup({
               end
             }
           },
-          { name = 'nvim_lsp' },
-          { name = 'ultisnips' },
-        }, {
-          { name = 'treesitter' },
-        }, {
-          { name = 'tags' }
+          { name = 'tags' },
         })
       })
 
@@ -842,10 +842,20 @@ wk.add({
 -- LSP
 -- Setup lspconfig.
 local json_schemas = require('schemastore').json.schemas()
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.lsp.enable('ts_ls', 'luals')
 
+vim.lsp.config.ts_ls = {
+  capabilities = lsp_capabilities,
+}
+
+vim.lsp.config.luals = {
+  capabilities = lsp_capabilities,
+}
+
 vim.lsp.config.yamlls = {
+  capabilities = lsp_capabilities,
   yaml = {
     schemas = json_schemas,
     -- schemas = {
@@ -854,7 +864,11 @@ vim.lsp.config.yamlls = {
   },
 }
 
-local jsonls_capabilities = vim.lsp.protocol.make_client_capabilities()
+local jsonls_capabilities = vim.tbl_deep_extend(
+  "force",
+  lsp_capabilities,
+  vim.lsp.protocol.make_client_capabilities()
+)
 jsonls_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.lsp.config.jsonls = {
@@ -866,27 +880,25 @@ vim.lsp.config.jsonls = {
   },
 }
 
--- lspconfig.typeprof.setup {}
-
--- lspconfig.steep.setup {}
-
-local ruby_lsp_type = ""
-if vim.fn.filereadable(".standard.yml") == 1 then
-  ruby_lsp_type = "standard"
-elseif vim.fn.filereadable(".rubocop.yml") == 1 then
-  ruby_lsp_type = "rubocop"
+local function ruby_linter_type()
+  local found = vim.fs.find({ ".standard.yml", ".rubocop.yml" }, { upward = true })[1]
+  if not found then
+    return nil
+  end
+  if found:match("standard") then
+    return "standard"
+  end
+  return "rubocop"
 end
-if ruby_lsp_type ~= "" then
-  vim.lsp.config.ruby_lsp = {
-    before_init = function(params, config)
-      -- TODO: Move params confiiguration here
-    end,
-    init_options = {
-      formatter = ruby_lsp_type,
-      linters = { ruby_lsp_type },
-    }
-  }
-end
+
+local ruby_lsp_type = ruby_linter_type()
+vim.lsp.config.ruby_lsp = {
+  capabilities = lsp_capabilities,
+  init_options = ruby_lsp_type and {
+    formatter = ruby_lsp_type,
+    linters = { ruby_lsp_type },
+  } or {},
+}
 vim.lsp.enable('ruby_lsp')
 
 -- Global mappings.
@@ -936,6 +948,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client and client:supports_method('textDocument/formatting') then
       vim.api.nvim_create_autocmd("BufWritePre", {
         -- pattern = "*.rb",
+        buffer = ev.buf,
         callback = function()
           vim.lsp.buf.format()
         end,
