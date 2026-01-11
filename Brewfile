@@ -1,7 +1,4 @@
 tap "heroku/brew" # Heroku CLI
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-tap "homebrew/services"
 
 brew "aichat" # ChatGPT
 brew "bash" # Shell
@@ -46,7 +43,7 @@ cask "1password" # Password manager
 cask "1password-cli" # Password manager
 cask "dash" # Document viewer
 cask "discord" # Communication
-cask "docker" # Container
+cask "docker-desktop" # Container
 cask "dropbox" # File sharing
 cask "element" # Communication
 cask "fing" # Network utilities
