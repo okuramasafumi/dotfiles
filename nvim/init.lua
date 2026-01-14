@@ -629,7 +629,8 @@ require("lazy").setup({
           keymap = {
             accept = "<Tab>"
           }
-        }
+        },
+        copilot_node_command = "/opt/homebrew/opt/node@24/bin/node",
       })
     end,
   },
