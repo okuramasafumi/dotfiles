@@ -46,6 +46,8 @@ fi
 
 [ -e $ZSH_DIR/completions ] && fpath=($ZSH_DIR/completions $fpath)
 
+[ -e $HOME/.docker/completions ] && fpath=($HOME/.docker/completions $fpath)
+
 autoload -Uz compinit
 compinit -C
 zmodload -i zsh/complist
