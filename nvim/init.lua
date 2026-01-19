@@ -496,6 +496,27 @@ require("lazy").setup({
       'stevearc/dressing.nvim'
     },
   },
+  {
+    'adam12/ruby-lsp.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'neovim/nvim-lspconfig',
+    },
+    config = true,
+    opts = {
+      use_launcher = false,
+      autodetect_tools = true,
+      lspconfig = {
+        init_options = {
+          addonSettings = {
+            ["Ruby LSP Rails"] = {
+              enablePendingMigrationsPrompt = false,
+            },
+          },
+        },
+      },
+    },
+  },
   "hallison/vim-rdoc", -- RDoc syntax highlighting
   -- JavaScript/TypeScript
   "MaxMEllon/vim-jsx-pretty",
@@ -880,27 +901,6 @@ vim.lsp.config.jsonls = {
     },
   },
 }
-
-local function ruby_linter_type()
-  local found = vim.fs.find({ ".standard.yml", ".rubocop.yml" }, { upward = true })[1]
-  if not found then
-    return nil
-  end
-  if found:match("standard") then
-    return "standard"
-  end
-  return "rubocop"
-end
-
-local ruby_lsp_type = ruby_linter_type()
-vim.lsp.config.ruby_lsp = {
-  capabilities = lsp_capabilities,
-  init_options = ruby_lsp_type and {
-    formatter = ruby_lsp_type,
-    linters = { ruby_lsp_type },
-  } or {},
-}
-vim.lsp.enable('ruby_lsp')
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
