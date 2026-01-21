@@ -15,7 +15,7 @@ source_safe "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
 # zshrc
 
-# Load uitily function
+# Load utility function
 autoload -Uz is-at-least
 
 # Config directory
