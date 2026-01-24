@@ -23,6 +23,8 @@ mkdir -p "$HOME/.config/sheldon"
 ln -fhs "$DOTFILES_PATH/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 mkdir -p "$HOME/.config/nvim"
 ln -fhs "$DOTFILES_PATH/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+mkdir -p "$HOME/.codex"
+ln -fhs "$DOTFILES_PATH/agents/codex/config.toml" "$HOME/.codex/config.toml"
 
 brew bundle --file="$DOTFILES_PATH/Brewfile"
 
