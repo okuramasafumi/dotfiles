@@ -500,8 +500,8 @@ require("lazy").setup({
     'adam12/ruby-lsp.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'neovim/nvim-lspconfig',
     },
+    branch = 'neovim-11-native-lsp',
     config = true,
     opts = {
       use_launcher = false,
