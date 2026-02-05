@@ -73,7 +73,6 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
   -- LSP section
-  "neovim/nvim-lspconfig",
   {
     "rachartier/tiny-code-action.nvim",
     dependencies = {
@@ -502,19 +501,9 @@ require("lazy").setup({
       'nvim-lua/plenary.nvim',
     },
     branch = 'neovim-11-native-lsp',
-    config = true,
     opts = {
       use_launcher = false,
-      autodetect_tools = true,
-      lspconfig = {
-        init_options = {
-          addonSettings = {
-            ["Ruby LSP Rails"] = {
-              enablePendingMigrationsPrompt = false,
-            },
-          },
-        },
-      },
+      autodetect_tools = true
     },
   },
   "hallison/vim-rdoc", -- RDoc syntax highlighting
