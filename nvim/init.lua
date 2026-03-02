@@ -860,8 +860,6 @@ wk.add({
 local json_schemas = require('schemastore').json.schemas()
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-vim.lsp.enable('ts_ls', 'luals')
-
 vim.lsp.config.ts_ls = {
   capabilities = lsp_capabilities,
 }
@@ -895,6 +893,8 @@ vim.lsp.config.jsonls = {
     },
   },
 }
+
+vim.lsp.enable('ts_ls', 'luals')
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
