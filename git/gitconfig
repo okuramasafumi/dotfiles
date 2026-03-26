@@ -25,6 +25,7 @@
 	df = diff
   sw = switch
   nb = switch -c
+  ss = status --short
   hash = rev-parse HEAD
   hist-search = "!f() { git grep $1 $(git rev-list --all); }; f"
 [merge]
