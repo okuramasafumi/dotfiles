@@ -1,5 +1,0 @@
-model = "gpt-5.2-codex"
-
-[tui]
-
-notifications = true
