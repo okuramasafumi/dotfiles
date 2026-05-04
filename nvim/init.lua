@@ -346,10 +346,6 @@ require("lazy").setup({
   },
   -- UI section
   {
-    'stevearc/dressing.nvim', -- UI enhancement
-    opts = {},
-  },
-  {
     "nvim-tree/nvim-tree.lua", -- Tree UI
     event = "VeryLazy",
     version = "*",
