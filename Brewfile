@@ -1,6 +1,5 @@
 tap "heroku/brew" # Heroku CLI
 
-brew "aichat" # ChatGPT
 brew "bash" # Shell
 brew "bat" # Display file content
 brew "circleci" # local CI
@@ -41,6 +40,8 @@ brew "zsh" # Shell
 
 cask "1password" # Password manager
 cask "1password-cli" # Password manager
+cask "codex" # Coding agent
+cask "copilot-cli" # Coding agent
 cask "dash" # Document viewer
 cask "discord" # Communication
 cask "docker-desktop" # Container
