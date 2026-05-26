@@ -492,11 +492,11 @@ require("lazy").setup({
     },
   },
   {
-    'adam12/ruby-lsp.nvim',
+    'okuramasafumi/ruby-lsp.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
-    branch = 'neovim-11-native-lsp',
+    branch = 'codelens-deprecation',
     opts = {
       use_launcher = false,
       autodetect_tools = true
