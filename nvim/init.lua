@@ -84,6 +84,12 @@ require("lazy").setup({
       require('tiny-code-action').setup()
     end
   },
+  {
+    'linrongbin16/lsp-progress.nvim',
+    config = function()
+      require('lsp-progress').setup()
+    end
+  },
   -- Editing support
   {
     'mfussenegger/nvim-lint' -- Linter
@@ -378,7 +384,12 @@ require("lazy").setup({
     config = function()
       require("lualine").setup {
         sections = {
-          lualine_c = { 'RSpecCurrentSubject' },
+          lualine_c = {
+            function()
+              -- invoke `progress` here.
+              return require('lsp-progress').progress()
+            end,
+          },
           lualine_x = { { 'copilot', show_colors = true }, 'filetype' },
         },
         options = {
@@ -891,6 +902,14 @@ vim.lsp.config.jsonls = {
 }
 
 vim.lsp.enable('ts_ls', 'luals')
+
+-- listen lsp-progress event and refresh lualine
+vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+  group = "lualine_augroup",
+  pattern = "LspProgressStatusUpdated",
+  callback = require("lualine").refresh,
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
