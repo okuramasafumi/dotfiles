@@ -714,7 +714,7 @@ require("lazy").setup({
       require("code_runner").setup {}
       local wk = require("which-key")
       wk.add({
-        { '<leader>rr', ':RunCode<CR>', desc = "Runs based on file type, first checking if belongs to project, then if filetype mapping exists" },
+        { '<leader>rc', ':RunCode<CR>', desc = "Runs based on file type, first checking if belongs to project, then if filetype mapping exists" },
         { '<leader>rf', ':RunFile<CR>', desc = "Run the current file (optionally you can select an opening mode)." },
       })
     end
@@ -843,7 +843,6 @@ wk.add({
     { "<leader>ga",  ":<C-u>!git add %<Cr>",                                               desc = "Add current file" },
     { "<leader>gcc", ":<C-u>Neogit commit<Cr>",                                            desc = "Git commit" },
     { "<leader>gg",  ":Neogit<Cr>",                                                        desc = "Open Neogit" },
-    { "]<space>",    ":<C-u>call append(expand('.'), '')<Cr>j",                            desc = "Add one empty line to below" },
     { "<leader>f",   group = "+file" },
     { "<leader>ff",  builtin.find_files,                                                   desc = "Find Files" },
     { "<leader>fo",  builtin.oldfiles,                                                     desc = "Find File from history" },
