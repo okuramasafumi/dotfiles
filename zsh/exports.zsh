@@ -4,8 +4,11 @@ export EDITOR=nvim
 export DISABLE_AUTO_TITLE=true
 export TERM="xterm-256color"
 export PATH="$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/opt/python/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export MANPAGER='nvim +Man! --clean' # Use nvim as a man pager
+
+# Homebrew
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 export RUBYOPT="-r$HOME/.rubyopenssl_default_store.rb $RUBYOPT"
 
