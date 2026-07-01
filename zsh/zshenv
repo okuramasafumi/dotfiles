@@ -1,0 +1,18 @@
+# Minimal environment for all shells (avoid external commands here).
+
+export ZSH_DIR="${ZSH_DIR:-$HOME/.zsh}"
+
+# Remove dups from path arrays early.
+typeset -gU path cdpath fpath manpath
+
+export RBENV_ROOT="$HOME/.rbenv"
+path=("$RBENV_ROOT/bin" "$RBENV_ROOT/shims" "$HOME/bin" $path)
+
+# Lightweight Homebrew prefix detection without invoking brew.
+if [[ -z ${HOMEBREW_PREFIX-} ]]; then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    export HOMEBREW_PREFIX=/opt/homebrew
+  elif [[ -x /usr/local/bin/brew ]]; then
+    export HOMEBREW_PREFIX=/usr/local
+  fi
+fi
