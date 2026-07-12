@@ -92,12 +92,6 @@ require("lazy").setup({
   },
   -- Editing support
   {
-    'mfussenegger/nvim-lint' -- Linter
-  },
-  {
-    'stevearc/conform.nvim',
-  },
-  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
