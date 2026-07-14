@@ -307,7 +307,6 @@ require("lazy").setup({
     branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'LukasPietzschmann/telescope-tabs',
       "debugloop/telescope-undo.nvim",
       {
         "nvim-telescope/telescope-live-grep-args.nvim",
