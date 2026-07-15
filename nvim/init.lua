@@ -42,7 +42,7 @@ require("lazy").setup({
     opts = {
       bigfile = { enabled = true },
       dashboard = { enabled = true },
-      explorer = { enabled = true },
+      explorer = { enabled = false },
       image = { enabled = true },
       indent = { enabled = true },
       input = { enabled = true },
@@ -95,12 +95,6 @@ require("lazy").setup({
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
-  },
-  {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
   },
   {
     'echasnovski/mini.ai',
@@ -345,17 +339,6 @@ require("lazy").setup({
   },
   -- UI section
   {
-    "nvim-tree/nvim-tree.lua", -- Tree UI
-    event = "VeryLazy",
-    version = "*",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
-  },
-  {
     "utilyre/barbecue.nvim", -- VSCode like winbar
     name = "barbecue",
     version = "*",
@@ -390,12 +373,6 @@ require("lazy").setup({
         }
       }
     end
-  },
-  {
-    "luukvbaal/statuscol.nvim", -- statuscolumn
-    config = function()
-      require("statuscol").setup({})
-    end,
   },
   {
     'akinsho/bufferline.nvim',
