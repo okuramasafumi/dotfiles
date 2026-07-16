@@ -18,7 +18,6 @@
   pl = pull
   re = rebase
 	co = checkout
-	ss = status
 	br = branch
 	ci = commit
 	mt = mergetool
