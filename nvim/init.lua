@@ -645,14 +645,6 @@ require("lazy").setup({
     end
   },
   {
-    'stevearc/overseer.nvim', -- Task management
-    lazy = true,
-    event = "VeryLazy",
-    config = function()
-      require('overseer').setup()
-    end
-  },
-  {
     "m4xshen/hardtime.nvim", -- Good habits
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
