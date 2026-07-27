@@ -63,7 +63,7 @@ cask "messenger" # Communication
 cask "microsoft-teams" # Communication
 cask "netnewswire" # RSS Reader
 cask "obsidian" # Markdown editor
-cask "postgres-unofficial" # RDBMS
+cask "postgres-app" # RDBMS
 cask "postico" # Postgres client
 cask "raindropio" # Bookmark management
 cask "spotify" # Music
