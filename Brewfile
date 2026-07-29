@@ -30,7 +30,6 @@ brew "ruby-build" # Install Ruby
 brew "sheldon" # Shell framework
 brew "shellcheck" # Shell Lint
 brew "sqlite" # RDBMS
-brew "thefuck" # Command correction
 brew "tree" # `tree` command
 brew "vim" # Editor
 brew "wget" # HTTP client
@@ -56,10 +55,8 @@ cask "google-chrome" # Browser
 cask "google-drive" # File sharing
 cask "iina" # Movie player
 cask "iterm2" # Terminal
-cask "jetbrains-toolbox" # Jetbrain tool management
 cask "karabiner-elements" # Keyboard modifier
 cask "lulu" # Firewall
-cask "messenger" # Communication
 cask "microsoft-teams" # Communication
 cask "netnewswire" # RSS Reader
 cask "obsidian" # Markdown editor
