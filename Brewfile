@@ -31,6 +31,7 @@ brew "sheldon" # Shell framework
 brew "shellcheck" # Shell Lint
 brew "sqlite" # RDBMS
 brew "tree" # `tree` command
+brew "tree-sitter-cli" # Required for Neovim
 brew "vim" # Editor
 brew "wget" # HTTP client
 brew "yaml-language-server" # A Language Server for YAML
@@ -39,6 +40,7 @@ brew "zsh" # Shell
 
 cask "1password" # Password manager
 cask "1password-cli" # Password manager
+cask "chatgpt" # LLM, coding agent
 cask "codex" # Coding agent
 cask "copilot-cli" # Coding agent
 cask "dash" # Document viewer
@@ -50,6 +52,7 @@ cask "fing" # Network utilities
 cask "firefox" # Browser
 cask "font-hackgen" # Font
 cask "font-hackgen-nerd" # Font
+cask "ghostty" # Terminal
 cask "github" # GitHub GUI
 cask "google-chrome" # Browser
 cask "google-drive" # File sharing
