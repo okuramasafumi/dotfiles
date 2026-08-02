@@ -465,14 +465,6 @@ require("lazy").setup({
   "pocke/rbs.vim",          -- Including filetype detector
   "slim-template/vim-slim", -- Slim template
   {
-    'weizheheng/ror.nvim',  -- Rails development support
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-      'rcarriga/nvim-notify',
-      'stevearc/dressing.nvim'
-    },
-  },
-  {
     'okuramasafumi/ruby-lsp.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
