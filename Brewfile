@@ -67,6 +67,7 @@ cask "postgres-app" # RDBMS
 cask "postico" # Postgres client
 cask "raindropio" # Bookmark management
 cask "spotify" # Music
+cask "thaw" # Menu bar management
 cask "thorium" # EPUB reader
 cask "visual-studio-code" # Editor
 cask "zoom" # Communication
