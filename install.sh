@@ -24,6 +24,8 @@ mkdir -p "$HOME/.config/sheldon"
 ln -fhs "$DOTFILES_PATH/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 mkdir -p "$HOME/.config/nvim"
 ln -fhs "$DOTFILES_PATH/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+mkdir -p "$HOME/.config/zellij/layouts"
+ln -fhs "$DOTFILES_PATH/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 
 brew bundle --file="$DOTFILES_PATH/Brewfile"
 
