@@ -226,3 +226,6 @@ fabric.properties
 
 # Personal TODO file
 .TODO
+
+# Personal agent workspace
+.agents.local
