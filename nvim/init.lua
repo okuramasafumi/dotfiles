@@ -760,6 +760,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "Steepfile",
+  command = "set filetype=ruby",
+  desc    = "Steepfile is Ruby DSL"
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "Dangerfile",
   command = "set filetype=ruby",
   desc    = "Dangerfile is Ruby DSL"
