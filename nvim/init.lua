@@ -709,7 +709,6 @@ require("lazy").setup({
 
 -- Misc
 vim.opt.termguicolors = true  -- True color
-vim.opt.relativenumber = true -- Setting relativenumber is slow but Apple Sillicon make it work!
 vim.opt.number = true         -- Current line has 0 relative number so showing absolute number
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99        -- For ufo
@@ -723,6 +722,7 @@ vim.opt.undofile = true          -- Persistent undo
 vim.opt.laststatus = 3           -- always and ONLY the last window
 vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep for grep
 vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.statuscolumn = [[%C%s%=%{v:virtnum != 0 ? '' : (v:relnum == 0 ? '0' : (v:lnum < line('.') ? '+' : '-') . v:relnum)} ]] -- relative number with + and - sign
 
 -- Treesitter
 
