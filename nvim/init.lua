@@ -507,9 +507,8 @@ require("lazy").setup({
     end,
   },
   {
-    'akinsho/git-conflict.nvim', -- Fancy conflict viewer
-    version = "*",
-    config = true
+    "esmuellert/codediff.nvim", -- Code review environment
+    cmd = "CodeDiff",
   },
   {
     'ruifm/gitlinker.nvim', -- Permalink to GitHub and others
