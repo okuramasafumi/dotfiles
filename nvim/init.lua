@@ -73,6 +73,7 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
   -- LSP section
+  "neovim/nvim-lspconfig", -- Server definitions for vim.lsp.config
   {
     "rachartier/tiny-code-action.nvim",
     dependencies = {
@@ -827,45 +828,31 @@ wk.add({
 })
 
 -- LSP
--- Setup lspconfig.
-local json_schemas = require('schemastore').json.schemas()
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- Share completion capabilities with all native LSP clients, including Ruby and TypeScript.
+vim.lsp.config('*', {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+})
 
-vim.lsp.config.ts_ls = {
-  capabilities = lsp_capabilities,
-}
-
-vim.lsp.config.luals = {
-  capabilities = lsp_capabilities,
-}
-
-vim.lsp.config.yamlls = {
-  capabilities = lsp_capabilities,
-  yaml = {
-    schemas = json_schemas,
-    -- schemas = {
-    -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
-    -- },
-  },
-}
-
-local jsonls_capabilities = vim.tbl_deep_extend(
-  "force",
-  lsp_capabilities,
-  vim.lsp.protocol.make_client_capabilities()
-)
-jsonls_capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-vim.lsp.config.jsonls = {
-  capabilities = jsonls_capabilities,
+vim.lsp.config('yamlls', {
   settings = {
-    json = {
-      schemas = json_schemas,
+    yaml = {
+      schemaStore = { enable = false, url = "" },
+      schemas = require('schemastore').yaml.schemas(),
     },
   },
-}
+})
 
-vim.lsp.enable('ts_ls', 'luals')
+vim.lsp.config('jsonls', {
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+
+-- ruby-lsp.nvim and typescript-tools.nvim configure and enable their own servers.
+vim.lsp.enable({ 'lua_ls', 'jsonls', 'yamlls' })
 
 -- listen lsp-progress event and refresh lualine
 vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
@@ -897,22 +884,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
     wk.add({
-      { { "gD", vim.lsp.buf.declaration, desc = 'Go to declaration' },                        opts },
-      { { "gd", vim.lsp.buf.definition, desc = 'Go to definition' },                          opts },
-      { { "K", vim.lsp.buf.hover, desc = 'Hover' },                                           opts },
-      { { "gi", vim.lsp.buf.implementation, desc = 'Go to implementation' },                  opts },
-      { { "<leader>k", vim.lsp.buf.signature_help, desc = 'Show signature help' },            opts },
+      buffer = ev.buf,
+      { "gD", vim.lsp.buf.declaration, desc = 'Go to declaration' },
+      { "gd", vim.lsp.buf.definition, desc = 'Go to definition' },
+      { "K", vim.lsp.buf.hover, desc = 'Hover' },
+      { "gi", vim.lsp.buf.implementation, desc = 'Go to implementation' },
+      { "<leader>k", vim.lsp.buf.signature_help, desc = 'Show signature help' },
       -- ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, opts },
       -- ['<space>wr'] = { vim.lsp.buf.remove_workspace_folder, opts },
       -- ['<space>wl'] = { function()
       --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       -- end, opts },
-      { { "TD", vim.lsp.buf.type_definition, desc = 'Go to type definition' },                opts },
-      { { "<leader>rn", vim.lsp.buf.rename, desc = 'Rename' },                                opts },
-      { { "<leader>ca", vim.lsp.buf.code_action, desc = 'Code action', mode = { 'n', 'v' } }, opts },
-      { { "gr", vim.lsp.buf.references, desc = 'Go to references' },                          opts },
+      { "TD", vim.lsp.buf.type_definition, desc = 'Go to type definition' },
+      { "<leader>rn", vim.lsp.buf.rename, desc = 'Rename' },
+      { "<leader>ca", vim.lsp.buf.code_action, desc = 'Code action', mode = { 'n', 'v' } },
+      { "gr", vim.lsp.buf.references, desc = 'Go to references' },
       -- ['<space>f'] = { { function()
       --   vim.lsp.buf.format { async = true }
       -- end, 'Format' }, opts },
@@ -920,11 +907,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Auto formatting with LSP
     if client and client:supports_method('textDocument/formatting') then
+      -- A buffer needs one save hook, even when multiple clients attach.
+      vim.api.nvim_clear_autocmds({ group = 'UserLspConfig', event = 'BufWritePre', buffer = ev.buf })
       vim.api.nvim_create_autocmd("BufWritePre", {
-        -- pattern = "*.rb",
+        group = 'UserLspConfig',
         buffer = ev.buf,
         callback = function()
-          vim.lsp.buf.format()
+          vim.lsp.buf.format({ bufnr = ev.buf })
         end,
       })
     end
