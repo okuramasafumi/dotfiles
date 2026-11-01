@@ -2,7 +2,6 @@ tap "heroku/brew" # Heroku CLI
 
 brew "bash" # Shell
 brew "bat" # Display file content
-brew "circleci" # local CI
 brew "cloc" # Count Lines Of Code
 brew "curl" # HTTP client
 brew "direnv" # Environment variable management
@@ -17,10 +16,8 @@ brew "git-delta" # Pager for Git
 brew "gnu-sed" # Sed, but GNU
 brew "graphviz" # Visualization
 brew "heroku" # Heroku CI
-brew "htop" # System usage
 brew "imagemagick" # Convert images
 brew "jq" # Process JSON
-brew "marp-cli" # Generate slides from Markdown
 brew "mysql" # RDBMS
 brew "neovim" # Editor
 brew "rbenv" # Ruby environment mamagement
@@ -48,7 +45,6 @@ cask "discord" # Communication
 cask "docker-desktop" # Container
 cask "dropbox" # File sharing
 cask "element" # Communication
-cask "fing" # Network utilities
 cask "firefox" # Browser
 cask "font-hackgen" # Font
 cask "font-hackgen-nerd" # Font
@@ -68,6 +64,5 @@ cask "postico" # Postgres client
 cask "raindropio" # Bookmark management
 cask "spotify" # Music
 cask "thaw" # Menu bar management
-cask "thorium" # EPUB reader
 cask "visual-studio-code" # Editor
 cask "zoom" # Communication
