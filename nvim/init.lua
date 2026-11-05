@@ -722,7 +722,8 @@ vim.opt.undofile = true          -- Persistent undo
 vim.opt.laststatus = 3           -- always and ONLY the last window
 vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep for grep
 vim.opt.grepformat = "%f:%l:%c:%m"
-vim.opt.statuscolumn = [[%C%s%=%{v:virtnum != 0 ? '' : (v:relnum == 0 ? '0' : (v:lnum < line('.') ? '+' : '-') . v:relnum)} ]] -- relative number with + and - sign
+vim.opt.statuscolumn =
+[[%C%s%=%{v:virtnum != 0 ? '' : (v:relnum == 0 ? v:lnum : (v:lnum < line('.') ? '+' : '-') . v:relnum)} ]] -- current line number and relative numbers with + and - signs
 
 -- Treesitter
 
