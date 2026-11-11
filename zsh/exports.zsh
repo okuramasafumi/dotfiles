@@ -11,6 +11,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 export RUBYOPT="-r$HOME/.rubyopenssl_default_store.rb $RUBYOPT"
+export RUBY_CONFIGURE_OPTS="--enable-yjit"
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
